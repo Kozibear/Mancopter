@@ -223,13 +223,6 @@ public class throwingMan : MonoBehaviour {
         {
             returnHome = true;
         }
-
-        if (collision.gameObject.tag == "buttonForMovingWall")
-        {
-            returnHome = true;
-            collision.gameObject.GetComponent<movingWallSystem>().moveWall = true;
-        }
-
         if(collision.gameObject.tag == "enemy")
         {
             returnHome = true;

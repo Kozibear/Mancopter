@@ -21,7 +21,6 @@ public class CopterBasicMovements : MonoBehaviour {
 
     private bool beginCountDown = false;
     private bool cancelMomentum = false;
-    //private bool canBeginRapidSpinTime = false;
     public bool fallingNoJumping = false;
     public bool grounded;
     public bool startJump = false;
@@ -31,7 +30,6 @@ public class CopterBasicMovements : MonoBehaviour {
     public bool beginDownwardsPush = false;
     public bool downwardsPush = false;
     public bool emergencyDescent = true;
-    //public bool canRapidSpinAttack = true;
     public bool rapidlySpinning = false;
     public bool immovableDescent = false;
     public bool movingLeft = false;
@@ -135,23 +133,6 @@ public class CopterBasicMovements : MonoBehaviour {
             rb2d.velocity = Vector3.zero;
             beginDownwardsPush = false;
         }
-
-        //rapid mid-air spin followed by an immediate, unstoppable descent 
-		//DECIDED NOT TO IMPLEMENT
-		/*
-        if ((Input.GetKeyDown("left alt") || Input.GetKeyDown("l")) && !grounded && canRapidSpinAttack)
-        {
-            canRapidSpinAttack = false;
-
-            jumping = false;
-            beginDescent = false;
-            downwardsPush = false;
-            fallingNoJumping = false;
-
-            rapidlySpinning = true;
-            canBeginRapidSpinTime = true;
-        }
-		*/
     }
 
     void FixedUpdate() { 
@@ -236,7 +217,6 @@ public class CopterBasicMovements : MonoBehaviour {
 			}
         }
         
-        
         //we record the current time, so that we know when to stop the player's jump
         if (beginCountDown)
         {
@@ -247,7 +227,6 @@ public class CopterBasicMovements : MonoBehaviour {
         //if the alloted airTime has passed, we begin descending
         if (jumping && (Time.time > tempTime + airTime))
         {
-
             jumping = false;
 
             beginDescent = true;
@@ -255,11 +234,9 @@ public class CopterBasicMovements : MonoBehaviour {
             cancelMomentum = true;
         }
 
-        //descending
         //once the player begins descending, we cancel their momentum, and then decrease the gravity (unless we push downwards)
         if (beginDescent && !grounded)
         {
-            
             if (cancelMomentum)
             {
                 rb2d.velocity = Vector3.zero;
@@ -275,7 +252,6 @@ public class CopterBasicMovements : MonoBehaviour {
         //double-jump
         if(startDoubleJump)
         {
-
 			airTime = storedAirTime;
 
             startDoubleJump = false;
@@ -338,43 +314,7 @@ public class CopterBasicMovements : MonoBehaviour {
             beginDescent = true;
             cancelMomentum = true;
         }
-
-
-		//DECIDED NOT TO IMPLEMENT
-		/*
-        //rapid-spinning
-        //timer
-        if (rapidlySpinning && canBeginRapidSpinTime)
-        {
-            rapidSpinTime = Time.time;
-            canBeginRapidSpinTime = false;
-        }
-        if(rapidlySpinning)
-        {
-            //lock rigidbody location
-            rb2d.velocity = Vector3.zero;
-
-            jumping = false;
-            beginDescent = false;
-            downwardsPush = false;
-            fallingNoJumping = false;
-
-            //we make it more slightly upwards as it's doing this
-            Vector3 newPosition = transform.position;
-            newPosition.y = newPosition.y + 0.015f;
-            transform.position = newPosition;
-        }
-        //we make the copter fall after the timer ends
-        if ((Time.time >= rapidSpinTime+1f) && rapidlySpinning)
-        {
-            rapidlySpinning = false;
-
-            immovableDescent = true;
-            rb2d.gravityScale = 1f;
-        }
-		*/
-
-
+			
         //moving left
         if (movingLeft)
         { 
@@ -394,7 +334,6 @@ public class CopterBasicMovements : MonoBehaviour {
 
             facingLeft = false;
         }
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -421,7 +360,6 @@ public class CopterBasicMovements : MonoBehaviour {
             shakeWorld = true;
             //Important make sure that springs are not included!
         }
-
     }
 
 	private void OnTriggerEnter2D(Collider2D collision)
@@ -431,8 +369,6 @@ public class CopterBasicMovements : MonoBehaviour {
 
 			rb2d.velocity = Vector3.zero;
 			transform.parent.transform.position = GameObject.Find ("SpawnPoint").transform.position;
-
 		}
-			
 	}
 }

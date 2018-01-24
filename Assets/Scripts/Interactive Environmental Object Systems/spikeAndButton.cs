@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class spikeAndButton : MonoBehaviour {
 
-
 	public bool buttonPressed;
 
 	public float recordTime;
