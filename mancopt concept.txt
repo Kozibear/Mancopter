@@ -1,0 +1,54 @@
+Mancopter Concept:
+-You're 5 dudes, 4 of them are the rotors of a makeshift helicopter, 1 of them is sitting in the cockpit
+-The 4 rotor mans all move in a circular shape
+-The mancopter is so heavy that it can't move around on the ground
+-All it can do at the starts is: 
+	1. Jump (in which it can move slightly to the side), and
+	2. Hover downwards slowly with the boys' help
+-The first few levels will force the player to get used to these 2 mechanics
+-Eventually, they will learn a third: 
+	3. Fall quickly downwards (in which they can move slightly to the side)
+-This ability will come in useful when up against enemies that will focus a lazer on the player, and attempt
+to snipe them instantaneously (or when some other object is about to hit them
+-In can also come in useful if the player is trying to quickly complete a level (levels are timed)
+-after a little while, the player will learn a skill that will allow them to defeat enemies:
+	4. The ability to throw objects at enemies
+-The player will be given access to a variety of different objects, each with varying attributes 
+-For example, a chicken weighs little, while a hardball weighs a lot, but does more damage, and a knife
+is thrown vertically, while a grenade loops downwards, a boomerang returns to the player, etc.
+-After a period of time, the player will be able to 
+	5. do a double jump in mid-air, granting them some more leeway
+-The player will also be given access to:
+	6. the ability to rapidly spin in the air for a half second, which makes them destroy any enemy in
+	its vicinity, but causes the player to instantaneously fall
+
+
+-The player will eventually be able to start acquiring new mans, Pokemon-style, which they can swap into
+the copter, giving it new, varying abilities (their data will be stored in a device called a "Mandex"
+-All the people in the game have "man" as part of their name (coleman, moleman, badman, the first man 
+basically adam with a fig leaf in front of his crotch, a portguese man-o-war, anything with man)
+-Portugese Man Of War (a portugese Soldier), 
+-All the mans will have a description, and a list of their abilities (weight, throwing strength, etc.)
+-The person in the cockpit has various functions:
+	1. He controls how quickly the player falls, if he's heavy, the helicopter will fall quickly, if he's
+	light, the helicopter will fall more slowly
+	2. He controlsthe strength at which the object is thrown
+-The rotor mans:
+	1. each have their own strength rating, which determines how quickly they will die when hit by enemies
+	2. Their weight also contributes to how quickly they will fall
+	3. However, their mass will also make them fall more slowly (so a very wide, but not fat person
+	will make them fall slowly)
+	4. 
+
+Misc Ideas:
+-after a certain point in the game, the player will be able to unlock nightmare versions of stages, with
+more powerful enemies, and certain restrictions, such as only being allowed 2 mans at the start
+-Fallout 3-style, the player should feel constantly rewarded for their actions with punchy sound effects.
+-When they touch down on the ground, they should hear a punchy sound effect
+-The player's score on a level is dependent on the time it took them to complete it, the amount of times
+they touched a surface (less is better), and the amount of hits they took
+-TWO PLAYER MODE: player 1 controls the man in the cockpit (who does the liftoff jump and throws stuff),
+player 2 controlls the rotor mans, who control the direction and speed at which the mancopter falls in the air
+-Great multiplayer game for the Switch!
+-The player loses a score multiplier if they don't touch the ground for too long (when they touch the ground,
+a timer will start, if it eclipses 1 minute, the player must start over
