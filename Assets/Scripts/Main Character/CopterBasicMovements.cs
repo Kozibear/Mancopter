@@ -48,6 +48,8 @@ public class CopterBasicMovements : MonoBehaviour {
 
 	public bool bouncedOffEnemy = false;
 
+	public GameObject spawnPoint;
+
     // Use this for initialization
     void Start() {
 
@@ -368,7 +370,7 @@ public class CopterBasicMovements : MonoBehaviour {
 		if (collision.gameObject.tag == "teleporter") {
 
 			rb2d.velocity = Vector3.zero;
-			transform.parent.transform.position = GameObject.Find ("SpawnPoint").transform.position;
+			transform.parent.transform.position = spawnPoint.transform.position;
 		}
 	}
 }

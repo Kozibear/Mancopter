@@ -20,6 +20,8 @@ public class pointSystem : MonoBehaviour {
 
 	public Text scoreDisplays;
 
+	public GameObject scoreText;
+
 	// Use this for initialization
 	void Start () {
 		accumulateGroundPoints = false;
@@ -30,7 +32,7 @@ public class pointSystem : MonoBehaviour {
 
 		timeToNextMinutaryScore = 60;
 
-		scoreDisplays = GameObject.Find("ScoreText").GetComponent<Text> (); //IMP WE NEED TO HAVE THIS PART TO ACCESS THE TEXT
+		scoreDisplays = scoreText.GetComponent<Text> (); //IMP WE NEED TO HAVE THIS PART TO ACCESS THE TEXT
 		scoreDisplays.text = "Score: 0";
 	}
 	
@@ -72,7 +74,7 @@ public class pointSystem : MonoBehaviour {
 		}
 
 		//after 1 minute (60 seconds), we add +1 pps 
-		if (GameObject.Find ("CopterBase").GetComponent<gameTimer> ().gameTime >= timeToNextMinutaryScore) {
+		if (gameTimer.gameTime >= timeToNextMinutaryScore) {
 			pointMultiplier += 1;
 			timeToNextMinutaryScore += 60;
 		}

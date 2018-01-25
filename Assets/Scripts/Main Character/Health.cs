@@ -13,6 +13,11 @@ public class Health : MonoBehaviour {
 
     public float recordTime;
 
+	public GameObject looseBlade1;
+	public GameObject looseBlade2;
+	public GameObject looseBlade3;
+	public GameObject looseBlade4;
+
 	// Use this for initialization
 	void Start () {
         healthAmount = 4;
@@ -33,26 +38,26 @@ public class Health : MonoBehaviour {
             {
                 //first, we check to see which blade, in order of 1-4, is still rendered, and disable the first one that still is
                 //(so that, for example, if the second blade is killed in a throw, we know to kill off the first blade, not the second
-                if (GameObject.Find("LooseCopterBlade1").GetComponent<Renderer>().enabled)
+				if (looseBlade1.GetComponent<Renderer>().enabled)
                 {
                     //we disable its mesh renderer, and let the blade know that it is dead so that it can instantiate a dead copy in its place
-                    GameObject.Find("LooseCopterBlade1").GetComponent<Renderer>().enabled = false;
-                    GameObject.Find("LooseCopterBlade1").GetComponent<looseBlade>().isDead = true;
+					looseBlade1.GetComponent<Renderer>().enabled = false;
+					looseBlade1.GetComponent<looseBlade>().isDead = true;
                 }
-                else if (GameObject.Find("LooseCopterBlade2").GetComponent<Renderer>().enabled)
+				else if (looseBlade2.GetComponent<Renderer>().enabled)
                 {
-                    GameObject.Find("LooseCopterBlade2").GetComponent<Renderer>().enabled = false;
-                    GameObject.Find("LooseCopterBlade2").GetComponent<looseBlade>().isDead = true;
+					looseBlade2.GetComponent<Renderer>().enabled = false;
+					looseBlade2.GetComponent<looseBlade>().isDead = true;
                 }
-                else if (GameObject.Find("LooseCopterBlade3").GetComponent<Renderer>().enabled)
+				else if (looseBlade3.GetComponent<Renderer>().enabled)
                 {
-                    GameObject.Find("LooseCopterBlade3").GetComponent<Renderer>().enabled = false;
-                    GameObject.Find("LooseCopterBlade3").GetComponent<looseBlade>().isDead = true;
+					looseBlade3.GetComponent<Renderer>().enabled = false;
+					looseBlade3.GetComponent<looseBlade>().isDead = true;
                 }
-                else if (GameObject.Find("LooseCopterBlade4").GetComponent<Renderer>().enabled)
+				else if (looseBlade4.GetComponent<Renderer>().enabled)
                 {
-                    GameObject.Find("LooseCopterBlade4").GetComponent<Renderer>().enabled = false;
-                    GameObject.Find("LooseCopterBlade4").GetComponent<looseBlade>().isDead = true;
+					looseBlade4.GetComponent<Renderer>().enabled = false;
+					looseBlade4.GetComponent<looseBlade>().isDead = true;
                 }
 
                 //finally, we make this false, so that we don't lose another man after this!
@@ -61,25 +66,25 @@ public class Health : MonoBehaviour {
 
             if (healthAmount == 2 && canLoseMan)
             {
-                if (GameObject.Find("LooseCopterBlade1").GetComponent<Renderer>().enabled)
+				if (looseBlade1.GetComponent<Renderer>().enabled)
                 {
-                    GameObject.Find("LooseCopterBlade1").GetComponent<Renderer>().enabled = false;
-                    GameObject.Find("LooseCopterBlade1").GetComponent<looseBlade>().isDead = true;
+					looseBlade1.GetComponent<Renderer>().enabled = false;
+					looseBlade1.GetComponent<looseBlade>().isDead = true;
                 }
-                else if (GameObject.Find("LooseCopterBlade2").GetComponent<Renderer>().enabled)
+				else if (looseBlade2.GetComponent<Renderer>().enabled)
                 {
-                    GameObject.Find("LooseCopterBlade2").GetComponent<Renderer>().enabled = false;
-                    GameObject.Find("LooseCopterBlade2").GetComponent<looseBlade>().isDead = true;
+					looseBlade2.GetComponent<Renderer>().enabled = false;
+					looseBlade2.GetComponent<looseBlade>().isDead = true;
                 }
-                else if (GameObject.Find("LooseCopterBlade3").GetComponent<Renderer>().enabled)
+				else if (looseBlade3.GetComponent<Renderer>().enabled)
                 {
-                    GameObject.Find("LooseCopterBlade3").GetComponent<Renderer>().enabled = false;
-                    GameObject.Find("LooseCopterBlade3").GetComponent<looseBlade>().isDead = true;
+					looseBlade3.GetComponent<Renderer>().enabled = false;
+					looseBlade3.GetComponent<looseBlade>().isDead = true;
                 }
-                else if (GameObject.Find("LooseCopterBlade4").GetComponent<Renderer>().enabled)
+				else if (looseBlade4.GetComponent<Renderer>().enabled)
                 {
-                    GameObject.Find("LooseCopterBlade4").GetComponent<Renderer>().enabled = false;
-                    GameObject.Find("LooseCopterBlade4").GetComponent<looseBlade>().isDead = true;
+					looseBlade4.GetComponent<Renderer>().enabled = false;
+					looseBlade4.GetComponent<looseBlade>().isDead = true;
                 }
 
                 canLoseMan = false;
@@ -87,25 +92,25 @@ public class Health : MonoBehaviour {
 
             if (healthAmount == 1 && canLoseMan)
             {
-                if (GameObject.Find("LooseCopterBlade1").GetComponent<Renderer>().enabled)
+				if (looseBlade1.GetComponent<Renderer>().enabled)
                 {
-                    GameObject.Find("LooseCopterBlade1").GetComponent<Renderer>().enabled = false;
-                    GameObject.Find("LooseCopterBlade1").GetComponent<looseBlade>().isDead = true;
+					looseBlade1.GetComponent<Renderer>().enabled = false;
+					looseBlade1.GetComponent<looseBlade>().isDead = true;
                 }
-                else if (GameObject.Find("LooseCopterBlade2").GetComponent<Renderer>().enabled)
+				else if (looseBlade2.GetComponent<Renderer>().enabled)
                 {
-                    GameObject.Find("LooseCopterBlade2").GetComponent<Renderer>().enabled = false;
-                    GameObject.Find("LooseCopterBlade2").GetComponent<looseBlade>().isDead = true;
+					looseBlade2.GetComponent<Renderer>().enabled = false;
+					looseBlade2.GetComponent<looseBlade>().isDead = true;
                 }
-                else if (GameObject.Find("LooseCopterBlade3").GetComponent<Renderer>().enabled)
+				else if (looseBlade3.GetComponent<Renderer>().enabled)
                 {
-                    GameObject.Find("LooseCopterBlade3").GetComponent<Renderer>().enabled = false;
-                    GameObject.Find("LooseCopterBlade3").GetComponent<looseBlade>().isDead = true;
+					looseBlade3.GetComponent<Renderer>().enabled = false;
+					looseBlade3.GetComponent<looseBlade>().isDead = true;
                 }
-                else if (GameObject.Find("LooseCopterBlade4").GetComponent<Renderer>().enabled)
+				else if (looseBlade4.GetComponent<Renderer>().enabled)
                 {
-                    GameObject.Find("LooseCopterBlade4").GetComponent<Renderer>().enabled = false;
-                    GameObject.Find("LooseCopterBlade4").GetComponent<looseBlade>().isDead = true;
+					looseBlade4.GetComponent<Renderer>().enabled = false;
+					looseBlade4.GetComponent<looseBlade>().isDead = true;
                 }
 
                 canLoseMan = false;
@@ -113,25 +118,25 @@ public class Health : MonoBehaviour {
 
             if (healthAmount == 0 && canLoseMan)
             {
-                if (GameObject.Find("LooseCopterBlade1").GetComponent<Renderer>().enabled)
+				if (looseBlade1.GetComponent<Renderer>().enabled)
                 {
-                    GameObject.Find("LooseCopterBlade1").GetComponent<Renderer>().enabled = false;
-                    GameObject.Find("LooseCopterBlade1").GetComponent<looseBlade>().isDead = true;
+					looseBlade1.GetComponent<Renderer>().enabled = false;
+					looseBlade1.GetComponent<looseBlade>().isDead = true;
                 }
-                else if (GameObject.Find("LooseCopterBlade2").GetComponent<Renderer>().enabled)
+				else if (looseBlade2.GetComponent<Renderer>().enabled)
                 {
-                    GameObject.Find("LooseCopterBlade2").GetComponent<Renderer>().enabled = false;
-                    GameObject.Find("LooseCopterBlade2").GetComponent<looseBlade>().isDead = true;
+					looseBlade2.GetComponent<Renderer>().enabled = false;
+					looseBlade2.GetComponent<looseBlade>().isDead = true;
                 }
-                else if (GameObject.Find("LooseCopterBlade3").GetComponent<Renderer>().enabled)
+				else if (looseBlade3.GetComponent<Renderer>().enabled)
                 {
-                    GameObject.Find("LooseCopterBlade3").GetComponent<Renderer>().enabled = false;
-                    GameObject.Find("LooseCopterBlade3").GetComponent<looseBlade>().isDead = true;
+					looseBlade3.GetComponent<Renderer>().enabled = false;
+					looseBlade3.GetComponent<looseBlade>().isDead = true;
                 }
-                else if (GameObject.Find("LooseCopterBlade4").GetComponent<Renderer>().enabled)
+				else if (looseBlade4.GetComponent<Renderer>().enabled)
                 {
-                    GameObject.Find("LooseCopterBlade4").GetComponent<Renderer>().enabled = false;
-                    GameObject.Find("LooseCopterBlade4").GetComponent<looseBlade>().isDead = true;
+					looseBlade4.GetComponent<Renderer>().enabled = false;
+					looseBlade4.GetComponent<looseBlade>().isDead = true;
                 }
 
                 canLoseMan = false;

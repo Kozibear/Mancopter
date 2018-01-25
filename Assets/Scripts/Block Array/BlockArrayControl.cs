@@ -78,7 +78,7 @@ public class BlockArrayControl : MonoBehaviour {
 	void FixedUpdate() {
 
 		//if the game starts (The preliminary timer is over) we randomly select our first block number
-		if (gameStarting && GameObject.Find("CopterBase").GetComponent<gameTimer>().canStart) {
+		if (gameStarting && gameTimer.canStart) {
 
 			selectedBlockNumber = Random.Range (1, 23);
 
@@ -160,14 +160,14 @@ public class BlockArrayControl : MonoBehaviour {
 			//We select what kind of object is going to emerge from our platform:
 
 			//if we're between 90 and 110 seconds, we choose the bomb chucker
-			if (selectedBlockNumber != 0 && GameObject.Find ("CopterBase").GetComponent<gameTimer> ().gameTime >= 90 && GameObject.Find ("CopterBase").GetComponent<gameTimer> ().gameTime < 110) {
+			if (selectedBlockNumber != 0 && gameTimer.gameTime >= 90 && gameTimer.gameTime < 110) {
 				
 				GameObject.Find ("Block"+selectedBlockNumber.ToString()).GetComponent<BlockMovementEffects> ().canSummonBombChucker = true;
 
 			}
 
 			//if we're between 110 and 180 seconds, we choose between the bomb chucker and the spike
-			else if (selectedBlockNumber != 0 && GameObject.Find ("CopterBase").GetComponent<gameTimer> ().gameTime >= 110 && GameObject.Find ("CopterBase").GetComponent<gameTimer> ().gameTime < 180) {
+			else if (selectedBlockNumber != 0 && gameTimer.gameTime >= 110 && gameTimer.gameTime < 180) {
 
 				if (firstTimeSpike) {
 					GameObject.Find ("Block" + selectedBlockNumber.ToString ()).GetComponent<BlockMovementEffects> ().canSummonSpike = true;
@@ -186,7 +186,7 @@ public class BlockArrayControl : MonoBehaviour {
 			}
 
 			//if we're over 180 seconds, we choose between the bomb chucker, spike and pillar
-			else if (selectedBlockNumber != 0 && GameObject.Find ("CopterBase").GetComponent<gameTimer> ().gameTime >= 180) {
+			else if (selectedBlockNumber != 0 && gameTimer.gameTime >= 180) {
 
 				if (firstTimePillar) {
 					GameObject.Find ("Block" + selectedBlockNumber.ToString ()).GetComponent<BlockMovementEffects> ().canSummonPillar = true;

@@ -15,6 +15,8 @@ public class pufferfishArraySystem : MonoBehaviour {
 	public GameObject right4;
 	public GameObject right5;
 
+	public GameObject player;
+
 	public float selectedLocation;
 
 	public bool canSelectLocation;
@@ -35,13 +37,13 @@ public class pufferfishArraySystem : MonoBehaviour {
 
 	void FixedUpdate () {
 
-		if (GameObject.Find ("CopterBase").GetComponent<gameTimer> ().gameTime >= timeToNextPufferfish) {
+		if (gameTimer.gameTime >= timeToNextPufferfish) {
 
 			if (firstTime) {
 				canSelectLocation = true;
 				firstTime = false;
 			} 
-			else if (GameObject.Find ("CopterBase").GetComponent<gameTimer> ().gameTime < 200) { //before 100 seconds, we have a 15% chance of summoning one
+			else if (gameTimer.gameTime < 200) { //before 100 seconds, we have a 15% chance of summoning one
 
 				coinFlip  = Random.Range (1, 101);
 				if (coinFlip <= 15) {
@@ -49,7 +51,7 @@ public class pufferfishArraySystem : MonoBehaviour {
 					canSelectLocation = true;
 				} 
 			}
-			else if (GameObject.Find ("CopterBase").GetComponent<gameTimer> ().gameTime >= 200) { //after 100 seconds, we have a 20% chance
+			else if (gameTimer.gameTime >= 200) { //after 100 seconds, we have a 20% chance
 
 				coinFlip  = Random.Range (1, 101);
 				print (coinFlip);

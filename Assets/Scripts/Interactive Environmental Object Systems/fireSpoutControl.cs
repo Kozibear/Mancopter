@@ -13,6 +13,10 @@ public class fireSpoutControl : MonoBehaviour {
 	public float coinFlip;
 	public float fireSpoutChoice;
 
+	public GameObject fireSpout1;
+	public GameObject fireSpout2;
+	public GameObject fireSpout3;
+
 	// Use this for initialization
 	void Start () {
 		nextTimeToFireSpouts = 30;
@@ -22,7 +26,7 @@ public class fireSpoutControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		if (GameObject.Find ("CopterBase").GetComponent<gameTimer> ().gameTime >= nextTimeToFireSpouts) {
+		if (gameTimer.gameTime >= nextTimeToFireSpouts) {
 			
 			if (firstTime) {
 				selectSpout = true;
@@ -45,13 +49,13 @@ public class fireSpoutControl : MonoBehaviour {
 			fireSpoutChoice = Random.Range (1, 4);
 
 			if (fireSpoutChoice == 1) {
-				transform.Find("leftFireSpout").GetComponent<fireSpoutMovements> ().beginAscent = true;
+				fireSpout1.GetComponent<fireSpoutMovements> ().beginAscent = true;
 			}
 			else if (fireSpoutChoice == 2) {
-				transform.Find("middleFireSpout").GetComponent<fireSpoutMovements> ().beginAscent = true;
+				fireSpout2.GetComponent<fireSpoutMovements> ().beginAscent = true;
 			}
 			else if (fireSpoutChoice == 3) {
-				transform.Find("rightFireSpout").GetComponent<fireSpoutMovements> ().beginAscent = true;
+				fireSpout3.GetComponent<fireSpoutMovements> ().beginAscent = true;
 			}
 
 

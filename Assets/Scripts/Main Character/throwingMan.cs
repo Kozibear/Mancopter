@@ -16,12 +16,18 @@ public class throwingMan : MonoBehaviour {
     public bool isDead;
     public GameObject deadMan;
 
+	public GameObject playerBase;
+	public GameObject looseblade1;
+	public GameObject looseblade2;
+	public GameObject looseblade3;
+	public GameObject looseblade4;
+
     // Use this for initialization
     void Start () {
         returnHome = false;
         recordThrowTime = Time.time;
 
-        if (GameObject.Find("CopterBase").GetComponent<CopterBasicMovements>().facingLeft)
+		if (playerBase.GetComponent<CopterBasicMovements>().facingLeft)
         {
             goLeft = true;
         }
@@ -82,19 +88,19 @@ public class throwingMan : MonoBehaviour {
             {
                 if (identityValue == 1)
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, GameObject.Find("LooseCopterBlade1").transform.position, 0.75f);
+					transform.position = Vector3.MoveTowards(transform.position, looseblade1.transform.position, 0.75f);
                 }
                 if (identityValue == 2)
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, GameObject.Find("LooseCopterBlade2").transform.position, 0.75f);
+					transform.position = Vector3.MoveTowards(transform.position, looseblade2.transform.position, 0.75f);
                 }
                 if (identityValue == 3)
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, GameObject.Find("LooseCopterBlade3").transform.position, 0.75f);
+					transform.position = Vector3.MoveTowards(transform.position, looseblade3.transform.position, 0.75f);
                 }
                 if (identityValue == 4)
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, GameObject.Find("LooseCopterBlade4").transform.position, 0.75f);
+					transform.position = Vector3.MoveTowards(transform.position, looseblade4.transform.position, 0.75f);
                 }
             }
             
@@ -103,19 +109,19 @@ public class throwingMan : MonoBehaviour {
             {
                 if (identityValue == 1)
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, GameObject.Find("LooseCopterBlade1").transform.position, 0.75f + (Time.time - (recordThrowTime + 2)) / 10);
+					transform.position = Vector3.MoveTowards(transform.position, looseblade1.transform.position, 0.75f + (Time.time - (recordThrowTime + 2)) / 10);
                 }
                 if (identityValue == 2)
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, GameObject.Find("LooseCopterBlade2").transform.position, 0.75f + (Time.time - (recordThrowTime + 2)) / 10);
+					transform.position = Vector3.MoveTowards(transform.position, looseblade2.transform.position, 0.75f + (Time.time - (recordThrowTime + 2)) / 10);
                 }
                 if (identityValue == 3)
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, GameObject.Find("LooseCopterBlade3").transform.position, 0.75f + (Time.time - (recordThrowTime + 2)) / 10);
+					transform.position = Vector3.MoveTowards(transform.position, looseblade3.transform.position, 0.75f + (Time.time - (recordThrowTime + 2)) / 10);
                 }
                 if (identityValue == 4)
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, GameObject.Find("LooseCopterBlade4").transform.position, 0.75f + (Time.time - (recordThrowTime + 2)) / 10);
+					transform.position = Vector3.MoveTowards(transform.position, looseblade4.transform.position, 0.75f + (Time.time - (recordThrowTime + 2)) / 10);
                 }
             }
 
@@ -126,77 +132,77 @@ public class throwingMan : MonoBehaviour {
         //once we have returned to our original position after being thrown and returning, we 
         //render our corresponding looseblade, record the current time (for the rotational offset), indicate what direction the object was originally thrown (to control what direction it will rotate)
         //and are destroyed
-        if (returnHome && identityValue == 1 && transform.position == GameObject.Find("LooseCopterBlade1").transform.position)
+		if (returnHome && identityValue == 1 && transform.position == looseblade1.transform.position)
         {
 
-            GameObject.Find("LooseCopterBlade1").GetComponent<looseBlade>().returnFromThrowPushback = true;
-            GameObject.Find("LooseCopterBlade1").GetComponent<looseBlade>().offsetStartingTime = Time.time;
-            GameObject.Find("LooseCopterBlade1").GetComponent<Renderer>().enabled = true;
+			looseblade1.GetComponent<looseBlade>().returnFromThrowPushback = true;
+			looseblade1.GetComponent<looseBlade>().offsetStartingTime = Time.time;
+			looseblade1.GetComponent<Renderer>().enabled = true;
 
             if (goLeft)
             {
-                GameObject.Find("LooseCopterBlade1").GetComponent<looseBlade>().leftReturn = true;
+				looseblade1.GetComponent<looseBlade>().leftReturn = true;
             }
             else
             {
-                GameObject.Find("LooseCopterBlade1").GetComponent<looseBlade>().leftReturn = false;
+				looseblade1.GetComponent<looseBlade>().leftReturn = false;
             }
 
             Destroy(gameObject);
         }
 
-        if (returnHome && identityValue == 2 && transform.position == GameObject.Find("LooseCopterBlade2").transform.position)
+		if (returnHome && identityValue == 2 && transform.position == looseblade2.transform.position)
         {
 
-            GameObject.Find("LooseCopterBlade2").GetComponent<looseBlade>().returnFromThrowPushback = true;
-            GameObject.Find("LooseCopterBlade2").GetComponent<looseBlade>().offsetStartingTime = Time.time;
-            GameObject.Find("LooseCopterBlade2").GetComponent<Renderer>().enabled = true;
+			looseblade2.GetComponent<looseBlade>().returnFromThrowPushback = true;
+			looseblade2.GetComponent<looseBlade>().offsetStartingTime = Time.time;
+			looseblade2.GetComponent<Renderer>().enabled = true;
 
             if (goLeft)
             {
-                GameObject.Find("LooseCopterBlade2").GetComponent<looseBlade>().leftReturn = true;
+				looseblade2.GetComponent<looseBlade>().leftReturn = true;
             }
             else
             {
-                GameObject.Find("LooseCopterBlade2").GetComponent<looseBlade>().leftReturn = false;
+				looseblade2.GetComponent<looseBlade>().leftReturn = false;
             }
 
             Destroy(gameObject);
         }
 
-        if (returnHome && identityValue == 3 && transform.position == GameObject.Find("LooseCopterBlade3").transform.position)
+		if (returnHome && identityValue == 3 && transform.position == looseblade3.transform.position)
         {
 
-            GameObject.Find("LooseCopterBlade3").GetComponent<looseBlade>().returnFromThrowPushback = true;
-            GameObject.Find("LooseCopterBlade3").GetComponent<looseBlade>().offsetStartingTime = Time.time;
-            GameObject.Find("LooseCopterBlade3").GetComponent<Renderer>().enabled = true;
+			looseblade3.GetComponent<looseBlade>().returnFromThrowPushback = true;
+			looseblade3.GetComponent<looseBlade>().offsetStartingTime = Time.time;
+			looseblade3.GetComponent<Renderer>().enabled = true;
 
             if (goLeft)
             {
-                GameObject.Find("LooseCopterBlade3").GetComponent<looseBlade>().leftReturn = true;
+				looseblade3.GetComponent<looseBlade>().leftReturn = true;
             }
             else
             {
-                GameObject.Find("LooseCopterBlade3").GetComponent<looseBlade>().leftReturn = false;
+				looseblade3.GetComponent<looseBlade>().leftReturn = false;
             }
 
             Destroy(gameObject);
         }
 
-        if (returnHome && identityValue == 4 && transform.position == GameObject.Find("LooseCopterBlade4").transform.position)
+		if (returnHome && identityValue == 4 && transform.position == looseblade4.transform.position)
         {
 
-            GameObject.Find("LooseCopterBlade4").GetComponent<looseBlade>().returnFromThrowPushback = true;
-            GameObject.Find("LooseCopterBlade4").GetComponent<looseBlade>().offsetStartingTime = Time.time;
-            GameObject.Find("LooseCopterBlade4").GetComponent<Renderer>().enabled = true;
+			looseblade4.GetComponent<looseBlade>().returnFromThrowPushback = true;
+			looseblade4.GetComponent<looseBlade>().offsetStartingTime = Time.time;
+			looseblade4.GetComponent<Renderer>().enabled = true;
 
             if (goLeft)
             {
-                GameObject.Find("LooseCopterBlade4").GetComponent<looseBlade>().leftReturn = true;
+				looseblade4.GetComponent<looseBlade>().leftReturn = true;
             }
             else
             {
-                GameObject.Find("LooseCopterBlade4").GetComponent<looseBlade>().leftReturn = false;
+				looseblade4.GetComponent<looseBlade>().leftReturn = false;
             }
 
             Destroy(gameObject);
@@ -208,9 +214,9 @@ public class throwingMan : MonoBehaviour {
         {
             Instantiate(deadMan, transform.position, transform.rotation);
 
-            GameObject.Find("CopterBase").GetComponent<Health>().healthAmount -= 1;
-            GameObject.Find("CopterBase").GetComponent<Health>().recordTime = Time.time;
-            GameObject.Find("CopterBase").GetComponent<Health>().canGetHurt = false;
+			playerBase.GetComponent<Health>().healthAmount -= 1;
+			playerBase.GetComponent<Health>().recordTime = Time.time;
+			playerBase.GetComponent<Health>().canGetHurt = false;
 
             Destroy(gameObject);
         }

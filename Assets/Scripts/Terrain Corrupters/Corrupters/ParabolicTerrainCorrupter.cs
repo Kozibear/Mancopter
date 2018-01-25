@@ -27,6 +27,8 @@ public class ParabolicTerrainCorrupter : MonoBehaviour {
 
 	public GameObject child1;
 
+	public GameObject Player;
+
     // Use this for initialization
     void Start () {
         //playerInRange = false;
@@ -49,7 +51,7 @@ public class ParabolicTerrainCorrupter : MonoBehaviour {
         }
 
         //if the player is in range and we don't currently have a corrupted terrain child, and the player isn't currently in a state of invincibility from getting hurt
-		if (canThrowBomb && GameObject.Find("CopterBase").GetComponent<Health>().canGetHurt)
+		if (canThrowBomb && Player.GetComponent<Health>().canGetHurt)
         {
             canThrowBomb = false;
 
@@ -74,13 +76,13 @@ public class ParabolicTerrainCorrupter : MonoBehaviour {
 
 		//if the player is currently rapidly descending downwards and we have one hit point left, we make isTrigger true, so that the player can pass right through it,
 		//and deactivate our groundcheck child
-		if (GameObject.Find("CopterBase").GetComponent<CopterBasicMovements>().downwardsPush && health == 1 && !invincibility)
+		if (Player.GetComponent<CopterBasicMovements>().downwardsPush && health == 1 && !invincibility)
 		{
 			box2d.isTrigger = true;
 			child1.SetActive (false);
 		}
 
-		if (!GameObject.Find("CopterBase").GetComponent<CopterBasicMovements>().downwardsPush && health == 1 && !invincibility)
+		if (!Player.GetComponent<CopterBasicMovements>().downwardsPush && health == 1 && !invincibility)
 		{
 			box2d.isTrigger = false;
 			child1.SetActive (true);
@@ -88,7 +90,7 @@ public class ParabolicTerrainCorrupter : MonoBehaviour {
 
         if (health <= 0)
         {
-			GameObject.Find ("CopterBase").GetComponent<pointSystem> ().previouslyEarnedPoints += 100;
+			Player.GetComponent<pointSystem> ().previouslyEarnedPoints += 100;
             Destroy(gameObject);
         }
 

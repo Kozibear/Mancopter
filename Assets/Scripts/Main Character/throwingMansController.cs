@@ -45,7 +45,14 @@ public class throwingMansController : MonoBehaviour {
                 //if the mesh of the corresponding loose blade is enabled, we throw the object (slightly lower than the position of the rotor), and disable the renderer
                 if (looseBlade1.GetComponent<Renderer>().enabled)
                 {
-                    Instantiate(throwingMan1, transform.position - new Vector3(0, 1, 0), transform.rotation);
+					Transform ThrowingMan1 = Instantiate(throwingMan1, transform.position - new Vector3(0, 1, 0), transform.rotation);
+
+					ThrowingMan1.GetComponent<throwingMan> ().playerBase = baseObject;
+					ThrowingMan1.GetComponent<throwingMan> ().looseblade1 = looseBlade1;
+					ThrowingMan1.GetComponent<throwingMan> ().looseblade2 = looseBlade2;
+					ThrowingMan1.GetComponent<throwingMan> ().looseblade3 = looseBlade3;
+					ThrowingMan1.GetComponent<throwingMan> ().looseblade4 = looseBlade4;
+
                     //where we will put code that makes the sprite of the looseblade and the thrown object the same
                     //throwingMan.GetComponent<SpriteRenderer>().sprite = looseBlade1.GetComponent<SpriteRenderer>().sprite;
                     looseBlade1.GetComponent<Renderer>().enabled = false;
@@ -62,7 +69,14 @@ public class throwingMansController : MonoBehaviour {
 
                 if (looseBlade2.GetComponent<Renderer>().enabled)
                 {
-                    Instantiate(throwingMan2, transform.position - new Vector3(0, 1, 0), transform.rotation);
+					Transform ThrowingMan2 = Instantiate(throwingMan2, transform.position - new Vector3(0, 1, 0), transform.rotation);
+
+					ThrowingMan2.GetComponent<throwingMan> ().playerBase = baseObject;
+					ThrowingMan2.GetComponent<throwingMan> ().looseblade1 = looseBlade1;
+					ThrowingMan2.GetComponent<throwingMan> ().looseblade2 = looseBlade2;
+					ThrowingMan2.GetComponent<throwingMan> ().looseblade3 = looseBlade3;
+					ThrowingMan2.GetComponent<throwingMan> ().looseblade4 = looseBlade4;
+
                     //where we will put code that makes the sprite of the looseblade and the thrown object the same
                     //throwingMan.GetComponent<SpriteRenderer>().sprite = looseBlade1.GetComponent<SpriteRenderer>().sprite;
                     looseBlade2.GetComponent<Renderer>().enabled = false;
@@ -77,7 +91,14 @@ public class throwingMansController : MonoBehaviour {
 
                 if (looseBlade3.GetComponent<Renderer>().enabled)
                 {
-                    Instantiate(throwingMan3, transform.position - new Vector3(0, 1, 0), transform.rotation);
+					Transform ThrowingMan3 = Instantiate(throwingMan3, transform.position - new Vector3(0, 1, 0), transform.rotation);
+
+					ThrowingMan3.GetComponent<throwingMan> ().playerBase = baseObject;
+					ThrowingMan3.GetComponent<throwingMan> ().looseblade1 = looseBlade1;
+					ThrowingMan3.GetComponent<throwingMan> ().looseblade2 = looseBlade2;
+					ThrowingMan3.GetComponent<throwingMan> ().looseblade3 = looseBlade3;
+					ThrowingMan3.GetComponent<throwingMan> ().looseblade4 = looseBlade4;
+
                     //where we will put code that makes the sprite of the looseblade and the thrown object the same
                     //throwingMan.GetComponent<SpriteRenderer>().sprite = looseBlade1.GetComponent<SpriteRenderer>().sprite;
                     looseBlade3.GetComponent<Renderer>().enabled = false;
@@ -92,7 +113,14 @@ public class throwingMansController : MonoBehaviour {
 
                 if (looseBlade4.GetComponent<Renderer>().enabled)
                 {
-                    Instantiate(throwingMan4, transform.position - new Vector3(0, 1, 0), transform.rotation);
+					Transform ThrowingMan4 = Instantiate(throwingMan4, transform.position - new Vector3(0, 1, 0), transform.rotation);
+
+					ThrowingMan4.GetComponent<throwingMan> ().playerBase = baseObject;
+					ThrowingMan4.GetComponent<throwingMan> ().looseblade1 = looseBlade1;
+					ThrowingMan4.GetComponent<throwingMan> ().looseblade2 = looseBlade2;
+					ThrowingMan4.GetComponent<throwingMan> ().looseblade3 = looseBlade3;
+					ThrowingMan4.GetComponent<throwingMan> ().looseblade4 = looseBlade4;
+
                     //where we will put code that makes the sprite of the looseblade and the thrown object the same
                     //throwingMan.GetComponent<SpriteRenderer>().sprite = looseBlade1.GetComponent<SpriteRenderer>().sprite;
                     looseBlade4.GetComponent<Renderer>().enabled = false;
@@ -101,7 +129,6 @@ public class throwingMansController : MonoBehaviour {
                 }
                 bladeCount = 1;
             }
-
         }
 	}
 }

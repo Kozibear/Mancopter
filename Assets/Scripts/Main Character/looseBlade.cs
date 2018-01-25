@@ -32,6 +32,8 @@ public class looseBlade : MonoBehaviour {
     public GameObject[] groundArray;
     public GameObject[] throwingManArray;
 
+	public GameObject playerBase;
+
     private void Awake()
     {
     }
@@ -70,7 +72,7 @@ public class looseBlade : MonoBehaviour {
         //only if we're descending, we ignore the walls
         //we have to call this in the update because whether we're descending or not changes overtime
 
-        if (GameObject.Find("CopterBase").GetComponent<CopterBasicMovements>().beginDescent)
+		if (playerBase.GetComponent<CopterBasicMovements>().beginDescent)
         {
 			
             foreach (GameObject groundObject in groundArray)

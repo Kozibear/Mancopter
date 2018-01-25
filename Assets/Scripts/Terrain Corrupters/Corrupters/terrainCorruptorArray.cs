@@ -8,6 +8,8 @@ public class terrainCorruptorArray : MonoBehaviour {
 	public GameObject middle;
 	public GameObject right;
 
+	public GameObject player;
+
 	public float selectedLocation;
 
 	public bool canSelectLocation;
@@ -28,13 +30,13 @@ public class terrainCorruptorArray : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 
-		if (GameObject.Find ("CopterBase").GetComponent<gameTimer> ().gameTime >= timeToNextCorruptor) {
+		if (gameTimer.gameTime >= timeToNextCorruptor) {
 
 			if (firstTime) {
 				canSelectLocation = true;
 				firstTime = false;
 			} 
-			else if (GameObject.Find ("CopterBase").GetComponent<gameTimer> ().gameTime < 280) { //before 100 seconds, we have a 15% chance of summoning one
+			else if (gameTimer.gameTime < 280) { //before 100 seconds, we have a 15% chance of summoning one
 
 				coinFlip  = Random.Range (1, 101);
 				print (coinFlip);
@@ -43,7 +45,7 @@ public class terrainCorruptorArray : MonoBehaviour {
 					canSelectLocation = true;
 				} 
 			}
-			else if (GameObject.Find ("CopterBase").GetComponent<gameTimer> ().gameTime >= 280) { //after 100 seconds, we have a 20% chance
+			else if (gameTimer.gameTime >= 280) { //after 100 seconds, we have a 20% chance
 
 				coinFlip  = Random.Range (1, 101);
 				print (coinFlip);
@@ -62,13 +64,16 @@ public class terrainCorruptorArray : MonoBehaviour {
 
 			//then, we instantiate our gameObject in the location of the corresponding chosen child object
 			if (selectedLocation == 1) {
-				Instantiate(left, transform.GetChild(0).transform.position, transform.GetChild(0).transform.rotation);
+				GameObject Corruptor = Instantiate(left, transform.GetChild(0).transform.position, transform.GetChild(0).transform.rotation);
+				Corruptor.GetComponent<ParabolicTerrainCorrupter> ().Player = player;
 			}
 			if (selectedLocation == 2) {
-				Instantiate(middle, transform.GetChild(1).transform.position, transform.GetChild(1).transform.rotation);
+				GameObject Corruptor = Instantiate(middle, transform.GetChild(1).transform.position, transform.GetChild(1).transform.rotation);
+				Corruptor.GetComponent<StraightTerrainCorrupter>().Player = player;
 			}
 			if (selectedLocation == 3) {
-				Instantiate(right, transform.GetChild(2).transform.position, transform.GetChild(2).transform.rotation);
+				GameObject Corruptor = Instantiate(right, transform.GetChild(2).transform.position, transform.GetChild(2).transform.rotation);
+				Corruptor.GetComponent<ParabolicTerrainCorrupter>().Player = player;
 			}
 
 			canSelectLocation = false;

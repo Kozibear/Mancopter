@@ -13,6 +13,8 @@ public class laserArray : MonoBehaviour {
 	public GameObject laser7;
 	public GameObject laser8;
 
+	public GameObject Player;
+
 	public float selectedLocation;
 
 	public bool canSelectLocation;
@@ -33,13 +35,13 @@ public class laserArray : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 
-		if (GameObject.Find ("CopterBase").GetComponent<gameTimer> ().gameTime >= timeToNextLaser) {
+		if (gameTimer.gameTime >= timeToNextLaser) {
 
 			if (firstTime) {
 				canSelectLocation = true;
 				firstTime = false;
 			} 
-			else if (GameObject.Find ("CopterBase").GetComponent<gameTimer> ().gameTime < 500) { //before 100 seconds, we have a 15% chance of summoning one
+			else if (gameTimer.gameTime < 500) { //before 100 seconds, we have a 15% chance of summoning one
 
 				coinFlip  = Random.Range (1, 101);
 				if (coinFlip <= 15) {
@@ -47,7 +49,7 @@ public class laserArray : MonoBehaviour {
 					canSelectLocation = true;
 				} 
 			}
-			else if (GameObject.Find ("CopterBase").GetComponent<gameTimer> ().gameTime >= 500) { //after 100 seconds, we have a 20% chance
+			else if (gameTimer.gameTime >= 500) { //after 100 seconds, we have a 20% chance
 
 				coinFlip  = Random.Range (1, 101);
 				print (coinFlip);

@@ -31,6 +31,8 @@ public class BlockMovementEffects : MonoBehaviour {
 	public bool doubleEXP;
 	public bool canDoubleEXP;
 
+	public GameObject Player;
+
 	// Use this for initialization
 	void Start () {
 		checkTheTime = true;
@@ -88,24 +90,27 @@ public class BlockMovementEffects : MonoBehaviour {
 					
 					GameObject BombChucker = Instantiate (bombChucker, transform.position + new Vector3 (0, 0.8f, 0), transform.rotation);
 					BombChucker.transform.parent = this.transform;
+					BombChucker.GetComponent<stationaryBombChucker> ().Player = Player;
 
 					GameObject.Find ("BlockArray").GetComponent<BlockArrayControl> ().firstTimeBombChucker = false;
 
-				} else if (GameObject.Find ("CopterBase").GetComponent<gameTimer> ().gameTime < 360) {
+				} else if (gameTimer.gameTime < 360) {
 					
 					coinFlip = Random.Range (1, 101);
 					if (coinFlip <= 15) {
 
 						GameObject BombChucker = Instantiate (bombChucker, transform.position + new Vector3 (0, 0.8f, 0), transform.rotation);
 						BombChucker.transform.parent = this.transform;
+						BombChucker.GetComponent<stationaryBombChucker> ().Player = Player;
 					} 
-				} else if (GameObject.Find ("CopterBase").GetComponent<gameTimer> ().gameTime >= 360) {
+				} else if (gameTimer.gameTime >= 360) {
 
 					coinFlip = Random.Range (1, 101);
 					if (coinFlip <= 20) {
 
 						GameObject BombChucker = Instantiate (bombChucker, transform.position + new Vector3 (0, 0.8f, 0), transform.rotation);
 						BombChucker.transform.parent = this.transform;
+						BombChucker.GetComponent<stationaryBombChucker> ().Player = Player;
 					} 
 				} 
 					
@@ -120,25 +125,25 @@ public class BlockMovementEffects : MonoBehaviour {
 					GameObject Spike = Instantiate (spike, transform.position + new Vector3 (0, 0.8f, 0), transform.rotation);
 					Spike.transform.parent = this.transform;
 					GameObject.Find ("BlockArray").GetComponent<BlockArrayControl> ().firstTimeSpike = false;
-					GameObject.Find ("buttonArray").GetComponent<buttonArray> ().newSpikeAllowed = false;
+					buttonArray.newSpikeAllowed = false;
 
-				} else if (GameObject.Find ("CopterBase").GetComponent<gameTimer> ().gameTime < 440 && GameObject.Find ("buttonArray").GetComponent<buttonArray> ().newSpikeAllowed) { //we dont' summon another spike if one is already on the field
+				} else if (gameTimer.gameTime < 440 && buttonArray.newSpikeAllowed) { //we dont' summon another spike if one is already on the field
 
 					coinFlip = Random.Range (1, 101);
 					if (coinFlip <= 15) {
 
 						GameObject Spike = Instantiate (spike, transform.position + new Vector3 (0, 0.8f, 0), transform.rotation);
 						Spike.transform.parent = this.transform;
-						GameObject.Find ("buttonArray").GetComponent<buttonArray> ().newSpikeAllowed = false;
+						buttonArray.newSpikeAllowed = false;
 					} 
-				} else if (GameObject.Find ("CopterBase").GetComponent<gameTimer> ().gameTime >= 440 && GameObject.Find ("buttonArray").GetComponent<buttonArray> ().newSpikeAllowed) {
+				} else if (gameTimer.gameTime >= 440 && buttonArray.newSpikeAllowed) {
 
 					coinFlip = Random.Range (1, 101);
 					if (coinFlip <= 20) {
 
 						GameObject Spike = Instantiate (spike, transform.position + new Vector3 (0, 0.8f, 0), transform.rotation);
 						Spike.transform.parent = this.transform;
-						GameObject.Find ("buttonArray").GetComponent<buttonArray> ().newSpikeAllowed = false;
+						buttonArray.newSpikeAllowed = false;
 					} 
 				} 
 
@@ -154,7 +159,7 @@ public class BlockMovementEffects : MonoBehaviour {
 					FirePillar.transform.parent = this.transform;
 					GameObject.Find ("BlockArray").GetComponent<BlockArrayControl> ().firstTimePillar = false;
 
-				} else if (GameObject.Find ("CopterBase").GetComponent<gameTimer> ().gameTime < 440) {
+				} else if (gameTimer.gameTime < 440) {
 
 					coinFlip = Random.Range (1, 101);
 					if (coinFlip <= 15) {
@@ -163,7 +168,7 @@ public class BlockMovementEffects : MonoBehaviour {
 						FirePillar.transform.parent = this.transform;
 					} 
 
-				} else if (GameObject.Find ("CopterBase").GetComponent<gameTimer> ().gameTime >= 440) {
+				} else if (gameTimer.gameTime >= 440) {
 
 					coinFlip = Random.Range (1, 101);
 					if (coinFlip <= 20) {

@@ -33,6 +33,8 @@ public class stationaryBombChucker : MonoBehaviour
 
 	public GameObject child2;
 
+	public GameObject Player;
+
     // Use this for initialization
     void Start()
     {
@@ -64,7 +66,7 @@ public class stationaryBombChucker : MonoBehaviour
         
 
             //if the difference between the player's position to the left of the enemy and the enemy's position is greater than or equal to 1, we make the enemy face left
-            if ((this.transform.position.x - GameObject.Find("CopterBase").transform.position.x) >= 1)
+		if ((this.transform.position.x - Player.transform.position.x) >= 1)
             {
                 if (!facingLeft)
                 {
@@ -79,7 +81,7 @@ public class stationaryBombChucker : MonoBehaviour
 			if (Time.time >= lastBombThrow + 2.0f && Time.time >= recordTime + 0.5f && Time.time <= recordTime+ 6.5f)
                 {
                     //if the player is within 5 units of the bomb chucker, we throw the bombs a little shorter
-                    if ((this.transform.position.x - GameObject.Find("CopterBase").transform.position.x) <= 5)
+				if ((this.transform.position.x - Player.transform.position.x) <= 5)
                     {
                         Instantiate(shortLeftParaBomb, transform.position + new Vector3(-1, 1, 0), transform.rotation);
                     }
@@ -93,7 +95,7 @@ public class stationaryBombChucker : MonoBehaviour
             }
 
             //if the different between the player's position to the right of the enemy and the enemy's position is greater than or equal to 1, we make the enemy face right
-            if ((GameObject.Find("CopterBase").transform.position.x - this.transform.position.x) >= 1)
+		if ((Player.transform.position.x - this.transform.position.x) >= 1)
             {
                 if (facingLeft)
                 {
@@ -108,7 +110,7 @@ public class stationaryBombChucker : MonoBehaviour
 			if (Time.time >= lastBombThrow + 2.0f && Time.time >= recordTime + 0.5f && Time.time <= recordTime+ 6.5f)
                 {
                     //if the player is within 5 units of the bomb chucker, we throw the bombs a little shorter
-                    if ((GameObject.Find("CopterBase").transform.position.x - this.transform.position.x) <= 5)
+				if ((Player.transform.position.x - this.transform.position.x) <= 5)
                     {
                         Instantiate(shortRightParaBomb, transform.position + new Vector3(1, 1, 0), transform.rotation);
                     }
@@ -122,7 +124,7 @@ public class stationaryBombChucker : MonoBehaviour
             }
 
             //a third if statement for if the player is more or less directly above the chucker
-            if (((GameObject.Find("CopterBase").transform.position.x - this.transform.position.x) < 1) && ((this.transform.position.x - GameObject.Find("CopterBase").transform.position.x) < 1))
+		if (((Player.transform.position.x - this.transform.position.x) < 1) && ((this.transform.position.x - Player.transform.position.x) < 1))
             {
                 //if three seconds have passed since the last bomb throw, we instantiate a bomb object to damage the player
                 if (Time.time >= lastBombThrow + 3.0f)
@@ -140,13 +142,13 @@ public class stationaryBombChucker : MonoBehaviour
 
 		//if the player is currently rapidly descending downwards and we have one hit point left, we make isTrigger true, so that the player can pass right through it,
 		//and deactivate our groundcheck
-		if (GameObject.Find("CopterBase").GetComponent<CopterBasicMovements>().downwardsPush && health == 1 && !invincibility)
+		if (Player.GetComponent<CopterBasicMovements>().downwardsPush && health == 1 && !invincibility)
 		{
 			box2d.isTrigger = true;
 			child2.SetActive (false);
 		}
 
-		if (!GameObject.Find("CopterBase").GetComponent<CopterBasicMovements>().downwardsPush && health == 1 && !invincibility)
+		if (!Player.GetComponent<CopterBasicMovements>().downwardsPush && health == 1 && !invincibility)
 		{
 			box2d.isTrigger = false;
 			child2.SetActive (true);
@@ -154,7 +156,7 @@ public class stationaryBombChucker : MonoBehaviour
 
 		if (health <= 0)
 		{
-			GameObject.Find ("CopterBase").GetComponent<pointSystem> ().previouslyEarnedPoints += 100;
+			Player.GetComponent<pointSystem> ().previouslyEarnedPoints += 100;
 			Destroy(gameObject);
 		}
 
@@ -164,34 +166,6 @@ public class stationaryBombChucker : MonoBehaviour
 		}
 
     }
-
-	/*
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.name == "CopterBase")
-        {
-            lookAtPlayer = true;
-
-            //we store the current direction it is facing, so that when the player leaves, it can resume the same direction it was moving in
-            storedDirection = facingLeft;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.name == "CopterBase")
-        {
-            lookAtPlayer = false;
-
-            if (storedDirection != facingLeft)
-            {
-                Vector3 flipScale = transform.localScale;
-                flipScale.x *= -1;
-                transform.localScale = flipScale;
-            }
-        }
-    }
-    */
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
