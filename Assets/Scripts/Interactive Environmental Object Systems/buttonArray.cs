@@ -14,12 +14,10 @@ public class buttonArray : MonoBehaviour {
 	public GameObject right4;
 
 	public float selectedLocation;
-
-	public bool canSelectLocation;
-
 	public float coinFlip;
 
-	public bool newSpikeAllowed;
+	public static bool canSelectLocation;
+	public static bool newSpikeAllowed;
 
 	// Use this for initialization
 	void Start () {

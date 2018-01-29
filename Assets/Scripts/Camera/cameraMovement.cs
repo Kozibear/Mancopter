@@ -44,7 +44,6 @@ public class cameraMovement : MonoBehaviour {
             startShaking = true;
         }
 
-        
         if(Time.time < shakingBeginTime+shakeTime && startShaking)
         {
             //this way, it alternates between two Y offsets every time this is called
@@ -75,7 +74,5 @@ public class cameraMovement : MonoBehaviour {
 			//afterwards, we return to the screen's original position from the beginning
 			transform.position = originalLocation;
         }
-
-
     }
 }

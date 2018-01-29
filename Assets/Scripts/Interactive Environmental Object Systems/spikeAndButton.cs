@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class spikeAndButton : MonoBehaviour {
 
-
 	public bool buttonPressed;
 
 	public float recordTime;
@@ -15,22 +14,23 @@ public class spikeAndButton : MonoBehaviour {
 
 		recordTime = Time.time;
 
-		GameObject.Find ("buttonArray").GetComponent<buttonArray> ().canSelectLocation = true;
+		buttonArray.canSelectLocation = true;
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
 
 		if (buttonPressed) {
-			GameObject.Find ("buttonArray").GetComponent<buttonArray> ().newSpikeAllowed = true;
+			buttonArray.newSpikeAllowed = true;
 
 			this.transform.parent.GetComponent<BlockMovementEffects> ().doubleEXP = true;
+
 			Destroy (gameObject);
 		}
 
 		if (Time.time >= recordTime + 10.3f) {
 
-			GameObject.Find ("buttonArray").GetComponent<buttonArray> ().newSpikeAllowed = true;
+			buttonArray.newSpikeAllowed = true;
 			Destroy(gameObject);
 		}
 	}

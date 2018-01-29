@@ -21,7 +21,7 @@ public class pointBoostItemLocation : MonoBehaviour {
 	void FixedUpdate () {
 
 		//if the gameTime has passed the time required to wait until the next boost's availability
-		if (GameObject.Find ("CopterBase").GetComponent<gameTimer> ().gameTime >= timeToNextBoostAvailability) {
+		if (gameTimer.gameTime >= timeToNextBoostAvailability) {
 			canSelectLocation = true;
 			timeToNextBoostAvailability += 30; //we set the next boost's availability 30 seconds in the future;
 		}
