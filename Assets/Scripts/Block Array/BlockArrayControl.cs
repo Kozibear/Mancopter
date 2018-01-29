@@ -72,7 +72,6 @@ public class BlockArrayControl : MonoBehaviour {
 		Block20FollowUpPropabilities = new float[] {1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 14, 15, 16, 17};
 		Block21FollowUpPropabilities = new float[] {1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13, 14, 15, 16, 17, 18};
 		Block22FollowUpPropabilities = new float[] {1, 1, 1, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8, 8, 9, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13, 14, 14, 15, 16, 17, 18, 19};
-
 	}
 	
 	void FixedUpdate() {
@@ -182,7 +181,6 @@ public class BlockArrayControl : MonoBehaviour {
 						GameObject.Find ("Block" + selectedBlockNumber.ToString ()).GetComponent<BlockMovementEffects> ().canSummonSpike = true;
 					}
 				}
-
 			}
 
 			//if we're over 180 seconds, we choose between the bomb chucker, spike and pillar
@@ -207,9 +205,7 @@ public class BlockArrayControl : MonoBehaviour {
 				}
 
 			}
-
 			recordTime = Time.time;
 		}
-
 	}
 }
