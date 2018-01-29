@@ -29,8 +29,6 @@ public class oneWayPufferfish : MonoBehaviour {
 		{
 			Physics2D.IgnoreCollision(ground.GetComponent<BoxCollider2D>(), this.GetComponent<BoxCollider2D>());
 		}
-			
-
 	}
 		
 	void FixedUpdate()
