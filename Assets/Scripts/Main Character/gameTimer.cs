@@ -17,9 +17,6 @@ public class gameTimer : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 
-		print (canStart);
-		print (gameTime);
-
 		//once the 3-second countdown timer is over, then we can begin counting the "Actual" game time
 		if (Time.timeSinceLevelLoad >= 3) {
 			canStart = true;

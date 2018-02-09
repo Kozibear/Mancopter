@@ -28,7 +28,7 @@ public class cameraMovement : MonoBehaviour {
         moveUp = true;
         moveDown = false;
 
-		originalLocation = new Vector3(this.transform.position.x, this.transform.position.y, -10);
+		originalLocation = new Vector3(this.transform.position.x, this.transform.position.y, -52);
     }
 	
 	// Update is called once per frame

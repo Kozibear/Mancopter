@@ -33,11 +33,15 @@ public class BlockMovementEffects : MonoBehaviour {
 
 	public GameObject Player;
 
+	public float offsetX;
+	public float offsetY;
+	public float offsetZ;
+
 	// Use this for initialization
 	void Start () {
 		checkTheTime = true;
-		originalLocation = this.transform.position;
-		modifiedLocation = new Vector3 (transform.position.x, transform.position.y - 2f, transform.position.z);
+		//originalLocation = this.transform.position;
+		//modifiedLocation = new Vector3 (transform.position.x - offsetX, transform.position.y - offsetY, transform.position.z - offsetZ);
 
 		timeUntilBombchuckers = 90;
 		canSummonBombChucker = false;
@@ -62,10 +66,10 @@ public class BlockMovementEffects : MonoBehaviour {
 				recordTime = Time.time;
 				checkTheTime = false;
 			}
-
-
-			if (Time.time >= recordTime+1.4f) {
-				transform.position = Vector3.MoveTowards (this.transform.position, modifiedLocation, 0.01f);
+				
+			if (Time.time >= recordTime+1.4f && Time.time < recordTime+2.4f) {
+				
+				transform.Translate(Vector3.down * Time.deltaTime * 2f);
 			}
 
 			//slightly after we begin lowering it, we destroy the bomb chucker
@@ -181,10 +185,16 @@ public class BlockMovementEffects : MonoBehaviour {
 				canSummonPillar = false;
 			}
 
-			//finally, we make the platform move upwards
-			transform.position = Vector3.MoveTowards (this.transform.position, originalLocation, 0.06f);
+			if (!checkTheTime) {
+				recordTime = Time.time;
+				checkTheTime = true;
+			}
 
-			checkTheTime = true;
+			if (Time.time >= recordTime+0f && Time.time < recordTime+1f) {
+
+				transform.Translate(Vector3.up * Time.deltaTime * 2f);
+			}
+
 		}
 			
 	}
