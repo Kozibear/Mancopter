@@ -37,6 +37,10 @@ public class BlockMovementEffects : MonoBehaviour {
 	public float offsetY;
 	public float offsetZ;
 
+	public float WallNumber;
+
+	public Renderer rend;
+
 	// Use this for initialization
 	void Start () {
 		checkTheTime = true;
@@ -55,9 +59,65 @@ public class BlockMovementEffects : MonoBehaviour {
 
 		doubleEXP = false;
 		canDoubleEXP = true;
+
+		rend = this.GetComponent<Renderer> ();
 	}
 	
 	void FixedUpdate () {
+
+		if (ButtonsRotationsController.Make1Invisible && WallNumber == 1) {
+			rend.enabled = false;
+		}
+
+		if (!ButtonsRotationsController.Make1Invisible && WallNumber == 1) {
+			rend.enabled = true;
+		}
+
+
+		if (ButtonsRotationsController.Make2Invisible && WallNumber == 2) {
+			rend.enabled = false;
+		}
+
+		if (!ButtonsRotationsController.Make2Invisible && WallNumber == 2) {
+			rend.enabled = true;
+		}
+
+
+		if (ButtonsRotationsController.Make3Invisible && WallNumber == 3) {
+			rend.enabled = false;
+		}
+
+		if (!ButtonsRotationsController.Make3Invisible && WallNumber == 3) {
+			rend.enabled = true;
+		}
+
+
+		if (ButtonsRotationsController.Make4Invisible && WallNumber == 4) {
+			rend.enabled = false;
+		}
+
+		if (!ButtonsRotationsController.Make4Invisible && WallNumber == 4) {
+			rend.enabled = true;
+		}
+
+
+		if (ButtonsRotationsController.Make5Invisible && WallNumber == 5) {
+			rend.enabled = false;
+		}
+
+		if (!ButtonsRotationsController.Make5Invisible && WallNumber == 5) {
+			rend.enabled = true;
+		}
+
+
+		if (ButtonsRotationsController.Make6Invisible && WallNumber == 6) {
+			rend.enabled = false;
+		}
+
+		if (!ButtonsRotationsController.Make6Invisible && WallNumber == 6) {
+			rend.enabled = true;
+		}
+
 
 		//if this block's number is not currently selected, we move it from it's original position to down below
 		if (GameObject.Find ("BlockArray").GetComponent<BlockArrayControl>().selectedBlockNumber != thisBlocksNumber) {
@@ -71,17 +131,15 @@ public class BlockMovementEffects : MonoBehaviour {
 				
 				transform.Translate(Vector3.down * Time.deltaTime * 2f);
 			}
+			if (Time.time >= recordTime+2.4f) {
+				doubleEXP = false;
+			}
 
 			//slightly after we begin lowering it, we destroy the bomb chucker
 			if (Time.time >= recordTime + 2.4f) {
 			}
 
 		} 
-
-		//once we return to our modiFied place below, we wipe any point modifiers
-		if (this.transform.position == modifiedLocation) {
-			doubleEXP = false;
-		}
 
 		//if this block's number is chosen...
 		if (GameObject.Find ("BlockArray").GetComponent<BlockArrayControl>().selectedBlockNumber == thisBlocksNumber) {

@@ -165,7 +165,7 @@ public class Health : MonoBehaviour {
 
         if (healthAmount <= 0 && canGetHurt)
         {
-            SceneManager.LoadScene("ManCopter Testing Grounds", LoadSceneMode.Single);
+            //SceneManager.LoadScene("ManCopter Testing Grounds", LoadSceneMode.Single);
         }
     }
 

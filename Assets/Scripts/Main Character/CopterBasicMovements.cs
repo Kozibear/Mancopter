@@ -50,6 +50,9 @@ public class CopterBasicMovements : MonoBehaviour {
 
 	public GameObject spawnPoint;
 
+	public bool touchingObject;
+	public bool insideObject;
+
     // Use this for initialization
     void Start() {
 
@@ -309,14 +312,14 @@ public class CopterBasicMovements : MonoBehaviour {
             emergencyDescent = false;
         }
 
-        //after 1 second of falling, we start floating in mid-air
-        if ((Time.time > emergencyTime+0.3f) && fallingNoJumping)
+        //after x second of falling, we start floating in mid-air
+        if (fallingNoJumping)
         {
-            fallingNoJumping = false;
             beginDescent = true;
-            cancelMomentum = true;
+            //cancelMomentum = true;
+			fallingNoJumping = false;
         }
-			
+
         //moving left
         if (movingLeft)
         { 
@@ -340,22 +343,6 @@ public class CopterBasicMovements : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "spring" && !downwardsPush)
-        {
-            onASpring = true;
-        }
-        else if (collision.gameObject.tag == "spring" && downwardsPush)
-        {
-            onASpringCharged = true;
-        }
-        else
-        {
-            //so that if we fall off a spring and end up on another surface, we don't use our spring jump on a non-spring surface
-            onASpring = false;
-            onASpringCharged = false;
-
-        }
-
         //if the player is rapidly descending downward when they touch the ground, we make this true so that the camera knows to shake
         if (collision.gameObject.layer == LayerMask.NameToLayer("ground") && collision.gameObject.tag != "spring" && (Input.GetKey("down") || Input.GetKey("s")))
         {
@@ -364,6 +351,20 @@ public class CopterBasicMovements : MonoBehaviour {
         }
     }
 
+	private void OnCollisionStay2D(Collision2D collision)
+	{
+		if (collision.gameObject.tag == "harmfulobject" || collision.gameObject.tag == "ground") {
+			touchingObject = true;
+		}
+	}
+
+	private void OnCollisionExit2D(Collision2D collision)
+	{
+		if (collision.gameObject.tag == "harmfulobject" || collision.gameObject.tag == "ground") {
+			touchingObject = false;
+		}
+	}
+
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		//in case we go out of bounds, we are teleported back to the center of the room
@@ -371,6 +372,27 @@ public class CopterBasicMovements : MonoBehaviour {
 
 			rb2d.velocity = Vector3.zero;
 			transform.parent.transform.position = spawnPoint.transform.position;
+		}
+	}
+
+	private void OnTriggerStay2D (Collider2D collision)
+	{
+
+		if (collision.gameObject.tag == "harmfulobject") {
+			insideObject = true;
+		}
+
+		if (collision.gameObject.tag == "teleporter") {
+
+			rb2d.velocity = Vector3.zero;
+			transform.parent.transform.position = spawnPoint.transform.position;
+		}
+	}
+
+	private void OnTriggerExit2D (Collider2D collision)
+	{
+		if (collision.gameObject.tag == "harmfulobject") {
+			insideObject = false;
 		}
 	}
 }

@@ -39,7 +39,6 @@ public class terrainCorruptorArray : MonoBehaviour {
 			else if (gameTimer.gameTime < 280) { //before 100 seconds, we have a 15% chance of summoning one
 
 				coinFlip  = Random.Range (1, 101);
-				print (coinFlip);
 				if (coinFlip <= 45) {
 
 					canSelectLocation = true;
