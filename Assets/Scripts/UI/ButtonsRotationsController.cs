@@ -45,6 +45,8 @@ public class ButtonsRotationsController : MonoBehaviour {
 	public static bool Make5Invisible;
 	public static bool Make6Invisible;
 
+	public Vector2 playerStoredVelocity;
+
 	// Use this for initialization
 	void Start () {
 		XAxisUp.onClick.AddListener (rotateUp);
@@ -81,6 +83,8 @@ public class ButtonsRotationsController : MonoBehaviour {
 			rotor2.GetComponent<Rigidbody2D> ().isKinematic = true;
 			rotor3.GetComponent<Rigidbody2D> ().isKinematic = true;
 			rotor4.GetComponent<Rigidbody2D> ().isKinematic = true;
+			player.GetComponent<CopterBasicMovements> ().rb2d.velocity = Vector3.zero;
+			player.GetComponent<CopterBasicMovements> ().playSpaceRotating = true;
 		}
 			
 		if (rotateDownBool) {
@@ -90,6 +94,8 @@ public class ButtonsRotationsController : MonoBehaviour {
 			rotor2.GetComponent<Rigidbody2D> ().isKinematic = true;
 			rotor3.GetComponent<Rigidbody2D> ().isKinematic = true;
 			rotor4.GetComponent<Rigidbody2D> ().isKinematic = true;
+			player.GetComponent<CopterBasicMovements> ().rb2d.velocity = Vector3.zero;
+			player.GetComponent<CopterBasicMovements> ().playSpaceRotating = true;
 		}
 
 		if (rotateLeftBool) {
@@ -99,6 +105,8 @@ public class ButtonsRotationsController : MonoBehaviour {
 			rotor2.GetComponent<Rigidbody2D> ().isKinematic = true;
 			rotor3.GetComponent<Rigidbody2D> ().isKinematic = true;
 			rotor4.GetComponent<Rigidbody2D> ().isKinematic = true;
+			player.GetComponent<CopterBasicMovements> ().rb2d.velocity = Vector3.zero;
+			player.GetComponent<CopterBasicMovements> ().playSpaceRotating = true;
 		}
 
 		if (rotateRightBool) {
@@ -108,6 +116,8 @@ public class ButtonsRotationsController : MonoBehaviour {
 			rotor2.GetComponent<Rigidbody2D> ().isKinematic = true;
 			rotor3.GetComponent<Rigidbody2D> ().isKinematic = true;
 			rotor4.GetComponent<Rigidbody2D> ().isKinematic = true;
+			player.GetComponent<CopterBasicMovements> ().rb2d.velocity = Vector3.zero;
+			player.GetComponent<CopterBasicMovements> ().playSpaceRotating = true;
 		}
 
 		if (rotateClockwiseBool) {
@@ -117,6 +127,8 @@ public class ButtonsRotationsController : MonoBehaviour {
 			rotor2.GetComponent<Rigidbody2D> ().isKinematic = true;
 			rotor3.GetComponent<Rigidbody2D> ().isKinematic = true;
 			rotor4.GetComponent<Rigidbody2D> ().isKinematic = true;
+			player.GetComponent<CopterBasicMovements> ().rb2d.velocity = Vector3.zero;
+			player.GetComponent<CopterBasicMovements> ().playSpaceRotating = true;
 		}
 
 		if (rotateCounterClockwiseBool) {
@@ -126,9 +138,15 @@ public class ButtonsRotationsController : MonoBehaviour {
 			rotor2.GetComponent<Rigidbody2D> ().isKinematic = true;
 			rotor3.GetComponent<Rigidbody2D> ().isKinematic = true;
 			rotor4.GetComponent<Rigidbody2D> ().isKinematic = true;
+			player.GetComponent<CopterBasicMovements> ().rb2d.velocity = Vector3.zero;
+			player.GetComponent<CopterBasicMovements> ().playSpaceRotating = true;
 		}
 
 		if (CubeParent.transform.rotation == targetRotation) {
+
+			if (PlayCube.transform.parent != null) {
+				player.GetComponent<CopterBasicMovements> ().rb2d.velocity = playerStoredVelocity;
+			}
 
 			PlayCube.transform.parent = null; //we unparent the parent cube object
 			CubeParent.transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -138,6 +156,7 @@ public class ButtonsRotationsController : MonoBehaviour {
 			rotor2.GetComponent<Rigidbody2D> ().isKinematic = false;
 			rotor3.GetComponent<Rigidbody2D> ().isKinematic = false;
 			rotor4.GetComponent<Rigidbody2D> ().isKinematic = false;
+			player.GetComponent<CopterBasicMovements> ().playSpaceRotating = false;
 
 			rotateUpBool = false;
 			rotateDownBool = false;
@@ -158,6 +177,9 @@ public class ButtonsRotationsController : MonoBehaviour {
 			PlayCube.transform.parent = CubeParent.transform;
 
 			targetRotation = CubeParent.transform.rotation * Quaternion.Euler (-90, 0, 0);
+
+			playerStoredVelocity = player.GetComponent<CopterBasicMovements> ().rb2d.velocity;
+
 			rotateUpBool = true;
 		}
 	}
@@ -170,6 +192,9 @@ public class ButtonsRotationsController : MonoBehaviour {
 			PlayCube.transform.parent = CubeParent.transform;
 
 			targetRotation = CubeParent.transform.rotation * Quaternion.Euler (90, 0, 0);
+
+			playerStoredVelocity = player.GetComponent<CopterBasicMovements> ().rb2d.velocity;
+
 			rotateDownBool = true;
 		}
 	}
@@ -182,6 +207,9 @@ public class ButtonsRotationsController : MonoBehaviour {
 			PlayCube.transform.parent = CubeParent.transform;
 
 			targetRotation = CubeParent.transform.rotation * Quaternion.Euler (0, -90, 0);
+
+			playerStoredVelocity = player.GetComponent<CopterBasicMovements> ().rb2d.velocity;
+
 			rotateLeftBool = true;
 		}
 	}
@@ -194,6 +222,9 @@ public class ButtonsRotationsController : MonoBehaviour {
 			PlayCube.transform.parent = CubeParent.transform;
 
 			targetRotation = CubeParent.transform.rotation * Quaternion.Euler (0, 90, 0);
+
+			playerStoredVelocity = player.GetComponent<CopterBasicMovements> ().rb2d.velocity;
+
 			rotateRightBool = true;
 		}
 	}
@@ -204,6 +235,9 @@ public class ButtonsRotationsController : MonoBehaviour {
 			PlayCube.transform.parent = CubeParent.transform;
 
 			targetRotation = CubeParent.transform.rotation * Quaternion.Euler (0, 0, 90);
+
+			playerStoredVelocity = player.GetComponent<CopterBasicMovements> ().rb2d.velocity;
+
 			rotateClockwiseBool = true;
 		}
 	}
@@ -214,6 +248,9 @@ public class ButtonsRotationsController : MonoBehaviour {
 			PlayCube.transform.parent = CubeParent.transform;
 
 			targetRotation = CubeParent.transform.rotation * Quaternion.Euler (0, 0, -90);
+
+			playerStoredVelocity = player.GetComponent<CopterBasicMovements> ().rb2d.velocity;
+
 			rotateCounterClockwiseBool = true;
 		}
 	}

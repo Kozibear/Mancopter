@@ -13,6 +13,9 @@ public class lava : MonoBehaviour {
 	public bool reduceAlpha;
 	public bool increaseAlpha;
 
+	public float flashes;
+	public bool currentlyFlashing;
+
 	// Use this for initialization
 	void Start () {
 
@@ -22,12 +25,16 @@ public class lava : MonoBehaviour {
 
 		rend.material.SetColor ("_Color", new Color (1, 1, 1, alphaValue));
 
+		flashes = 3;
+		currentlyFlashing = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		rend.material.SetColor ("_Color", new Color (1, 1, 1, alphaValue));
+		if (!currentlyFlashing) {
+			rend.material.SetColor ("_Color", new Color (1, 1, 1, alphaValue));
+		}
 
 		if (reduceAlpha && alphaValue > 0) {
 			alphaValue -= 0.055f;
@@ -108,5 +115,28 @@ public class lava : MonoBehaviour {
 			increaseAlpha = true;
 			reduceAlpha = false;
 		} 
+	}
+
+	public IEnumerator Flashing()
+	{
+		currentlyFlashing = true;
+
+		yield return new WaitForSeconds (0.2f);
+
+		rend.material.SetColor ("_Color", new Color (0, 1, 0, 1));
+
+		yield return new WaitForSeconds (0.2f);
+
+		flashes -= 1;
+		rend.material.SetColor ("_Color", new Color (1, 1, 1, alphaValue));
+
+		if (flashes != 0) {
+			StartCoroutine (Flashing());
+		} 
+		else {
+			flashes = 3;
+			currentlyFlashing = false;
+			yield return null;
+		}
 	}
 }

@@ -120,41 +120,41 @@ public class BlockMovementEffects : MonoBehaviour {
 
 
 		//if this block's number is not currently selected, we move it from it's original position to down below
-		if (GameObject.Find ("BlockArray").GetComponent<BlockArrayControl>().selectedBlockNumber != thisBlocksNumber) {
+		if (this.transform.parent.GetComponent<BlockArrayControl>().selectedBlockNumber != thisBlocksNumber) {
 
 			if (checkTheTime) {
 				recordTime = Time.time;
 				checkTheTime = false;
 			}
 				
-			if (Time.time >= recordTime+1.4f && Time.time < recordTime+2.4f) {
+			if (Time.time >= recordTime+2.4f && Time.time < recordTime+3.4f) {
 				
 				transform.Translate(Vector3.down * Time.deltaTime * 2f);
 			}
-			if (Time.time >= recordTime+2.4f) {
+			if (Time.time >= recordTime+3.4f) {
 				doubleEXP = false;
 			}
 
 			//slightly after we begin lowering it, we destroy the bomb chucker
-			if (Time.time >= recordTime + 2.4f) {
+			if (Time.time >= recordTime + 3.4f) {
 			}
 
 		} 
 
 		//if this block's number is chosen...
-		if (GameObject.Find ("BlockArray").GetComponent<BlockArrayControl>().selectedBlockNumber == thisBlocksNumber) {
+		if (this.transform.parent.GetComponent<BlockArrayControl>().selectedBlockNumber == thisBlocksNumber && this.transform.parent.GetComponent<BlockArrayControl>().thisArray) {
 
 			//first, if we were given the opportunity to summon a bomb, we check to see if we summon one;
 			//NOTE: As defined in the BlockArrayControl script, whether we can summon a bomb, a spike or a fire pillar is random, but equal
 			if (canSummonBombChucker) {
 
-				if (GameObject.Find ("BlockArray").GetComponent<BlockArrayControl> ().firstTimeBombChucker) {
+				if (this.transform.parent.GetComponent<BlockArrayControl> ().firstTimeBombChucker) {
 					
 					GameObject BombChucker = Instantiate (bombChucker, transform.position + new Vector3 (0, 0.8f, 0), transform.rotation);
 					BombChucker.transform.parent = this.transform;
 					BombChucker.GetComponent<stationaryBombChucker> ().Player = Player;
 
-					GameObject.Find ("BlockArray").GetComponent<BlockArrayControl> ().firstTimeBombChucker = false;
+					this.transform.parent.GetComponent<BlockArrayControl> ().firstTimeBombChucker = false;
 
 				} else if (gameTimer.gameTime < 360) {
 					
@@ -182,11 +182,11 @@ public class BlockMovementEffects : MonoBehaviour {
 			//second, if we were given the opportunity to summon a spike, we check to see if we summon one;
 			if (canSummonSpike) {
 
-				if (GameObject.Find ("BlockArray").GetComponent<BlockArrayControl> ().firstTimeSpike) {
+				if (this.transform.parent.GetComponent<BlockArrayControl> ().firstTimeSpike) {
 
 					GameObject Spike = Instantiate (spike, transform.position + new Vector3 (0, 0.8f, 0), transform.rotation);
 					Spike.transform.parent = this.transform;
-					GameObject.Find ("BlockArray").GetComponent<BlockArrayControl> ().firstTimeSpike = false;
+					this.transform.parent.GetComponent<BlockArrayControl> ().firstTimeSpike = false;
 					buttonArray.newSpikeAllowed = false;
 
 				} else if (gameTimer.gameTime < 440 && buttonArray.newSpikeAllowed) { //we dont' summon another spike if one is already on the field
@@ -215,11 +215,11 @@ public class BlockMovementEffects : MonoBehaviour {
 			//third, if we were given the opportunity to summon a pillar of fire, we check to see if we summon one;
 			if (canSummonPillar) {
 				
-				if (GameObject.Find ("BlockArray").GetComponent<BlockArrayControl> ().firstTimePillar) {
+				if (this.transform.parent.GetComponent<BlockArrayControl> ().firstTimePillar) {
 
 					GameObject FirePillar = Instantiate (firePillar, transform.position + new Vector3 (0, 0.8f, 0), transform.rotation);
 					FirePillar.transform.parent = this.transform;
-					GameObject.Find ("BlockArray").GetComponent<BlockArrayControl> ().firstTimePillar = false;
+					this.transform.parent.GetComponent<BlockArrayControl> ().firstTimePillar = false;
 
 				} else if (gameTimer.gameTime < 440) {
 

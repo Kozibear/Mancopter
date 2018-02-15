@@ -53,6 +53,8 @@ public class CopterBasicMovements : MonoBehaviour {
 	public bool touchingObject;
 	public bool insideObject;
 
+	public bool playSpaceRotating;
+
     // Use this for initialization
     void Start() {
 
@@ -68,6 +70,8 @@ public class CopterBasicMovements : MonoBehaviour {
 
         collidingWithALeftWall = false;
         collidingWithARightWall = false;
+
+		playSpaceRotating = false;
     }
 
     // Update is called once per frame
@@ -80,13 +84,13 @@ public class CopterBasicMovements : MonoBehaviour {
         }
 
         //conditions for jump
-        if ((Input.GetKeyDown("up") || Input.GetKeyDown("space") || Input.GetKeyDown("w")) && grounded && !(Input.GetKeyDown("a") || Input.GetKeyDown("d") || Input.GetKeyDown("left") || Input.GetKeyDown("right")))
+		if (!playSpaceRotating && (Input.GetKeyDown("up") || Input.GetKeyDown("space") || Input.GetKeyDown("w")) && grounded && !(Input.GetKeyDown("a") || Input.GetKeyDown("d") || Input.GetKeyDown("left") || Input.GetKeyDown("right")))
         {
             startJump = true;
         }
 
         //conditions for double jump
-        if ((Input.GetKeyDown("up") || Input.GetKeyDown("space") || Input.GetKeyDown("w")) && (beginDescent || jumping) && !grounded && ((doubleJumpTimes > 0) || (nonRechargingDoubleJumpTimes > 0)))
+		if (!playSpaceRotating && (Input.GetKeyDown("up") || Input.GetKeyDown("space") || Input.GetKeyDown("w")) && (beginDescent || jumping) && !grounded && ((doubleJumpTimes > 0) || (nonRechargingDoubleJumpTimes > 0)))
         {
             startDoubleJump = true;
         }
@@ -141,7 +145,6 @@ public class CopterBasicMovements : MonoBehaviour {
     }
 
     void FixedUpdate() { 
-
         //I'm making a linecast between the object and the child groundcheck object to see if the ground layer is between them
         //true if it is, false if it isn't
         //at least one of the three groundchecks must be true
