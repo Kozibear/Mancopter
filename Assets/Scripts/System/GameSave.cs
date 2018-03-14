@@ -19,27 +19,35 @@ public class GameSave : MonoBehaviour {
 	public float highscore4;
 	public float highscore5;
 
-	//for whether the powerups are currently active or not:
-	public bool powerup1;
-	public bool powerup2;
-	public bool powerup3;
-	public bool powerup4;
-	public bool powerup5;
-	public bool powerup6;
-	public bool powerup7;
-	public bool powerup8;
-	public bool powerup9;
-	public bool powerup10;
-	public bool powerup11;
-	public bool powerup12;
-	public bool powerup13;
-	public bool powerup14;
-	public bool powerup15;
-	public bool powerup16;
-	public bool powerup17;
-	public bool powerup18;
-	public bool powerup19;
-	public bool powerup20;
+	//for the top 5 high scores' items used:
+	public bool[] highscore1Items;
+	public bool[] highscore2Items;
+	public bool[] highscore3Items;
+	public bool[] highscore4Items;
+	public bool[] highscore5Items;
+
+	//for whether the powerups are currently not purchased, purchased, or active
+	//0 = not purchased, 1 = purchased, 2 = purchased and active
+	public float powerup1;
+	public float powerup2;
+	public float powerup3;
+	public float powerup4;
+	public float powerup5;
+	public float powerup6;
+	public float powerup7;
+	public float powerup8;
+	public float powerup9;
+	public float powerup10;
+	public float powerup11;
+	public float powerup12;
+	public float powerup13;
+	public float powerup14;
+	public float powerup15;
+	public float powerup16;
+	public float powerup17;
+	public float powerup18;
+	public float powerup19;
+	public float powerup20;
 
 	void Awake () {
 		//if the gameSave variable has not been assigned, we don't destroy it, and we make it reference this.
@@ -71,6 +79,12 @@ public class GameSave : MonoBehaviour {
 		data.highscore3 =  highscore3;
 		data.highscore4 =  highscore4;
 		data.highscore5 =  highscore5;
+
+		data.highscore1Items = highscore1Items;
+		data.highscore2Items = highscore2Items;
+		data.highscore3Items = highscore3Items;
+		data.highscore4Items = highscore4Items;
+		data.highscore5Items = highscore5Items;
 
 		data.powerup1 = powerup1;
 		data.powerup2 = powerup2;
@@ -115,6 +129,12 @@ public class GameSave : MonoBehaviour {
 			highscore4 = data.highscore4;
 			highscore5 = data.highscore5;
 
+			highscore1Items = data.highscore1Items;
+			highscore2Items = data.highscore2Items;
+			highscore3Items = data.highscore3Items;
+			highscore4Items = data.highscore4Items;
+			highscore5Items = data.highscore5Items;
+
 			powerup1 = data.powerup1;
 			powerup2 = data.powerup2;
 			powerup3 = data.powerup3;
@@ -153,25 +173,32 @@ class playerData {
 	public float highscore4;
 	public float highscore5;
 
+	//for the top 5 high scores' items used:
+	public bool[] highscore1Items;
+	public bool[] highscore2Items;
+	public bool[] highscore3Items;
+	public bool[] highscore4Items;
+	public bool[] highscore5Items;
+
 	//for whether the powerups are currently active or not:
-	public bool powerup1;
-	public bool powerup2;
-	public bool powerup3;
-	public bool powerup4;
-	public bool powerup5;
-	public bool powerup6;
-	public bool powerup7;
-	public bool powerup8;
-	public bool powerup9;
-	public bool powerup10;
-	public bool powerup11;
-	public bool powerup12;
-	public bool powerup13;
-	public bool powerup14;
-	public bool powerup15;
-	public bool powerup16;
-	public bool powerup17;
-	public bool powerup18;
-	public bool powerup19;
-	public bool powerup20;
+	public float powerup1;
+	public float powerup2;
+	public float powerup3;
+	public float powerup4;
+	public float powerup5;
+	public float powerup6;
+	public float powerup7;
+	public float powerup8;
+	public float powerup9;
+	public float powerup10;
+	public float powerup11;
+	public float powerup12;
+	public float powerup13;
+	public float powerup14;
+	public float powerup15;
+	public float powerup16;
+	public float powerup17;
+	public float powerup18;
+	public float powerup19;
+	public float powerup20;
 }
