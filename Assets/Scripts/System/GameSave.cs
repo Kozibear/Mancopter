@@ -106,7 +106,7 @@ public class GameSave : MonoBehaviour {
 		data.powerup18 = powerup18;
 		data.powerup19 = powerup19;
 		data.powerup20 = powerup20;
-
+	
 		bf.Serialize (file, data); //we serialize our data to the above file
 		file.Close(); //at the end, we close the file
 	}

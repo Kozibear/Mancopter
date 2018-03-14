@@ -73,35 +73,147 @@ public class highScores : MonoBehaviour {
 					}
 				}
 			}
-
-			if (Item1.GetComponent<Image> ().sprite == null) {
-				Item1.GetComponent<Image> ().sprite = NoItemSprite;
-			}
-			if (Item2.GetComponent<Image> ().sprite == null) {
-				Item2.GetComponent<Image> ().sprite = NoItemSprite;
-			}
-			if (Item3.GetComponent<Image> ().sprite == null) {
-				Item3.GetComponent<Image> ().sprite = NoItemSprite;
-			}
-			if (Item4.GetComponent<Image> ().sprite == null) {
-				Item4.GetComponent<Image> ().sprite = NoItemSprite;
-			}
-			if (Item5.GetComponent<Image> ().sprite == null) {
-				Item5.GetComponent<Image> ().sprite = NoItemSprite;
-			}
 		}
 
 		if (this.gameObject.name == "HighScore2") {
 			text.text = "2. " + GameSave.gameSave.highscore2;
+
+			for (int i = 0; i < GameSave.gameSave.highscore2Items.Length; i++) {
+				if (Item1.GetComponent<Image> ().sprite == null) {
+					if (GameSave.gameSave.highscore2Items [i] == true) {
+						Item1.GetComponent<Image> ().sprite = ItemSprites [i];
+					}
+				}
+				else if (Item2.GetComponent<Image> ().sprite == null) {
+					if (GameSave.gameSave.highscore2Items [i] == true) {
+						Item2.GetComponent<Image> ().sprite = ItemSprites [i];
+					}
+				}
+				else if (Item3.GetComponent<Image> ().sprite == null) {
+					if (GameSave.gameSave.highscore2Items [i] == true) {
+						Item3.GetComponent<Image> ().sprite = ItemSprites [i];
+					}
+				}
+				else if (Item4.GetComponent<Image> ().sprite == null) {
+					if (GameSave.gameSave.highscore2Items [i] == true) {
+						Item4.GetComponent<Image> ().sprite = ItemSprites [i];
+					}
+				}
+				else if (Item5.GetComponent<Image> ().sprite == null) {
+					if (GameSave.gameSave.highscore2Items [i] == true) {
+						Item5.GetComponent<Image> ().sprite = ItemSprites [i];
+					}
+				}
+			}
 		}
 		if (this.gameObject.name == "HighScore3") {
 			text.text = "3. " + GameSave.gameSave.highscore3;
+
+			for (int i = 0; i < GameSave.gameSave.highscore3Items.Length; i++) {
+				if (Item1.GetComponent<Image> ().sprite == null) {
+					if (GameSave.gameSave.highscore3Items [i] == true) {
+						Item1.GetComponent<Image> ().sprite = ItemSprites [i];
+					}
+				}
+				else if (Item2.GetComponent<Image> ().sprite == null) {
+					if (GameSave.gameSave.highscore3Items [i] == true) {
+						Item2.GetComponent<Image> ().sprite = ItemSprites [i];
+					}
+				}
+				else if (Item3.GetComponent<Image> ().sprite == null) {
+					if (GameSave.gameSave.highscore3Items [i] == true) {
+						Item3.GetComponent<Image> ().sprite = ItemSprites [i];
+					}
+				}
+				else if (Item4.GetComponent<Image> ().sprite == null) {
+					if (GameSave.gameSave.highscore3Items [i] == true) {
+						Item4.GetComponent<Image> ().sprite = ItemSprites [i];
+					}
+				}
+				else if (Item5.GetComponent<Image> ().sprite == null) {
+					if (GameSave.gameSave.highscore3Items [i] == true) {
+						Item5.GetComponent<Image> ().sprite = ItemSprites [i];
+					}
+				}
+			}
 		}
 		if (this.gameObject.name == "HighScore4") {
 			text.text = "4. " + GameSave.gameSave.highscore4;
+
+			for (int i = 0; i < GameSave.gameSave.highscore4Items.Length; i++) {
+				if (Item1.GetComponent<Image> ().sprite == null) {
+					if (GameSave.gameSave.highscore4Items [i] == true) {
+						Item1.GetComponent<Image> ().sprite = ItemSprites [i];
+					}
+				}
+				else if (Item2.GetComponent<Image> ().sprite == null) {
+					if (GameSave.gameSave.highscore4Items [i] == true) {
+						Item2.GetComponent<Image> ().sprite = ItemSprites [i];
+					}
+				}
+				else if (Item3.GetComponent<Image> ().sprite == null) {
+					if (GameSave.gameSave.highscore4Items [i] == true) {
+						Item3.GetComponent<Image> ().sprite = ItemSprites [i];
+					}
+				}
+				else if (Item4.GetComponent<Image> ().sprite == null) {
+					if (GameSave.gameSave.highscore4Items [i] == true) {
+						Item4.GetComponent<Image> ().sprite = ItemSprites [i];
+					}
+				}
+				else if (Item5.GetComponent<Image> ().sprite == null) {
+					if (GameSave.gameSave.highscore4Items [i] == true) {
+						Item5.GetComponent<Image> ().sprite = ItemSprites [i];
+					}
+				}
+			}
 		}
 		if (this.gameObject.name == "HighScore5") {
 			text.text = "5. " + GameSave.gameSave.highscore5;
+
+			for (int i = 0; i < GameSave.gameSave.highscore5Items.Length; i++) {
+				if (Item1.GetComponent<Image> ().sprite == null) {
+					if (GameSave.gameSave.highscore5Items [i] == true) {
+						Item1.GetComponent<Image> ().sprite = ItemSprites [i];
+					}
+				}
+				else if (Item2.GetComponent<Image> ().sprite == null) {
+					if (GameSave.gameSave.highscore5Items [i] == true) {
+						Item2.GetComponent<Image> ().sprite = ItemSprites [i];
+					}
+				}
+				else if (Item3.GetComponent<Image> ().sprite == null) {
+					if (GameSave.gameSave.highscore5Items [i] == true) {
+						Item3.GetComponent<Image> ().sprite = ItemSprites [i];
+					}
+				}
+				else if (Item4.GetComponent<Image> ().sprite == null) {
+					if (GameSave.gameSave.highscore5Items [i] == true) {
+						Item4.GetComponent<Image> ().sprite = ItemSprites [i];
+					}
+				}
+				else if (Item5.GetComponent<Image> ().sprite == null) {
+					if (GameSave.gameSave.highscore5Items [i] == true) {
+						Item5.GetComponent<Image> ().sprite = ItemSprites [i];
+					}
+				}
+			}
+		}
+
+		if (Item1.GetComponent<Image> ().sprite == null) {
+			Item1.GetComponent<Image> ().sprite = NoItemSprite;
+		}
+		if (Item2.GetComponent<Image> ().sprite == null) {
+			Item2.GetComponent<Image> ().sprite = NoItemSprite;
+		}
+		if (Item3.GetComponent<Image> ().sprite == null) {
+			Item3.GetComponent<Image> ().sprite = NoItemSprite;
+		}
+		if (Item4.GetComponent<Image> ().sprite == null) {
+			Item4.GetComponent<Image> ().sprite = NoItemSprite;
+		}
+		if (Item5.GetComponent<Image> ().sprite == null) {
+			Item5.GetComponent<Image> ().sprite = NoItemSprite;
 		}
 	}
 

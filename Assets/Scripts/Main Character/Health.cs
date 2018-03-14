@@ -165,7 +165,11 @@ public class Health : MonoBehaviour {
 
         if (healthAmount <= 0 && canGetHurt)
         {
-            //SceneManager.LoadScene("ManCopter Testing Grounds", LoadSceneMode.Single);
+			GameSave.gameSave.Load ();
+			GameSave.gameSave.mostRecentScore = this.gameObject.GetComponent<pointSystem> ().totalPoints;
+			GameSave.gameSave.Save ();
+
+			SceneManager.LoadScene("Splash Upgrades Scores", LoadSceneMode.Single);
         }
     }
 
