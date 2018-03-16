@@ -42,7 +42,7 @@ public class pointSystem : MonoBehaviour {
 
 		scoreDisplays.text = "Score: " + totalPoints.ToString();
 
-		if (accumulateGroundPoints) {
+		if (accumulateGroundPoints  && !this.gameObject.GetComponent<CopterBasicMovements>().insideObject) {
 
 			//we record the current time,
 			if (canRecordCurrentTime) {
@@ -54,9 +54,9 @@ public class pointSystem : MonoBehaviour {
 			//so that we can accurately record how many points we're earning
 			newPoints = (Time.time - currentTime)*pointMultiplier;
 		}
-
-		//when we leave the platform we're on, we add the points we just earned to our overall total
-		if (!accumulateGroundPoints) {
+		else {
+			
+			//when we leave the platform we're on, we add the points we just earned to our overall total
 
 			if (!canRecordCurrentTime) {
 				previouslyEarnedPoints += newPoints;

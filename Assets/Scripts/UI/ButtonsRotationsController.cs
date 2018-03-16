@@ -47,6 +47,8 @@ public class ButtonsRotationsController : MonoBehaviour {
 
 	public Vector2 playerStoredVelocity;
 
+	public static bool playSpaceRotating;
+
 	// Use this for initialization
 	void Start () {
 		XAxisUp.onClick.AddListener (rotateUp);
@@ -64,11 +66,12 @@ public class ButtonsRotationsController : MonoBehaviour {
 		Make4Invisible = false;
 		Make5Invisible = false;
 		Make6Invisible = false;
+
+		playSpaceRotating = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
 		if (player.GetComponent<CopterBasicMovements> ().touchingObject || player.GetComponent<CopterBasicMovements> ().insideObject) {
 			canRotate = false;
 		} 
@@ -85,6 +88,7 @@ public class ButtonsRotationsController : MonoBehaviour {
 			rotor4.GetComponent<Rigidbody2D> ().isKinematic = true;
 			player.GetComponent<CopterBasicMovements> ().rb2d.velocity = Vector3.zero;
 			player.GetComponent<CopterBasicMovements> ().playSpaceRotating = true;
+			playSpaceRotating = true;
 		}
 			
 		if (rotateDownBool) {
@@ -96,6 +100,7 @@ public class ButtonsRotationsController : MonoBehaviour {
 			rotor4.GetComponent<Rigidbody2D> ().isKinematic = true;
 			player.GetComponent<CopterBasicMovements> ().rb2d.velocity = Vector3.zero;
 			player.GetComponent<CopterBasicMovements> ().playSpaceRotating = true;
+			playSpaceRotating = true;
 		}
 
 		if (rotateLeftBool) {
@@ -107,6 +112,7 @@ public class ButtonsRotationsController : MonoBehaviour {
 			rotor4.GetComponent<Rigidbody2D> ().isKinematic = true;
 			player.GetComponent<CopterBasicMovements> ().rb2d.velocity = Vector3.zero;
 			player.GetComponent<CopterBasicMovements> ().playSpaceRotating = true;
+			playSpaceRotating = true;
 		}
 
 		if (rotateRightBool) {
@@ -118,6 +124,7 @@ public class ButtonsRotationsController : MonoBehaviour {
 			rotor4.GetComponent<Rigidbody2D> ().isKinematic = true;
 			player.GetComponent<CopterBasicMovements> ().rb2d.velocity = Vector3.zero;
 			player.GetComponent<CopterBasicMovements> ().playSpaceRotating = true;
+			playSpaceRotating = true;
 		}
 
 		if (rotateClockwiseBool) {
@@ -129,6 +136,7 @@ public class ButtonsRotationsController : MonoBehaviour {
 			rotor4.GetComponent<Rigidbody2D> ().isKinematic = true;
 			player.GetComponent<CopterBasicMovements> ().rb2d.velocity = Vector3.zero;
 			player.GetComponent<CopterBasicMovements> ().playSpaceRotating = true;
+			playSpaceRotating = true;
 		}
 
 		if (rotateCounterClockwiseBool) {
@@ -140,6 +148,7 @@ public class ButtonsRotationsController : MonoBehaviour {
 			rotor4.GetComponent<Rigidbody2D> ().isKinematic = true;
 			player.GetComponent<CopterBasicMovements> ().rb2d.velocity = Vector3.zero;
 			player.GetComponent<CopterBasicMovements> ().playSpaceRotating = true;
+			playSpaceRotating = true;
 		}
 
 		if (CubeParent.transform.rotation == targetRotation) {
@@ -164,6 +173,8 @@ public class ButtonsRotationsController : MonoBehaviour {
 			rotateRightBool = false;
 			rotateClockwiseBool = false;
 			rotateCounterClockwiseBool = false;
+
+			playSpaceRotating = false;
 		}
 
 	}

@@ -17,6 +17,7 @@ public class BlockArrayControl : MonoBehaviour {
 	public float coinFlip;
 
 	public bool thisArray;
+
 	public bool canCheckArraySelection;
 
 	//we make an array for each block that is representative of the probability of each other block being selected next
@@ -43,17 +44,21 @@ public class BlockArrayControl : MonoBehaviour {
 	public float[] Block21FollowUpPropabilities;
 	public float[] Block22FollowUpPropabilities;
 
+	public GameObject blockArrayChooser;
+
 	// Use this for initialization
 	void Start () {
 		gameStarting = true;
 		selectedBlockNumber = 0;
-		timeUntilNextSelection = 7;
+		timeUntilNextSelection = 6.5f;
 
 		firstTimeBombChucker = true;
 		firstTimeSpike = true;
 		firstTimePillar = true;
 
 		thisArray = false;
+
+		canCheckArraySelection = true;
 
 		Block1FollowUpPropabilities = new float[] {4, 5, 6, 7, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13, 14, 14, 14, 15, 15, 15, 16, 16, 16, 17, 17, 17, 18, 18, 18, 18, 19, 19, 19, 19, 20, 20, 20, 20, 21, 21, 21, 22, 22, 22};
 		Block2FollowUpPropabilities = new float[] {5, 6, 7, 8, 9, 10, 10, 11, 11, 12, 12, 13, 13, 14, 14, 15, 15, 15, 16, 16, 16, 17, 17, 17, 18, 18, 18, 19, 19, 19, 19, 20, 20, 20, 20, 21, 21, 21, 21, 22, 22, 22};
@@ -86,14 +91,12 @@ public class BlockArrayControl : MonoBehaviour {
 
 			selectedBlockNumber = Random.Range (1, 23);
 
-			recordTime = Time.time;
+			recordTime = Time.timeSinceLevelLoad;
 
 			gameStarting = false;
 		}
 
-		//if the game has already started, we choose our next block based on our previously selected number
-		if (Time.time >= recordTime + timeUntilNextSelection) {
-			canCheckArraySelection = true;
+		if (thisArray && canCheckArraySelection) {
 
 			if (selectedBlockNumber == 1) {
 				selectedBlockNumber = Block1FollowUpPropabilities [Random.Range (0, Block1FollowUpPropabilities.Length)];
@@ -211,13 +214,8 @@ public class BlockArrayControl : MonoBehaviour {
 				}
 
 			}
-			recordTime = Time.time;
+
+			canCheckArraySelection = false;
 		}
-		/*
-		//if we're not the array to be chosen, we just signify that 
-		if (Time.time >= recordTime + timeUntilNextSelection && !thisArray) {
-			recordTime = Time.time;
-		}
-		*/
 	}
 }

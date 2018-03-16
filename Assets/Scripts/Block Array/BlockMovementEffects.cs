@@ -44,8 +44,6 @@ public class BlockMovementEffects : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		checkTheTime = true;
-		//originalLocation = this.transform.position;
-		//modifiedLocation = new Vector3 (transform.position.x - offsetX, transform.position.y - offsetY, transform.position.z - offsetZ);
 
 		timeUntilBombchuckers = 90;
 		canSummonBombChucker = false;
@@ -64,6 +62,13 @@ public class BlockMovementEffects : MonoBehaviour {
 	}
 	
 	void FixedUpdate () {
+
+		if (ButtonsRotationsController.playSpaceRotating == false) {
+			this.GetComponent<BoxCollider2D> ().enabled = true;
+		}
+		if (ButtonsRotationsController.playSpaceRotating == true) {
+			this.GetComponent<BoxCollider2D> ().enabled = false;
+		}
 
 		if (ButtonsRotationsController.Make1Invisible && WallNumber == 1) {
 			rend.enabled = false;
@@ -118,31 +123,13 @@ public class BlockMovementEffects : MonoBehaviour {
 			rend.enabled = true;
 		}
 
-
+		/*
 		//if this block's number is not currently selected, we move it from it's original position to down below
-		if (this.transform.parent.GetComponent<BlockArrayControl>().selectedBlockNumber != thisBlocksNumber) {
-
-			if (checkTheTime) {
-				recordTime = Time.time;
-				checkTheTime = false;
-			}
-				
-			if (Time.time >= recordTime+2.4f && Time.time < recordTime+3.4f) {
-				
-				transform.Translate(Vector3.down * Time.deltaTime * 2f);
-			}
-			if (Time.time >= recordTime+3.4f) {
-				doubleEXP = false;
-			}
-
-			//slightly after we begin lowering it, we destroy the bomb chucker
-			if (Time.time >= recordTime + 3.4f) {
-			}
-
-		} 
+		if ((this.transform.parent.GetComponent<BlockArrayControl>().selectedBlockNumber != thisBlocksNumber && this.transform.parent.GetComponent<BlockArrayControl>().thisArray == true) || (this.transform.parent.GetComponent<BlockArrayControl>().selectedBlockNumber != thisBlocksNumber && this.transform.parent.GetComponent<BlockArrayControl>().thisArray == false)) {
+			*/
 
 		//if this block's number is chosen...
-		if (this.transform.parent.GetComponent<BlockArrayControl>().selectedBlockNumber == thisBlocksNumber && this.transform.parent.GetComponent<BlockArrayControl>().thisArray) {
+		if (this.transform.parent.GetComponent<BlockArrayControl>().selectedBlockNumber == thisBlocksNumber && this.transform.parent.GetComponent<BlockArrayControl>().thisArray == true) {
 
 			//first, if we were given the opportunity to summon a bomb, we check to see if we summon one;
 			//NOTE: As defined in the BlockArrayControl script, whether we can summon a bomb, a spike or a fire pillar is random, but equal
@@ -243,17 +230,37 @@ public class BlockMovementEffects : MonoBehaviour {
 				canSummonPillar = false;
 			}
 
+
 			if (!checkTheTime) {
 				recordTime = Time.time;
 				checkTheTime = true;
 			}
 
-			if (Time.time >= recordTime+0f && Time.time < recordTime+1f) {
-
+			if (checkTheTime && Time.time >= recordTime+0f && Time.time < recordTime+1f) {
 				transform.Translate(Vector3.up * Time.deltaTime * 2f);
 			}
-
 		}
+		else {
+
+			if (checkTheTime) {
+				recordTime = Time.time;
+				checkTheTime = false;
+			}
+			
+			if (Time.time >= recordTime+(gameTimer.startingWait-1) && Time.time < recordTime+(gameTimer.startingWait)) {
+
+				transform.Translate(Vector3.down * Time.deltaTime * 2f);
+			}
+			
+			if (Time.time >= recordTime+3.4f) {
+				doubleEXP = false;
+			}
+
+			//slightly after we begin lowering it, we destroy the bomb chucker
+			if (Time.time >= recordTime + 3.4f) {
+			}
+
+		} 
 			
 	}
 

@@ -11,6 +11,8 @@ public class sceneManagerSplash : MonoBehaviour {
 	public float[] currentPowerups;
 	public bool[] resetBoolArray;
 
+	public float numberEquipped;
+
 	// Use this for initialization
 	void Start () {
 		GameSave.gameSave.Load();
@@ -18,7 +20,9 @@ public class sceneManagerSplash : MonoBehaviour {
 		currentPowerups = new float[] {GameSave.gameSave.powerup1, GameSave.gameSave.powerup2, GameSave.gameSave.powerup3, GameSave.gameSave.powerup4, GameSave.gameSave.powerup5, GameSave.gameSave.powerup6, GameSave.gameSave.powerup7, GameSave.gameSave.powerup8, GameSave.gameSave.powerup9, GameSave.gameSave.powerup10, GameSave.gameSave.powerup11, GameSave.gameSave.powerup12, GameSave.gameSave.powerup13, GameSave.gameSave.powerup14, GameSave.gameSave.powerup15, GameSave.gameSave.powerup16, GameSave.gameSave.powerup17, GameSave.gameSave.powerup18, GameSave.gameSave.powerup19, GameSave.gameSave.powerup20};
 		resetBoolArray = new bool[20];
 
-		if (GameSave.gameSave.mostRecentScore != 0) {
+		UpgradeScreen.transform.GetChild (0).GetComponent<Upgrading> ().points = GameSave.gameSave.mostRecentScore;
+
+		if (GameSave.gameSave.mostRecentScore > 0) {
 
 			if (GameSave.gameSave.mostRecentScore > GameSave.gameSave.highscore1) {
 				GameSave.gameSave.highscore5 = GameSave.gameSave.highscore4;
@@ -55,7 +59,7 @@ public class sceneManagerSplash : MonoBehaviour {
 							GameSave.gameSave.highscore1Items [i] = true;
 						}
 					}
-					else if (GameSave.gameSave.highscore1Items [i] = false) {
+					else if (GameSave.gameSave.highscore1Items [i] == false) {
 						if (currentPowerups [i] == 2) {
 							GameSave.gameSave.highscore1Items [i] = true;
 						}
@@ -213,15 +217,35 @@ public class sceneManagerSplash : MonoBehaviour {
 			}
 
 			GameSave.gameSave.Save ();
-		}
 
-		SplashScreen.gameObject.SetActive (false);
-		UpgradeScreen.gameObject.SetActive (false);
-		HighScoreScreen.gameObject.SetActive (true);
+			SplashScreen.gameObject.SetActive (false);
+			UpgradeScreen.gameObject.SetActive (false);
+			HighScoreScreen.gameObject.SetActive (true);
+		}
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		
+
+		currentPowerups = new float[] {GameSave.gameSave.powerup1, GameSave.gameSave.powerup2, GameSave.gameSave.powerup3, GameSave.gameSave.powerup4, GameSave.gameSave.powerup5, GameSave.gameSave.powerup6, GameSave.gameSave.powerup7, GameSave.gameSave.powerup8, GameSave.gameSave.powerup9, GameSave.gameSave.powerup10, GameSave.gameSave.powerup11, GameSave.gameSave.powerup12, GameSave.gameSave.powerup13, GameSave.gameSave.powerup14, GameSave.gameSave.powerup15, GameSave.gameSave.powerup16, GameSave.gameSave.powerup17, GameSave.gameSave.powerup18, GameSave.gameSave.powerup19, GameSave.gameSave.powerup20};
+
+	}
+
+	public bool checkEquippedNumber () {
+
+		numberEquipped = 0;
+
+		for (int i = 0; i < currentPowerups.Length; i++) {
+			if (currentPowerups [i] == 2) {
+				numberEquipped++;
+			}
+		}
+
+		if (numberEquipped >= 5) {
+			return false;
+		} 
+		else {
+			return true;
+		}
 	}
 }
