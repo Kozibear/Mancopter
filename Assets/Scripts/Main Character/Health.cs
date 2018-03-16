@@ -167,6 +167,13 @@ public class Health : MonoBehaviour {
         {
 			GameSave.gameSave.Load ();
 			GameSave.gameSave.mostRecentScore = this.gameObject.GetComponent<pointSystem> ().totalPoints;
+			/*
+			GameSave.gameSave.powerup1 = 2;
+			GameSave.gameSave.powerup4 = 2;
+			GameSave.gameSave.powerup11 = 2;
+			GameSave.gameSave.powerup12 = 2;
+			GameSave.gameSave.powerup17 = 2;
+			*/
 			GameSave.gameSave.Save ();
 
 			SceneManager.LoadScene("Splash Upgrades Scores", LoadSceneMode.Single);
