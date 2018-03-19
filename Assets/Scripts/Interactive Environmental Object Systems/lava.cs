@@ -123,7 +123,12 @@ public class lava : MonoBehaviour {
 
 		yield return new WaitForSeconds (0.2f);
 
-		rend.material.SetColor ("_Color", new Color (0, 1, 0, 1));
+		if (this.rend.material.color.a <= 0) {
+			rend.material.SetColor ("_Color", new Color (0, 1, 0, 0.4f));
+		}
+		else {
+			rend.material.SetColor ("_Color", new Color (0, 1, 0, 1));
+		}
 
 		yield return new WaitForSeconds (0.2f);
 

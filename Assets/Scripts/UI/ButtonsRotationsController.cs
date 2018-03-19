@@ -81,72 +81,72 @@ public class ButtonsRotationsController : MonoBehaviour {
 
 		if (rotateUpBool) {
 			CubeParent.transform.localRotation = Quaternion.RotateTowards(CubeParent.transform.rotation, targetRotation, 4f);
-			player.GetComponent<Rigidbody2D> ().isKinematic = true;
-			rotor1.GetComponent<Rigidbody2D> ().isKinematic = true;
-			rotor2.GetComponent<Rigidbody2D> ().isKinematic = true;
-			rotor3.GetComponent<Rigidbody2D> ().isKinematic = true;
-			rotor4.GetComponent<Rigidbody2D> ().isKinematic = true;
-			player.GetComponent<CopterBasicMovements> ().rb2d.velocity = Vector3.zero;
+			//player.GetComponent<Rigidbody2D> ().isKinematic = true;
+			//rotor1.GetComponent<Rigidbody2D> ().isKinematic = true;
+			//rotor2.GetComponent<Rigidbody2D> ().isKinematic = true;
+			//rotor3.GetComponent<Rigidbody2D> ().isKinematic = true;
+			//rotor4.GetComponent<Rigidbody2D> ().isKinematic = true;
+			//player.GetComponent<CopterBasicMovements> ().rb2d.velocity = Vector3.zero;
 			player.GetComponent<CopterBasicMovements> ().playSpaceRotating = true;
 			playSpaceRotating = true;
 		}
 			
 		if (rotateDownBool) {
 			CubeParent.transform.rotation = Quaternion.RotateTowards(CubeParent.transform.rotation, targetRotation, 4f);
-			player.GetComponent<Rigidbody2D> ().isKinematic = true;
-			rotor1.GetComponent<Rigidbody2D> ().isKinematic = true;
-			rotor2.GetComponent<Rigidbody2D> ().isKinematic = true;
-			rotor3.GetComponent<Rigidbody2D> ().isKinematic = true;
-			rotor4.GetComponent<Rigidbody2D> ().isKinematic = true;
-			player.GetComponent<CopterBasicMovements> ().rb2d.velocity = Vector3.zero;
+			//player.GetComponent<Rigidbody2D> ().isKinematic = true;
+			//rotor1.GetComponent<Rigidbody2D> ().isKinematic = true;
+			//rotor2.GetComponent<Rigidbody2D> ().isKinematic = true;
+			//rotor3.GetComponent<Rigidbody2D> ().isKinematic = true;
+			//rotor4.GetComponent<Rigidbody2D> ().isKinematic = true;
+			//player.GetComponent<CopterBasicMovements> ().rb2d.velocity = Vector3.zero;
 			player.GetComponent<CopterBasicMovements> ().playSpaceRotating = true;
 			playSpaceRotating = true;
 		}
 
 		if (rotateLeftBool) {
 			CubeParent.transform.rotation = Quaternion.RotateTowards(CubeParent.transform.rotation, targetRotation, 4f);
-			player.GetComponent<Rigidbody2D> ().isKinematic = true;
-			rotor1.GetComponent<Rigidbody2D> ().isKinematic = true;
-			rotor2.GetComponent<Rigidbody2D> ().isKinematic = true;
-			rotor3.GetComponent<Rigidbody2D> ().isKinematic = true;
-			rotor4.GetComponent<Rigidbody2D> ().isKinematic = true;
-			player.GetComponent<CopterBasicMovements> ().rb2d.velocity = Vector3.zero;
+			//player.GetComponent<Rigidbody2D> ().isKinematic = true;
+			//rotor1.GetComponent<Rigidbody2D> ().isKinematic = true;
+			//rotor2.GetComponent<Rigidbody2D> ().isKinematic = true;
+			//rotor3.GetComponent<Rigidbody2D> ().isKinematic = true;
+			//rotor4.GetComponent<Rigidbody2D> ().isKinematic = true;
+			//player.GetComponent<CopterBasicMovements> ().rb2d.velocity = Vector3.zero;
 			player.GetComponent<CopterBasicMovements> ().playSpaceRotating = true;
 			playSpaceRotating = true;
 		}
 
 		if (rotateRightBool) {
 			CubeParent.transform.rotation = Quaternion.RotateTowards(CubeParent.transform.rotation, targetRotation, 4f);
-			player.GetComponent<Rigidbody2D> ().isKinematic = true;
-			rotor1.GetComponent<Rigidbody2D> ().isKinematic = true;
-			rotor2.GetComponent<Rigidbody2D> ().isKinematic = true;
-			rotor3.GetComponent<Rigidbody2D> ().isKinematic = true;
-			rotor4.GetComponent<Rigidbody2D> ().isKinematic = true;
-			player.GetComponent<CopterBasicMovements> ().rb2d.velocity = Vector3.zero;
+			//player.GetComponent<Rigidbody2D> ().isKinematic = true;
+			//rotor1.GetComponent<Rigidbody2D> ().isKinematic = true;
+			//rotor2.GetComponent<Rigidbody2D> ().isKinematic = true;
+			//rotor3.GetComponent<Rigidbody2D> ().isKinematic = true;
+			//rotor4.GetComponent<Rigidbody2D> ().isKinematic = true;
+			//player.GetComponent<CopterBasicMovements> ().rb2d.velocity = Vector3.zero;
 			player.GetComponent<CopterBasicMovements> ().playSpaceRotating = true;
 			playSpaceRotating = true;
 		}
 
 		if (rotateClockwiseBool) {
 			CubeParent.transform.rotation = Quaternion.RotateTowards(CubeParent.transform.rotation, targetRotation, 4f);
-			player.GetComponent<Rigidbody2D> ().isKinematic = true;
-			rotor1.GetComponent<Rigidbody2D> ().isKinematic = true;
-			rotor2.GetComponent<Rigidbody2D> ().isKinematic = true;
-			rotor3.GetComponent<Rigidbody2D> ().isKinematic = true;
-			rotor4.GetComponent<Rigidbody2D> ().isKinematic = true;
-			player.GetComponent<CopterBasicMovements> ().rb2d.velocity = Vector3.zero;
+			//player.GetComponent<Rigidbody2D> ().isKinematic = true;
+			//rotor1.GetComponent<Rigidbody2D> ().isKinematic = true;
+			//rotor2.GetComponent<Rigidbody2D> ().isKinematic = true;
+			//rotor3.GetComponent<Rigidbody2D> ().isKinematic = true;
+			//rotor4.GetComponent<Rigidbody2D> ().isKinematic = true;
+			//player.GetComponent<CopterBasicMovements> ().rb2d.velocity = Vector3.zero;
 			player.GetComponent<CopterBasicMovements> ().playSpaceRotating = true;
 			playSpaceRotating = true;
 		}
 
 		if (rotateCounterClockwiseBool) {
 			CubeParent.transform.rotation = Quaternion.RotateTowards(CubeParent.transform.rotation, targetRotation, 4f);
-			player.GetComponent<Rigidbody2D> ().isKinematic = true;
-			rotor1.GetComponent<Rigidbody2D> ().isKinematic = true;
-			rotor2.GetComponent<Rigidbody2D> ().isKinematic = true;
-			rotor3.GetComponent<Rigidbody2D> ().isKinematic = true;
-			rotor4.GetComponent<Rigidbody2D> ().isKinematic = true;
-			player.GetComponent<CopterBasicMovements> ().rb2d.velocity = Vector3.zero;
+			//player.GetComponent<Rigidbody2D> ().isKinematic = true;
+			//rotor1.GetComponent<Rigidbody2D> ().isKinematic = true;
+			//rotor2.GetComponent<Rigidbody2D> ().isKinematic = true;
+			//rotor3.GetComponent<Rigidbody2D> ().isKinematic = true;
+			//rotor4.GetComponent<Rigidbody2D> ().isKinematic = true;
+			//player.GetComponent<CopterBasicMovements> ().rb2d.velocity = Vector3.zero;
 			player.GetComponent<CopterBasicMovements> ().playSpaceRotating = true;
 			playSpaceRotating = true;
 		}
@@ -154,17 +154,17 @@ public class ButtonsRotationsController : MonoBehaviour {
 		if (CubeParent.transform.rotation == targetRotation) {
 
 			if (PlayCube.transform.parent != null) {
-				player.GetComponent<CopterBasicMovements> ().rb2d.velocity = playerStoredVelocity;
+				//player.GetComponent<CopterBasicMovements> ().rb2d.velocity = playerStoredVelocity;
 			}
 
 			PlayCube.transform.parent = null; //we unparent the parent cube object
 			CubeParent.transform.rotation = Quaternion.Euler(0, 0, 0);
 
-			player.GetComponent<Rigidbody2D> ().isKinematic = false;
-			rotor1.GetComponent<Rigidbody2D> ().isKinematic = false;
-			rotor2.GetComponent<Rigidbody2D> ().isKinematic = false;
-			rotor3.GetComponent<Rigidbody2D> ().isKinematic = false;
-			rotor4.GetComponent<Rigidbody2D> ().isKinematic = false;
+			//player.GetComponent<Rigidbody2D> ().isKinematic = false;
+			//rotor1.GetComponent<Rigidbody2D> ().isKinematic = false;
+			//rotor2.GetComponent<Rigidbody2D> ().isKinematic = false;
+			//rotor3.GetComponent<Rigidbody2D> ().isKinematic = false;
+			//rotor4.GetComponent<Rigidbody2D> ().isKinematic = false;
 			player.GetComponent<CopterBasicMovements> ().playSpaceRotating = false;
 
 			rotateUpBool = false;

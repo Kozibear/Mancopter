@@ -509,102 +509,102 @@ public class Upgrading : MonoBehaviour {
 
 	public void hoverItem1()
 	{
-		itemDescription.text = "Cost: X";
+		itemDescription.text = "Double Jumper 1 (COST: 1000 points)\n\nGain two additional double-jumps when in the air.";
 	}
 
 	public void hoverItem2()
 	{
-		itemDescription.text = "Cost: X";
+		itemDescription.text = "Ground Master (COST: 2000 points)\n\nYour score multiplier is increased by a factor of 1.2, but have one less jump when in the air.";
 	}
 
 	public void hoverItem3()
 	{
-		itemDescription.text = "Cost: X";
+		itemDescription.text = "Pufferfish Power (COST: 3000 points)\n\nEarn points when you stand on the safe side of a pufferfish";
 	}
 
 	public void hoverItem4()
 	{
-		itemDescription.text = "Cost: X";
+		itemDescription.text = "Concentrated Fire (COST: 4000 points)\n\nThe mouse only uses half as much energy when shooting at button-eating monsters, but you must wait one second between shots.";
 	}
 
 	public void hoverItem5()
 	{
-		itemDescription.text = "Cost: X";
+		itemDescription.text = "Anvil Drop (COST: 5000 points) \n\nDrop super-duper-fast when ground-pounding!";
 	}
 
 	public void hoverItem6()
 	{
-		itemDescription.text = "Cost: X";
+		itemDescription.text = "Double Jumper 2 (COST: 6000 points)\n\nGain two additional double-jumps when in the air.";
 	}
 
 	public void hoverItem7()
 	{
-		itemDescription.text = "Cost: X";
+		itemDescription.text = "Lazer Time (COST: 7000 points) \n\nEvery time a lazer destroys an enemy, you gain 150 points.";
 	}
 
 	public void hoverItem8()
 	{
-		itemDescription.text = "Cost: X";
+		itemDescription.text = "High Road (COST: 8000 points) \n\nEvery time you destroy a terrain corrupter with a ground pound, Your score multiplier is increased by a factor of 1.05.";
 	}
 
 	public void hoverItem9()
 	{
-		itemDescription.text = "Cost: X";
+		itemDescription.text = "Iron Shoes (COST: 9000 points) \n\nYou are immune to vertical streams of lava, but you fall much faster.";
 	}
 
 	public void hoverItem10()
 	{
-		itemDescription.text = "Cost: X";
+		itemDescription.text = "Strong Start (COST: 10,000 points) \n\nYour score multiplier is increased by a factor of 1.25 when all four of your mans are alive.";
 	}
 
 	public void hoverItem11()
 	{
-		itemDescription.text = "Cost: X";
+		itemDescription.text = "Double Jumper 3 (COST: 11000 points)\n\nGain two additional double-jumps when in the air.";
 	}
 
 	public void hoverItem12()
 	{
-		itemDescription.text = "Cost: X";
+		itemDescription.text = "Marathon Runner (COST 12000 points) \n\nAfter 15 minutes of play, your score multiplier is increased by a factor of 1.5.";
 	}
 
 	public void hoverItem13()
 	{
-		itemDescription.text = "Cost: X";
+		itemDescription.text = "Adrenaline (COST: 13000 points) \n\nYou jump higher, but bomb chuckers and terrain corrupters shooter their projectiles twice as frequently.";
 	}
 
 	public void hoverItem14()
 	{
-		itemDescription.text = "Cost: X";
+		itemDescription.text = "Pufferfish Summoner (COST: 14000 points) \n\nWhen there are no Pufferfish in the play space, press P to summon a pufferfish for 100 points.";
 	}
 
 	public void hoverItem15()
 	{
-		itemDescription.text = "Cost: X";
+		itemDescription.text = "Look Ma, no Clicks (COST: 15000 points) \n\nButton eating monsters die quickly on their own, but your score multiplier is decreased by a factor of 2.";
 	}
 
 	public void hoverItem16()
 	{
-		itemDescription.text = "Cost: X";
+		itemDescription.text = "Double Jumper 4 (COST: 16000 points)\n\nGain two additional double-jumps when in the air.";
 	}
 
 	public void hoverItem17()
 	{
-		itemDescription.text = "Cost: X";
+		itemDescription.text = "Masochist (COST: 17000 points) \n\nLazers and bombs earn you points when touching them, but you instantly die if you touch the edges of the play space.";
 	}
 
 	public void hoverItem18()
 	{
-		itemDescription.text = "Cost: X";
+		itemDescription.text = "Ninja (COST: 18000 points) \n\nYou now wield super-fast shurikens instead of mans!";
 	}
 
 	public void hoverItem19()
 	{
-		itemDescription.text = "Cost: X";
+		itemDescription.text = "Last Stand (COST: 19000 points) \n\nYour score multiplier is increased by a factor of 1.35 when on your last man.";
 	}
 
 	public void hoverItem20()
 	{
-		itemDescription.text = "Cost: X";
+		itemDescription.text = "Double Jumper 5 (COST: 20000 points)\n\nGain two additional double-jumps when in the air.";
 	}
 
 	public void exitHover () 
