@@ -51,7 +51,7 @@ public class BlockArrayChooser : MonoBehaviour {
 		blockArray11.GetComponent<BlockArrayControl> ().thisArray = false;
 		blockArray12.GetComponent<BlockArrayControl> ().thisArray = false;
 
-		blockArraySelection = Random.Range (0, 12);
+		blockArraySelection = Random.Range (1, 13);
 
 		if (blockArraySelection == 7 || blockArraySelection == 11) {
 			lava1.GetComponent<lava> ().StartCoroutine ("Flashing");

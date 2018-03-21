@@ -6,6 +6,10 @@ public class CopterBasicMovements : MonoBehaviour {
 
     public float jumpForce;
     public float speed;
+	public float reducedGravity;
+	public float gravityChanging;
+	public float slowdownAscent;
+	public float slowdownDescent;
     public Transform GroundCheckCenter;
     public Transform GroundCheckLeft;
     public Transform GroundCheckRight;
@@ -20,7 +24,7 @@ public class CopterBasicMovements : MonoBehaviour {
     public float rapidSpinTime;
 
     private bool beginCountDown = false;
-    private bool cancelMomentum = false;
+	public bool cancelMomentum = false;
     public bool fallingNoJumping = false;
     public bool grounded;
     public bool startJump = false;
@@ -57,6 +61,7 @@ public class CopterBasicMovements : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
+		rb2d.velocity = Vector3.zero;
 
         //we check if we saved at a checkpoint, and if we did, we transform our position to said checkpoint's position
         if (PlayerPrefs.GetInt("playerAtCheckpoint") == 1)
@@ -205,6 +210,7 @@ public class CopterBasicMovements : MonoBehaviour {
 
             beginCountDown = true; //we begin the countdown of how long the user is in the air
 
+			/*
             if(onASpring)
             {
                 jumpForce -= 400;
@@ -216,7 +222,7 @@ public class CopterBasicMovements : MonoBehaviour {
                 jumpForce -= 1000;
                 onASpringCharged = false;
             }
-
+			*/
 			if (bouncedOffEnemy) 
 			{
 				jumpForce -= 500;
@@ -245,16 +251,27 @@ public class CopterBasicMovements : MonoBehaviour {
         //once the player begins descending, we cancel their momentum, and then decrease the gravity (unless we push downwards)
         if (beginDescent && !grounded)
         {
-            if (cancelMomentum)
+			if (cancelMomentum && rb2d.velocity.magnitude > 1f)
             {
-                rb2d.velocity = Vector3.zero;
-                cancelMomentum = false;
+				Vector3 slowDown = new Vector3(0, slowdownAscent, 0);
+				rb2d.AddForce (slowDown);
             }
+			if (cancelMomentum && rb2d.velocity.magnitude <= 1f) {
+				cancelMomentum = false;
+				gravityChanging = 0.6f;
+			}
 
-            if (!downwardsPush)
+			if (!downwardsPush && !cancelMomentum && gravityChanging > reducedGravity)
             {
-                rb2d.gravityScale = 0.205f;
+				Vector3 slowDown = new Vector3(0, slowdownDescent, 0);
+				rb2d.AddForce (slowDown);
+
+				rb2d.gravityScale = gravityChanging;
+				gravityChanging -= 0.01f;
             }
+			if (!downwardsPush && !cancelMomentum && gravityChanging <= reducedGravity) {
+				rb2d.gravityScale = reducedGravity;
+			}
         }
 
         //double-jump
@@ -319,7 +336,6 @@ public class CopterBasicMovements : MonoBehaviour {
         if (fallingNoJumping)
         {
             beginDescent = true;
-            //cancelMomentum = true;
 			fallingNoJumping = false;
         }
 
