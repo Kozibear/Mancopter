@@ -10,6 +10,7 @@ public class CopterBasicMovements : MonoBehaviour {
 	public float gravityChanging;
 	public float slowdownAscent;
 	public float slowdownDescent;
+	public float groundPoundSpeed;
     public Transform GroundCheckCenter;
     public Transform GroundCheckLeft;
     public Transform GroundCheckRight;
@@ -306,9 +307,14 @@ public class CopterBasicMovements : MonoBehaviour {
         //force downwards
         if (beginDownwardsPush)
         {
+			/*
             Vector3 newPosition = transform.position;
-            newPosition.y = newPosition.y - 0.25f;
+			newPosition.y = newPosition.y - groundPoundSpeed;
             transform.position = newPosition;
+            */
+
+			Vector3 newPush = new Vector3(0, -groundPoundSpeed, 0);
+			rb2d.AddForce(newPush);
 
             downwardsPush = true;
         }

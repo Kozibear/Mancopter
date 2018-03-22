@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement; //IMP - must have this in order to load a scene!
 
 public class Health : MonoBehaviour {
@@ -18,11 +19,20 @@ public class Health : MonoBehaviour {
 	public GameObject looseBlade3;
 	public GameObject looseBlade4;
 
+	public Image damageFlash;
+	public Color damageFlashColor;
+	public bool makeFlashRed;
+
 	// Use this for initialization
 	void Start () {
         healthAmount = 4;
         canGetHurt = true;
         canLoseMan = false;
+
+		damageFlashColor = damageFlash.color;
+		damageFlashColor.a = 0f;
+
+		damageFlash.gameObject.SetActive (false);
 	}
 
     // Update is called once per frame
@@ -142,12 +152,29 @@ public class Health : MonoBehaviour {
                 canLoseMan = false;
             }
 
-            beginHarmedSequence = false;
+			damageFlash.gameObject.SetActive (true);
+			makeFlashRed = true;
+			damageFlashColor.a = 1;
+			beginHarmedSequence = false;
         }
     }
 
     private void FixedUpdate()
     {
+		//this is for making the screen flash red
+		damageFlash.color = damageFlashColor;
+
+		if (makeFlashRed) {
+			damageFlashColor.a -= 0.02f;
+
+			if (damageFlashColor.a <= 0)
+			{
+				damageFlashColor.a = 0;
+				makeFlashRed = false;
+				damageFlash.gameObject.SetActive (false);
+			}
+		}
+
         //if two seconds haven't elapsed since the player was hit, they can't get hurt, and flash
         //after two seconds, they can get hurt
         if (Time.time < recordTime + 2f)
