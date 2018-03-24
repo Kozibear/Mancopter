@@ -50,7 +50,7 @@ public class BlockArrayControl : MonoBehaviour {
 	void Start () {
 		gameStarting = true;
 		selectedBlockNumber = 0;
-		timeUntilNextSelection = 6.5f;
+		timeUntilNextSelection = 5f;
 
 		firstTimeBombChucker = true;
 		firstTimeSpike = true;
