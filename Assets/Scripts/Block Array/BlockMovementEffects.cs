@@ -133,10 +133,8 @@ public class BlockMovementEffects : MonoBehaviour {
 
 			//first, if we were given the opportunity to summon a bomb, we check to see if we summon one;
 			//NOTE: As defined in the BlockArrayControl script, whether we can summon a bomb, a spike or a fire pillar is random, but equal
-			if (canSummonBombChucker) {
-
+			if (this.transform.parent.GetComponent<BlockArrayControl>().canSummonBombChucker) {
 				if (this.transform.parent.GetComponent<BlockArrayControl> ().firstTimeBombChucker) {
-					
 					GameObject BombChucker = Instantiate (bombChucker, transform.position + new Vector3 (0, 0.8f, 0), transform.rotation);
 					BombChucker.transform.parent = this.transform;
 					BombChucker.GetComponent<stationaryBombChucker> ().Player = Player;
@@ -144,7 +142,6 @@ public class BlockMovementEffects : MonoBehaviour {
 					this.transform.parent.GetComponent<BlockArrayControl> ().firstTimeBombChucker = false;
 
 				} else if (gameTimer.gameTime < 360) {
-					
 					coinFlip = Random.Range (1, 101);
 					if (coinFlip <= 15) {
 
@@ -153,7 +150,6 @@ public class BlockMovementEffects : MonoBehaviour {
 						BombChucker.GetComponent<stationaryBombChucker> ().Player = Player;
 					} 
 				} else if (gameTimer.gameTime >= 360) {
-
 					coinFlip = Random.Range (1, 101);
 					if (coinFlip <= 20) {
 
@@ -163,11 +159,12 @@ public class BlockMovementEffects : MonoBehaviour {
 					} 
 				} 
 					
-				canSummonBombChucker = false;
+				this.transform.parent.GetComponent<BlockArrayControl>().canSummonBombChucker = false;
 			}
 
+			/*
 			//second, if we were given the opportunity to summon a spike, we check to see if we summon one;
-			if (canSummonSpike) {
+			if (this.transform.parent.GetComponent<BlockArrayControl>().canSummonSpike) {
 
 				if (this.transform.parent.GetComponent<BlockArrayControl> ().firstTimeSpike) {
 
@@ -194,13 +191,14 @@ public class BlockMovementEffects : MonoBehaviour {
 						Spike.transform.parent = this.transform;
 						buttonArray.newSpikeAllowed = false;
 					} 
-				} 
+				}
 
-				canSummonSpike = false;
+				this.transform.parent.GetComponent<BlockArrayControl>().canSummonSpike = false;
 			}
+			*/
 
 			//third, if we were given the opportunity to summon a pillar of fire, we check to see if we summon one;
-			if (canSummonPillar) {
+			if (this.transform.parent.GetComponent<BlockArrayControl>().canSummonPillar) {
 				
 				if (this.transform.parent.GetComponent<BlockArrayControl> ().firstTimePillar) {
 
@@ -227,7 +225,7 @@ public class BlockMovementEffects : MonoBehaviour {
 					} 
 				} 
 
-				canSummonPillar = false;
+				this.transform.parent.GetComponent<BlockArrayControl>().canSummonPillar = false;
 			}
 
 

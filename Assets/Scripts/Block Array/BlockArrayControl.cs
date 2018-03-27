@@ -46,6 +46,10 @@ public class BlockArrayControl : MonoBehaviour {
 
 	public GameObject blockArrayChooser;
 
+	public bool canSummonBombChucker;
+	public bool canSummonSpike;
+	public bool canSummonPillar;
+
 	// Use this for initialization
 	void Start () {
 		gameStarting = true;
@@ -168,49 +172,60 @@ public class BlockArrayControl : MonoBehaviour {
 			//We select what kind of object is going to emerge from our platform:
 
 			//if we're between 90 and 110 seconds, we choose the bomb chucker
-			if (selectedBlockNumber != 0 && gameTimer.gameTime >= 90 && gameTimer.gameTime < 110) {
+			if (selectedBlockNumber != 0 && gameTimer.gameTime >= 10 && gameTimer.gameTime < 180) {
 				
-				GameObject.Find ("Block"+selectedBlockNumber.ToString()).GetComponent<BlockMovementEffects> ().canSummonBombChucker = true;
-
+				//GameObject.Find ("Block"+selectedBlockNumber.ToString()).GetComponent<BlockMovementEffects> ().canSummonBombChucker = true;
+				canSummonBombChucker = true;
 			}
 
+			/*
 			//if we're between 110 and 180 seconds, we choose between the bomb chucker and the spike
 			else if (selectedBlockNumber != 0 && gameTimer.gameTime >= 110 && gameTimer.gameTime < 180) {
 
 				if (firstTimeSpike) {
-					GameObject.Find ("Block" + selectedBlockNumber.ToString ()).GetComponent<BlockMovementEffects> ().canSummonSpike = true;
+					//GameObject.Find ("Block" + selectedBlockNumber.ToString ()).GetComponent<BlockMovementEffects> ().canSummonSpike = true;
+					canSummonSpike = true;
 				} 
 				else {
 					coinFlip = Random.Range (1, 3);
 
 					if (coinFlip == 1) {
-						GameObject.Find ("Block" + selectedBlockNumber.ToString ()).GetComponent<BlockMovementEffects> ().canSummonBombChucker = true;
+						//GameObject.Find ("Block" + selectedBlockNumber.ToString ()).GetComponent<BlockMovementEffects> ().canSummonBombChucker = true;
+						canSummonBombChucker = true;
 					}
 					if (coinFlip == 2) {
-						GameObject.Find ("Block" + selectedBlockNumber.ToString ()).GetComponent<BlockMovementEffects> ().canSummonSpike = true;
+						//GameObject.Find ("Block" + selectedBlockNumber.ToString ()).GetComponent<BlockMovementEffects> ().canSummonSpike = true;
+						canSummonSpike = true;
 					}
 				}
 			}
+			*/
 
 			//if we're over 180 seconds, we choose between the bomb chucker, spike and pillar
 			else if (selectedBlockNumber != 0 && gameTimer.gameTime >= 180) {
 
 				if (firstTimePillar) {
-					GameObject.Find ("Block" + selectedBlockNumber.ToString ()).GetComponent<BlockMovementEffects> ().canSummonPillar = true;
+					//GameObject.Find ("Block" + selectedBlockNumber.ToString ()).GetComponent<BlockMovementEffects> ().canSummonPillar = true;
+					canSummonPillar = true;
 				} 
 				else {
 					
-					coinFlip = Random.Range (1, 4);
+					coinFlip = Random.Range (1, 3);
 
 					if (coinFlip == 1) {
-						GameObject.Find ("Block" + selectedBlockNumber.ToString ()).GetComponent<BlockMovementEffects> ().canSummonBombChucker = true;
+						//GameObject.Find ("Block" + selectedBlockNumber.ToString ()).GetComponent<BlockMovementEffects> ().canSummonBombChucker = true;
+						canSummonBombChucker = true;
 					}
 					if (coinFlip == 2) {
-						GameObject.Find ("Block" + selectedBlockNumber.ToString ()).GetComponent<BlockMovementEffects> ().canSummonSpike = true;
+						//GameObject.Find ("Block" + selectedBlockNumber.ToString ()).GetComponent<BlockMovementEffects> ().canSummonPillar = true;
+						canSummonPillar = true;
 					}
-					if (coinFlip == 3) {
-						GameObject.Find ("Block" + selectedBlockNumber.ToString ()).GetComponent<BlockMovementEffects> ().canSummonPillar = true;
+					/*
+					if (coinFlip == 2) {
+						//GameObject.Find ("Block" + selectedBlockNumber.ToString ()).GetComponent<BlockMovementEffects> ().canSummonSpike = true;
+						canSummonSpike = true;
 					}
+					*/
 				}
 
 			}

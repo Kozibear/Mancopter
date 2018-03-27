@@ -24,6 +24,8 @@ public class stationaryBombChucker : MonoBehaviour
     public GameObject longRightParaBomb;
     public GameObject straightBomb;
 
+	public GameObject simpleBomb;
+
 	public float recordTime;
 
 	public bool invincibility;
@@ -77,6 +79,7 @@ public class stationaryBombChucker : MonoBehaviour
                     facingLeft = true;
                 }
 
+			/*
                 //if a few seconds have passed since the last bomb throw, we instantiate a bomb object to damage the player
 			if (Time.time >= lastBombThrow + 2.0f && Time.time >= recordTime + 0.5f && Time.time <= recordTime+ 6.5f)
                 {
@@ -92,6 +95,8 @@ public class stationaryBombChucker : MonoBehaviour
 
                     lastBombThrow = Time.time;
                 }
+			*/
+
             }
 
             //if the different between the player's position to the right of the enemy and the enemy's position is greater than or equal to 1, we make the enemy face right
@@ -106,6 +111,7 @@ public class stationaryBombChucker : MonoBehaviour
                     facingLeft = false;
                 }
 
+			/*
                 //if three seconds have passed since the last bomb throw, we instantiate a bomb object to damage the player
 			if (Time.time >= lastBombThrow + 2.0f && Time.time >= recordTime + 0.5f && Time.time <= recordTime+ 6.5f)
                 {
@@ -121,8 +127,11 @@ public class stationaryBombChucker : MonoBehaviour
 
                     lastBombThrow = Time.time;
                 }
+			*/
+
             }
 
+		/*
             //a third if statement for if the player is more or less directly above the chucker
 		if (((Player.transform.position.x - this.transform.position.x) < 1) && ((this.transform.position.x - Player.transform.position.x) < 1))
             {
@@ -134,6 +143,7 @@ public class stationaryBombChucker : MonoBehaviour
                     lastBombThrow = Time.time;
                 }
             }
+		*/
 
 		//we are no longer invincible after 0.5 seconds
 		if (Time.time >= invincibilityTimer+0.5f) {
@@ -233,7 +243,6 @@ public class stationaryBombChucker : MonoBehaviour
 		}
 
 		if (collision.gameObject.tag == "harmfulobject" && !invincibility) {
-			print ("g");
 			health -= 1;
 
 			invincibility = true;
@@ -244,7 +253,6 @@ public class stationaryBombChucker : MonoBehaviour
 	private void OnTriggerStay2D(Collider2D collision)
 	{
 		if (collision.gameObject.tag == "harmfulobject" && !invincibility) {
-			print ("g");
 			health -= 1;
 
 			invincibility = true;

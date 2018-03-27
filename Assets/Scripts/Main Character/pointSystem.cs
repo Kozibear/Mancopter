@@ -19,6 +19,7 @@ public class pointSystem : MonoBehaviour {
 	public float timeToNextMinutaryScore;
 
 	public Text scoreDisplays;
+	public Text multiplierDisplay;
 
 	public GameObject scoreText;
 
@@ -28,7 +29,7 @@ public class pointSystem : MonoBehaviour {
 		canRecordCurrentTime = true;
 		newPoints = 0;
 
-		pointMultiplier = 10;
+		pointMultiplier = 1f;
 
 		timeToNextMinutaryScore = 60;
 
@@ -42,7 +43,16 @@ public class pointSystem : MonoBehaviour {
 
 		scoreDisplays.text = "Score: " + totalPoints.ToString();
 
-		if (accumulateGroundPoints  && !this.gameObject.GetComponent<CopterBasicMovements>().insideObject) {
+		//if it is a whole number...
+		if (Mathf.RoundToInt (pointMultiplier) == pointMultiplier) {
+			multiplierDisplay.text = pointMultiplier.ToString () + ".0x";
+		}
+		//if it is not a whole number...
+		else if (Mathf.RoundToInt (pointMultiplier) != pointMultiplier) {
+			multiplierDisplay.text = pointMultiplier.ToString () + "x";
+		}
+
+		if (accumulateGroundPoints  && !this.gameObject.GetComponent<CopterBasicMovements>().insideObject && gameTimer.canStart) {
 
 			//we record the current time,
 			if (canRecordCurrentTime) {
@@ -52,7 +62,7 @@ public class pointSystem : MonoBehaviour {
 
 			//and then subtract it from Time.time so that we know how many seconds have elapsed from this moment forward,
 			//so that we can accurately record how many points we're earning
-			newPoints = (Time.time - currentTime)*pointMultiplier;
+			newPoints = (Time.time - currentTime)*10*pointMultiplier;
 		}
 		else {
 			
@@ -66,18 +76,20 @@ public class pointSystem : MonoBehaviour {
 			canRecordCurrentTime = true;
 		}
 
-		//if we ever grab one of those floating power-ups, we add 10% (+1 pps) to our pointMultiplier
+		//if we ever grab one of those floating power-ups, we add 10% (+0.1 pps) to our pointMultiplier
 		if (addToPointMultiplier) {
-			pointMultiplier += 1;
+			pointMultiplier += 0.1f;
 
 			addToPointMultiplier = false;
 		}
 
+		/*
 		//after 1 minute (60 seconds), we add +1 pps 
 		if (gameTimer.gameTime >= timeToNextMinutaryScore) {
-			pointMultiplier += 1;
+			pointMultiplier += 0.1;
 			timeToNextMinutaryScore += 60;
 		}
+		*/
 			
 	}
 }
