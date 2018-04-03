@@ -51,6 +51,8 @@ public class GameSave : MonoBehaviour {
 
 	public bool upgradeScreenExplanationRead;
 
+	public bool ControlsScreen;
+
 	void Awake () {
 		//if the gameSave variable has not been assigned, we don't destroy it, and we make it reference this.
 		if (gameSave == null) {
@@ -110,6 +112,8 @@ public class GameSave : MonoBehaviour {
 		data.powerup20 = powerup20;
 
 		data.upgradeScreenExplanationRead = upgradeScreenExplanationRead;
+
+		data.ControlsScreen = ControlsScreen;
 	
 		bf.Serialize (file, data); //we serialize our data to the above file
 		file.Close(); //at the end, we close the file
@@ -161,6 +165,9 @@ public class GameSave : MonoBehaviour {
 			powerup20 = data.powerup20;
 
 			upgradeScreenExplanationRead = data.upgradeScreenExplanationRead;
+
+			ControlsScreen = data.ControlsScreen;
+
 		}
 	}
 }
@@ -208,4 +215,7 @@ class playerData {
 	public float powerup20;
 
 	public bool upgradeScreenExplanationRead;
+
+	public bool ControlsScreen;
+
 }

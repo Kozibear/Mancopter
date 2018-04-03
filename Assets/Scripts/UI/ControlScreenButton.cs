@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class startGameButton : MonoBehaviour {
+public class ControlScreenButton : MonoBehaviour {
 
 	public Image blackBackground;
 
@@ -16,6 +16,7 @@ public class startGameButton : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
 		blackBackground.gameObject.SetActive (true);
 
 		blackBackgroundColor = new Color (0, 0, 0, 1);
@@ -31,7 +32,7 @@ public class startGameButton : MonoBehaviour {
 		//for the black background fading out 
 		if (!darkenScreen && blackBackgroundColor.a > 0) {
 			blackBackground.color = blackBackgroundColor;
-			blackBackgroundColor.a -= 0.01f;
+			blackBackgroundColor.a -= 0.025f;
 		}
 		if (!darkenScreen && blackBackgroundColor.a <= 0) {
 			blackBackgroundColor.a = 0;
@@ -45,22 +46,11 @@ public class startGameButton : MonoBehaviour {
 			blackBackgroundColor.a += 0.05f;
 		}
 		if (darkenScreen && blackBackgroundColor.a >= 1) {
-			if (GameSave.gameSave.ControlsScreen == false) {
-
-				GameSave.gameSave.ControlsScreen = true;
-				GameSave.gameSave.Save ();
-
-				SceneManager.LoadScene ("Controls Screen", LoadSceneMode.Single);
-			} 
-			else {
-				SceneManager.LoadScene ("Mancopter Main Scene", LoadSceneMode.Single);
-			}
+			SceneManager.LoadScene ("Mancopter Main Scene", LoadSceneMode.Single);
 		}
 	}
 
 	void startTheGame() {
-		GameSave.gameSave.Load ();
-
 		darkenScreen = true;
 	}
 }

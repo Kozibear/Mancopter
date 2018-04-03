@@ -63,6 +63,8 @@ public class resetData : MonoBehaviour {
 
 		GameSave.gameSave.upgradeScreenExplanationRead = false;
 
+		GameSave.gameSave.ControlsScreen = false;
+
 		GameSave.gameSave.Save ();
 
 		upgrading.GetComponent<Upgrading> ().points = 0;
