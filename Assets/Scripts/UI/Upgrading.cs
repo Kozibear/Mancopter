@@ -509,7 +509,7 @@ public class Upgrading : MonoBehaviour {
 
 	public void hoverItem1()
 	{
-		itemDescription.text = "Double Jumper 1 (COST: 1000 points)\n\nGain two additional double-jumps when in the air.";
+		itemDescription.text = "Double Jumper 1 (COST: 1000 points)\n\nGain one additional double-jump when in the air.";
 	}
 
 	public void hoverItem2()
@@ -534,7 +534,7 @@ public class Upgrading : MonoBehaviour {
 
 	public void hoverItem6()
 	{
-		itemDescription.text = "Double Jumper 2 (COST: 6000 points)\n\nGain two additional double-jumps when in the air.";
+		itemDescription.text = "Double Jumper 2 (COST: 6000 points)\n\nGain one additional double-jump when in the air.";
 	}
 
 	public void hoverItem7()
@@ -549,7 +549,7 @@ public class Upgrading : MonoBehaviour {
 
 	public void hoverItem9()
 	{
-		itemDescription.text = "Iron Shoes (COST: 9000 points) \n\nYou are immune to vertical streams of lava, but you fall much faster.";
+		itemDescription.text = "Iron Shoes (COST: 9000 points) \n\nYou are immune to lasers and vertical streams of lava, but you fall much faster.";
 	}
 
 	public void hoverItem10()
@@ -559,7 +559,7 @@ public class Upgrading : MonoBehaviour {
 
 	public void hoverItem11()
 	{
-		itemDescription.text = "Double Jumper 3 (COST: 11000 points)\n\nGain two additional double-jumps when in the air.";
+		itemDescription.text = "Double Jumper 3 (COST: 11000 points)\n\nGain one additional double-jump when in the air.";
 	}
 
 	public void hoverItem12()
@@ -584,7 +584,7 @@ public class Upgrading : MonoBehaviour {
 
 	public void hoverItem16()
 	{
-		itemDescription.text = "Double Jumper 4 (COST: 16000 points)\n\nGain two additional double-jumps when in the air.";
+		itemDescription.text = "Double Jumper 4 (COST: 16000 points)\n\nGain one additional double-jump when in the air.";
 	}
 
 	public void hoverItem17()
@@ -604,7 +604,7 @@ public class Upgrading : MonoBehaviour {
 
 	public void hoverItem20()
 	{
-		itemDescription.text = "Double Jumper 5 (COST: 20000 points)\n\nGain two additional double-jumps when in the air.";
+		itemDescription.text = "Double Jumper 5 (COST: 20000 points)\n\nGain one additional double-jump when in the air.";
 	}
 
 	public void exitHover () 

@@ -23,14 +23,31 @@ public class pointSystem : MonoBehaviour {
 
 	public GameObject scoreText;
 
+	//bools for the upgrades
+	public bool lessThan4Health;
+	public bool over15;
+	public bool lastMan;
+
 	// Use this for initialization
 	void Start () {
+		GameSave.gameSave.Load ();
+		//GameSave.gameSave.powerup19 = 2;
+		pointMultiplier = 1f;
+
+		//powerup 2
+		if (GameSave.gameSave.powerup2 == 2) {
+			pointMultiplier*=1.2f;
+		}
+
+		//powerup 10
+		if (GameSave.gameSave.powerup10 == 2) {
+			pointMultiplier *= 1.25f; 
+		}
+
 		accumulateGroundPoints = false;
 		canRecordCurrentTime = true;
 		newPoints = 0;
-
-		pointMultiplier = 1f;
-
+	
 		timeToNextMinutaryScore = 60;
 
 		scoreDisplays = scoreText.GetComponent<Text> (); //IMP WE NEED TO HAVE THIS PART TO ACCESS THE TEXT
@@ -38,6 +55,24 @@ public class pointSystem : MonoBehaviour {
 	}
 	
 	void FixedUpdate () {
+
+		//powerup 10
+		if (GameSave.gameSave.powerup10 == 2 && this.gameObject.GetComponent<Health> ().healthAmount < 4 && !lessThan4Health) {
+			pointMultiplier /= 1.25f; 
+			lessThan4Health = true;
+		}
+
+		//powerup 12
+		if (GameSave.gameSave.powerup12 == 2 && Time.timeSinceLevelLoad > 900 && !over15) {
+			pointMultiplier *= 1.5f;
+			over15 = true;
+		}
+
+		//powerup 19
+		if (GameSave.gameSave.powerup19 == 2 && this.gameObject.GetComponent<Health> ().healthAmount == 1 && !lastMan) {
+			pointMultiplier *= 1.35f;
+			lastMan = true;
+		}
 
 		totalPoints = Mathf.Floor(previouslyEarnedPoints + newPoints); //the points that we will display; it will be more up-to-date than the previouslyEarnedPoints, and rounded down
 

@@ -279,11 +279,11 @@ public class BlockMovementEffects : MonoBehaviour {
 			collision.transform.parent = this.transform;
 
 			//while the player is on the block, they receive points
-			GameObject.Find("CopterBase").GetComponent<pointSystem>().accumulateGroundPoints = true;
+				collision.gameObject.GetComponent<pointSystem>().accumulateGroundPoints = true;
 
 			//if we're currently standing on a previously-spiked block, our points are doubled
 			if (doubleEXP && canDoubleEXP) {
-				GameObject.Find("CopterBase").GetComponent<pointSystem>().pointMultiplier *= 2;
+				collision.gameObject.GetComponent<pointSystem>().pointMultiplier *= 2;
 				canDoubleEXP = false;
 			}
 		}
@@ -296,11 +296,11 @@ public class BlockMovementEffects : MonoBehaviour {
 			collision.transform.parent = null;
 
 			//when the player is no longer on the block, they stop receiving points
-			GameObject.Find("CopterBase").GetComponent<pointSystem>().accumulateGroundPoints = false;
+				collision.gameObject.GetComponent<pointSystem>().accumulateGroundPoints = false;
 
 			//we halve our EXP earnings
 			if (doubleEXP && !canDoubleEXP) {
-				GameObject.Find("CopterBase").GetComponent<pointSystem>().pointMultiplier /= 2;
+				collision.gameObject.GetComponent<pointSystem>().pointMultiplier /= 2;
 				canDoubleEXP = true;
 			}
 		}

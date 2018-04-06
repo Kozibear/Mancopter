@@ -33,6 +33,13 @@ public class Health : MonoBehaviour {
 		damageFlashColor.a = 0f;
 
 		damageFlash.gameObject.SetActive (false);
+
+		GameSave.gameSave.Load ();
+
+		GameSave.gameSave.powerup9 = 2;
+
+		GameSave.gameSave.Save ();
+
 	}
 
     // Update is called once per frame
@@ -213,12 +220,17 @@ public class Health : MonoBehaviour {
         //however, they are also briefly removed from harm for a few seconds
         if ((collision.gameObject.tag == "enemy" && !this.GetComponent<CopterBasicMovements>().downwardsPush) || collision.gameObject.tag == "harmfulobject")
         {
-            if(canGetHurt)
+			if(canGetHurt)
             {
-                healthAmount -= 1;
-                beginHarmedSequence = true;
-                recordTime = Time.time;
-                canGetHurt = false;
+				if (collision.gameObject.layer == LayerMask.NameToLayer ("powerup9avoid") && GameSave.gameSave.powerup9 == 2) {
+					
+				}
+				else {
+					healthAmount -= 1;
+					beginHarmedSequence = true;
+					recordTime = Time.time;
+					canGetHurt = false;
+				}
             }
         }
     }
@@ -230,10 +242,15 @@ public class Health : MonoBehaviour {
         {
             if (canGetHurt)
             {
-                healthAmount -= 1;
-                beginHarmedSequence = true;
-                recordTime = Time.time;
-                canGetHurt = false;
+				if (collision.gameObject.layer == LayerMask.NameToLayer ("powerup9avoid") && GameSave.gameSave.powerup9 == 2) {
+					print ("OK2");
+				}
+				else {
+					healthAmount -= 1;
+					beginHarmedSequence = true;
+					recordTime = Time.time;
+					canGetHurt = false;
+				}
             }
         }
     }
@@ -246,10 +263,15 @@ public class Health : MonoBehaviour {
 
             if (canGetHurt)
             {
-                healthAmount -= 1;
-                beginHarmedSequence = true;
-                recordTime = Time.time;
-                canGetHurt = false;
+				if (collision.gameObject.layer == LayerMask.NameToLayer ("powerup9avoid") && GameSave.gameSave.powerup9 == 2) {
+
+				}
+				else {
+					healthAmount -= 1;
+					beginHarmedSequence = true;
+					recordTime = Time.time;
+					canGetHurt = false;
+				}
             }
         }
     }
@@ -260,10 +282,15 @@ public class Health : MonoBehaviour {
         {
             if (canGetHurt)
             {
-                healthAmount -= 1;
-                beginHarmedSequence = true;
-                recordTime = Time.time;
-                canGetHurt = false;
+				if (collision.gameObject.layer == LayerMask.NameToLayer ("powerup9avoid") && GameSave.gameSave.powerup9 == 2) {
+
+				}
+				else {
+					healthAmount -= 1;
+					beginHarmedSequence = true;
+					recordTime = Time.time;
+					canGetHurt = false;
+				}
             }
         }
     }

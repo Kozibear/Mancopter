@@ -21,6 +21,8 @@ public class oneWayPufferfish : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+		GameSave.gameSave.Load ();
+
 		//we create an array of all our objects with the ground tag (less intensive on unity, and less time-consuming, than individually listing the names of all objects)
 		groundArray = GameObject.FindGameObjectsWithTag("ground");
 
@@ -29,6 +31,8 @@ public class oneWayPufferfish : MonoBehaviour {
 		{
 			Physics2D.IgnoreCollision(ground.GetComponent<BoxCollider2D>(), this.GetComponent<BoxCollider2D>());
 		}
+
+		movementSpeed = 0.22f;
 	}
 		
 	void FixedUpdate()
@@ -60,15 +64,23 @@ public class oneWayPufferfish : MonoBehaviour {
 		}
 	}
 
+	void OnTriggerEnter2D (Collider2D coll)
+	{
+		if (coll.gameObject.tag == "harmfulobject" && coll.gameObject.name != "Area1" && coll.gameObject.name != "Area2" && coll.gameObject.name != "Area3" && coll.gameObject.name != "Area4")
+		{
+			health -= 1;
+		}
+	}
+
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
-		if (collision.gameObject.tag == "Player")
+		if (collision.gameObject.tag == "Player" && collision.gameObject.GetComponent<Health>().canGetHurt)
 		{
 			//Makes this object the parent of the colliding "player" object
 			collision.transform.parent = this.transform;
 		}
 
-		if (collision.gameObject.tag == "harmfulobject")
+		if (collision.gameObject.tag == "harmfulobject"  && collision.gameObject.name != "Corner1" && collision.gameObject.name != "Corner2" && collision.gameObject.name != "Corner3" && collision.gameObject.name != "Corner4" && collision.gameObject.name != "Corner5" && collision.gameObject.name != "Corner6" && collision.gameObject.name != "Corner7" && collision.gameObject.name != "Corner8")
 		{
 			health -= 1;
 		}
@@ -76,14 +88,14 @@ public class oneWayPufferfish : MonoBehaviour {
 
 	private void OnCollisionStay2D(Collision2D collision)
 	{
-		if (collision.gameObject.tag == "Player")
+		if (collision.gameObject.tag == "Player" && collision.gameObject.GetComponent<Health>().canGetHurt)
 		{
 			collision.transform.parent = this.transform;
-		}
 
-		if (collision.gameObject.tag == "harmfulobject")
-		{
-			health -= 1;
+			if (GameSave.gameSave.powerup3 == 2) {
+
+				collision.gameObject.GetComponent<pointSystem> ().accumulateGroundPoints = true;
+			}
 		}
 	}
 
@@ -92,6 +104,10 @@ public class oneWayPufferfish : MonoBehaviour {
 		if (collision.gameObject.tag == "Player")
 		{
 			collision.transform.parent = null;
+
+			if (GameSave.gameSave.powerup3 == 2) {
+				collision.gameObject.GetComponent<pointSystem> ().accumulateGroundPoints = false;
+			}
 		}
 	}
 }

@@ -30,7 +30,7 @@ public class pufferfishArraySystem : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		canSelectLocation = false;
-		timeToNextPufferfish = 50;
+		timeToNextPufferfish = 45;
 		firstTime = true;
 	}
 	
@@ -65,6 +65,7 @@ public class pufferfishArraySystem : MonoBehaviour {
 		}
 
 		if (canSelectLocation) {
+
 			//we select a random number from the length of our range of possible locations
 			selectedLocation = Random.Range (1, 11);
 
@@ -73,7 +74,7 @@ public class pufferfishArraySystem : MonoBehaviour {
 				Instantiate(left1, transform.GetChild(0).transform.position, transform.GetChild(0).transform.rotation);
 			}
 			if (selectedLocation == 2) {
-				Instantiate(left2, transform.GetChild(1).transform.position, transform.GetChild(1).transform.rotation);
+				Instantiate(left2, transform.GetChild(1).transform.position, transform.GetChild(1).transform.rotation);		
 			}
 			if (selectedLocation == 3) {
 				Instantiate(left3, transform.GetChild(2).transform.position, transform.GetChild(2).transform.rotation);
@@ -99,7 +100,7 @@ public class pufferfishArraySystem : MonoBehaviour {
 			if (selectedLocation == 10) {
 				Instantiate(right5, transform.GetChild(9).transform.position, transform.GetChild(9).transform.rotation);
 			}
-
+				
 			canSelectLocation = false;
 		}
 

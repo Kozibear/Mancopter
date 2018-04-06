@@ -62,6 +62,49 @@ public class CopterBasicMovements : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
+
+		GameSave.gameSave.Load ();
+
+		//powerup 1
+		if (GameSave.gameSave.powerup1 == 2) {
+			storedDoubleJumpTimes += 1;
+		}
+
+		//powerup 2
+		if (GameSave.gameSave.powerup2 == 2) {
+			storedDoubleJumpTimes -= 1;
+		}
+
+		//powerup 5
+		if (GameSave.gameSave.powerup5 == 2) {
+			groundPoundSpeed = 750;
+		}
+
+		//powerup 6
+		if (GameSave.gameSave.powerup6 == 2) {
+			storedDoubleJumpTimes += 1;
+		}
+
+		//powerup 9
+		if (GameSave.gameSave.powerup9 == 2) {
+			//slowdownDescent = -40;
+		}
+
+		//powerup 11
+		if (GameSave.gameSave.powerup11 == 2) {
+			storedDoubleJumpTimes += 1;
+		}
+
+		//powerup 16
+		if (GameSave.gameSave.powerup16 == 2) {
+			storedDoubleJumpTimes += 1;
+		}
+
+		//powerup 20
+		if (GameSave.gameSave.powerup20 == 2) {
+			storedDoubleJumpTimes += 1;
+		}
+
 		rb2d.velocity = Vector3.zero;
 
         //we check if we saved at a checkpoint, and if we did, we transform our position to said checkpoint's position
@@ -405,6 +448,15 @@ public class CopterBasicMovements : MonoBehaviour {
 
 		if (collision.gameObject.tag == "harmfulobject") {
 			insideObject = true;
+
+			//for if the player is the child of a pufferfish
+			if (gameObject.transform.parent != null) {
+				
+				if (gameObject.transform.parent.name == "Harmless Belly") {
+					gameObject.transform.parent = null;
+				}
+			}
+
 		}
 
 		if (collision.gameObject.tag == "teleporter") {
