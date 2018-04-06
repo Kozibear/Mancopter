@@ -172,7 +172,7 @@ public class BlockArrayControl : MonoBehaviour {
 			//We select what kind of object is going to emerge from our platform:
 
 			//if we're between 90 and 110 seconds, we choose the bomb chucker
-			if (selectedBlockNumber != 0 && gameTimer.gameTime >= 10 && gameTimer.gameTime < 180) {
+			if (selectedBlockNumber != 0 && gameTimer.gameTime >= 90 && gameTimer.gameTime < 180) {
 				
 				//GameObject.Find ("Block"+selectedBlockNumber.ToString()).GetComponent<BlockMovementEffects> ().canSummonBombChucker = true;
 				canSummonBombChucker = true;
@@ -202,7 +202,7 @@ public class BlockArrayControl : MonoBehaviour {
 			*/
 
 			//if we're over 180 seconds, we choose between the bomb chucker, spike and pillar
-			else if (selectedBlockNumber != 0 && gameTimer.gameTime >= 180) {
+			if (selectedBlockNumber != 0 && gameTimer.gameTime >= 5) {
 
 				if (firstTimePillar) {
 					//GameObject.Find ("Block" + selectedBlockNumber.ToString ()).GetComponent<BlockMovementEffects> ().canSummonPillar = true;

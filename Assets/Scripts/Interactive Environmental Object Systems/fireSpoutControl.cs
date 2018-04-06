@@ -19,7 +19,7 @@ public class fireSpoutControl : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		nextTimeToFireSpouts = 3;
+		nextTimeToFireSpouts = 30;
 		firstTime = true;
 		selectSpout = false;
 	}

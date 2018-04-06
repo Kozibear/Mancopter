@@ -36,16 +36,13 @@ public class Health : MonoBehaviour {
 
 		GameSave.gameSave.Load ();
 
-		GameSave.gameSave.powerup9 = 2;
-
-		GameSave.gameSave.Save ();
-
 	}
 
     // Update is called once per frame
     void Update() {
         //every time the player loses one hit point, they lose one of their blades
         //when they lose a blade, it falls down, and ignores other objects' collision
+
         if (beginHarmedSequence)
         {
             //this is done so that the player doesn't immediately lose another man
@@ -168,6 +165,7 @@ public class Health : MonoBehaviour {
 
     private void FixedUpdate()
     {
+		
 		//this is for making the screen flash red
 		damageFlash.color = damageFlashColor;
 
@@ -201,18 +199,13 @@ public class Health : MonoBehaviour {
         {
 			GameSave.gameSave.Load ();
 			GameSave.gameSave.mostRecentScore = this.gameObject.GetComponent<pointSystem> ().totalPoints;
-			/*
-			GameSave.gameSave.powerup1 = 2;
-			GameSave.gameSave.powerup4 = 2;
-			GameSave.gameSave.powerup11 = 2;
-			GameSave.gameSave.powerup12 = 2;
-			GameSave.gameSave.powerup17 = 2;
-			*/
+
 			GameSave.gameSave.Save ();
 
 			SceneManager.LoadScene("Splash Upgrades Scores", LoadSceneMode.Single);
         }
     }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -243,7 +236,7 @@ public class Health : MonoBehaviour {
             if (canGetHurt)
             {
 				if (collision.gameObject.layer == LayerMask.NameToLayer ("powerup9avoid") && GameSave.gameSave.powerup9 == 2) {
-					print ("OK2");
+
 				}
 				else {
 					healthAmount -= 1;

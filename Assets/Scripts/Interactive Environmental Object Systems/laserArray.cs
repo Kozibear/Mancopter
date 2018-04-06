@@ -28,7 +28,7 @@ public class laserArray : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		canSelectLocation = false;
-		timeToNextLaser = 160; //160
+		timeToNextLaser = 120; //120
 		firstTime = true;
 	}
 	

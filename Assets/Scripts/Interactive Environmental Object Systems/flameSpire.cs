@@ -38,15 +38,15 @@ public class flameSpire : MonoBehaviour {
 		}
 
 		//and after about a second, we instantiate the fire pillar (enough above the controller object so that it goes from the bottom to the top of the screen
-		if (Time.time >= recordTime2 + 1.1 && onlyOnce2) {
-			GameObject Pillar = Instantiate (pillar, transform.position + new Vector3 (0, 8.7f, 0), transform.rotation);
+		if (Time.time >= recordTime2 + 1 && onlyOnce2) {
+			GameObject Pillar = Instantiate (pillar, transform.position + new Vector3 (0, 5f, 0), transform.rotation);
 			Pillar.transform.parent = grandparent.transform; //we make the fire pillar a child of the block
 			onlyOnce2 = false;
 		}
 
 			
 		//else, if the player never lands in this platform before it dops back in lava, we make it dissapear
-		if (Time.time >= recordTime + 10.3f) {
+		if (Time.time >= recordTime + 6) {
 
 			Destroy(gameObject);
 		}
@@ -60,7 +60,6 @@ public class flameSpire : MonoBehaviour {
 		
 		if (collision.gameObject.tag == "Player") {
 			bringTheFire = true;
-			print ("OK");
 		}
 
 	}

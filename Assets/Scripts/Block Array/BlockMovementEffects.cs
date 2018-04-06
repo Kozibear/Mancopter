@@ -202,7 +202,7 @@ public class BlockMovementEffects : MonoBehaviour {
 				
 				if (this.transform.parent.GetComponent<BlockArrayControl> ().firstTimePillar) {
 
-					GameObject FirePillar = Instantiate (firePillar, transform.position + new Vector3 (0, 0.8f, 0), transform.rotation);
+						GameObject FirePillar = Instantiate (firePillar, transform.position + new Vector3 (0, 0.8f, 0), transform.rotation);
 					FirePillar.transform.parent = this.transform;
 					this.transform.parent.GetComponent<BlockArrayControl> ().firstTimePillar = false;
 

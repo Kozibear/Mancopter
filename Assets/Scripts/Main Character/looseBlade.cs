@@ -264,13 +264,20 @@ public class looseBlade : MonoBehaviour {
         //we disabled the renderer, lower our health, make the player invincible briefly, and instantiate a deadMan
         if ((collision.gameObject.tag == "enemy" || collision.gameObject.tag == "harmfulobject") && baseObject.GetComponent<Health>().canGetHurt == true && GetComponent<Renderer>().enabled == true)
         {
-            GetComponent<Renderer>().enabled = false;
+			GameSave.gameSave.Load ();
 
-            baseObject.GetComponent<Health>().healthAmount -= 1;
-            baseObject.GetComponent<Health>().canGetHurt = false;
-            baseObject.GetComponent<Health>().recordTime = Time.time;
+			if (collision.gameObject.layer == LayerMask.NameToLayer ("powerup9avoid") && GameSave.gameSave.powerup9 == 2) {
 
-            isDead = true;
+			} 
+			else {
+				GetComponent<Renderer> ().enabled = false;
+
+				baseObject.GetComponent<Health> ().healthAmount -= 1;
+				baseObject.GetComponent<Health> ().canGetHurt = false;
+				baseObject.GetComponent<Health> ().recordTime = Time.time;
+
+				isDead = true;
+			}
         }
     }
 
@@ -278,13 +285,20 @@ public class looseBlade : MonoBehaviour {
 	{
 		if ((collision.gameObject.tag == "enemy" || collision.gameObject.tag == "harmfulobject") && baseObject.GetComponent<Health>().canGetHurt == true && GetComponent<Renderer>().enabled == true)
 		{
-			GetComponent<Renderer>().enabled = false;
+			GameSave.gameSave.Load ();
 
-			baseObject.GetComponent<Health>().healthAmount -= 1;
-			baseObject.GetComponent<Health>().canGetHurt = false;
-			baseObject.GetComponent<Health>().recordTime = Time.time;
+			if (collision.gameObject.layer == LayerMask.NameToLayer ("powerup9avoid") && GameSave.gameSave.powerup9 == 2) {
 
-			isDead = true;
+			} 
+			else {
+				GetComponent<Renderer> ().enabled = false;
+
+				baseObject.GetComponent<Health> ().healthAmount -= 1;
+				baseObject.GetComponent<Health> ().canGetHurt = false;
+				baseObject.GetComponent<Health> ().recordTime = Time.time;
+
+				isDead = true;
+			}
 		}
 	}
 

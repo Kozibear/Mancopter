@@ -472,4 +472,5 @@ public class CopterBasicMovements : MonoBehaviour {
 			insideObject = false;
 		}
 	}
+
 }
