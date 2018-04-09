@@ -23,7 +23,7 @@ public class terrainCorruptorArray : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		canSelectLocation = false;
-		timeToNextCorruptor = 70;
+		timeToNextCorruptor = 50; //should be 50
 		firstTime = true;
 	}
 	

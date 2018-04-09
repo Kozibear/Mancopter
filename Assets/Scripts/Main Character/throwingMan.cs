@@ -39,6 +39,8 @@ public class throwingMan : MonoBehaviour {
         flashTimeRecorder = Time.time;
 
         isDead = false;
+
+		GameSave.gameSave.Load ();
     }
 	
 	// Update is called once per frame
@@ -246,7 +248,12 @@ public class throwingMan : MonoBehaviour {
 
         if(collision.gameObject.tag == "harmfulobject")
         {
-            isDead = true;
+			if (GameSave.gameSave.powerup17 == 2) {
+				isDead = false;
+			}
+			else {
+				isDead = true;
+			}
         }
 
     } 

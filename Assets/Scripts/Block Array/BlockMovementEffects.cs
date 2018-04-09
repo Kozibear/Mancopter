@@ -131,12 +131,20 @@ public class BlockMovementEffects : MonoBehaviour {
 		//if this block's number is chosen...
 		if (this.transform.parent.GetComponent<BlockArrayControl>().selectedBlockNumber == thisBlocksNumber && this.transform.parent.GetComponent<BlockArrayControl>().thisArray == true) {
 
-			//first, if we were given the opportunity to summon a bomb, we check to see if we summon one;
-			//NOTE: As defined in the BlockArrayControl script, whether we can summon a bomb, a spike or a fire pillar is random, but equal
+			//If we were given the opportunity to summon a bomb, we check to see if we summon one;
 			if (this.transform.parent.GetComponent<BlockArrayControl>().canSummonBombChucker) {
 				if (this.transform.parent.GetComponent<BlockArrayControl> ().firstTimeBombChucker) {
+
+					/*
 					GameObject BombChucker = Instantiate (bombChucker, transform.position + new Vector3 (0, 0.8f, 0), transform.rotation);
 					BombChucker.transform.parent = this.transform;
+					BombChucker.GetComponent<stationaryBombChucker> ().Player = Player;
+					*/
+					GameObject BombChucker = Instantiate (bombChucker);
+					BombChucker.transform.parent = this.transform;
+					BombChucker.transform.rotation = this.transform.rotation;
+					BombChucker.transform.position = this.transform.position;
+					BombChucker.transform.localPosition += new Vector3 (0, 1.2f, 0);
 					BombChucker.GetComponent<stationaryBombChucker> ().Player = Player;
 
 					this.transform.parent.GetComponent<BlockArrayControl> ().firstTimeBombChucker = false;
@@ -145,83 +153,65 @@ public class BlockMovementEffects : MonoBehaviour {
 					coinFlip = Random.Range (1, 101);
 					if (coinFlip <= 15) {
 
-						GameObject BombChucker = Instantiate (bombChucker, transform.position + new Vector3 (0, 0.8f, 0), transform.rotation);
-						BombChucker.transform.parent = this.transform;
-						BombChucker.GetComponent<stationaryBombChucker> ().Player = Player;
+							GameObject BombChucker = Instantiate (bombChucker);
+							BombChucker.transform.parent = this.transform;
+							BombChucker.transform.rotation = this.transform.rotation;
+							BombChucker.transform.position = this.transform.position;
+							BombChucker.transform.localPosition += new Vector3 (0, 1.2f, 0);
+							BombChucker.GetComponent<stationaryBombChucker> ().Player = Player;
+
 					} 
 				} else if (gameTimer.gameTime >= 360) {
 					coinFlip = Random.Range (1, 101);
 					if (coinFlip <= 20) {
 
-						GameObject BombChucker = Instantiate (bombChucker, transform.position + new Vector3 (0, 0.8f, 0), transform.rotation);
-						BombChucker.transform.parent = this.transform;
-						BombChucker.GetComponent<stationaryBombChucker> ().Player = Player;
+							GameObject BombChucker = Instantiate (bombChucker);
+							BombChucker.transform.parent = this.transform;
+							BombChucker.transform.rotation = this.transform.rotation;
+							BombChucker.transform.position = this.transform.position;
+							BombChucker.transform.localPosition += new Vector3 (0, 1.2f, 0);
+							BombChucker.GetComponent<stationaryBombChucker> ().Player = Player;
 					} 
 				} 
 					
 				this.transform.parent.GetComponent<BlockArrayControl>().canSummonBombChucker = false;
 			}
 
-			/*
-			//second, if we were given the opportunity to summon a spike, we check to see if we summon one;
-			if (this.transform.parent.GetComponent<BlockArrayControl>().canSummonSpike) {
-
-				if (this.transform.parent.GetComponent<BlockArrayControl> ().firstTimeSpike) {
-
-					GameObject Spike = Instantiate (spike, transform.position + new Vector3 (0, 0.8f, 0), transform.rotation);
-					Spike.transform.parent = this.transform;
-					this.transform.parent.GetComponent<BlockArrayControl> ().firstTimeSpike = false;
-					buttonArray.newSpikeAllowed = false;
-
-				} else if (gameTimer.gameTime < 440 && buttonArray.newSpikeAllowed) { //we dont' summon another spike if one is already on the field
-
-					coinFlip = Random.Range (1, 101);
-					if (coinFlip <= 15) {
-
-						GameObject Spike = Instantiate (spike, transform.position + new Vector3 (0, 0.8f, 0), transform.rotation);
-						Spike.transform.parent = this.transform;
-						buttonArray.newSpikeAllowed = false;
-					} 
-				} else if (gameTimer.gameTime >= 440 && buttonArray.newSpikeAllowed) {
-
-					coinFlip = Random.Range (1, 101);
-					if (coinFlip <= 20) {
-
-						GameObject Spike = Instantiate (spike, transform.position + new Vector3 (0, 0.8f, 0), transform.rotation);
-						Spike.transform.parent = this.transform;
-						buttonArray.newSpikeAllowed = false;
-					} 
-				}
-
-				this.transform.parent.GetComponent<BlockArrayControl>().canSummonSpike = false;
-			}
-			*/
-
-			//third, if we were given the opportunity to summon a pillar of fire, we check to see if we summon one;
+			//If we were given the opportunity to summon a pillar of fire, we check to see if we summon one;
 			if (this.transform.parent.GetComponent<BlockArrayControl>().canSummonPillar) {
 				
 				if (this.transform.parent.GetComponent<BlockArrayControl> ().firstTimePillar) {
 
-						GameObject FirePillar = Instantiate (firePillar, transform.position + new Vector3 (0, 0.8f, 0), transform.rotation);
-					FirePillar.transform.parent = this.transform;
-					this.transform.parent.GetComponent<BlockArrayControl> ().firstTimePillar = false;
+						GameObject FirePillar = Instantiate (firePillar);
+						FirePillar.transform.parent = this.transform;
+						FirePillar.transform.rotation = this.transform.rotation;
+						FirePillar.transform.position = this.transform.position;
+						FirePillar.transform.localPosition += new Vector3 (0, 1, 0);
 
-				} else if (gameTimer.gameTime < 440) {
+						this.transform.parent.GetComponent<BlockArrayControl> ().firstTimePillar = false;
+
+				} else if (gameTimer.gameTime < 180) {
 
 					coinFlip = Random.Range (1, 101);
 					if (coinFlip <= 15) {
 
-						GameObject FirePillar = Instantiate (firePillar, transform.position + new Vector3 (0, 0.8f, 0), transform.rotation);
-						FirePillar.transform.parent = this.transform;
+							GameObject FirePillar = Instantiate (firePillar);
+							FirePillar.transform.parent = this.transform;
+							FirePillar.transform.rotation = this.transform.rotation;
+							FirePillar.transform.position = this.transform.position;
+							FirePillar.transform.localPosition += new Vector3 (0, 1, 0);
 					} 
 
-				} else if (gameTimer.gameTime >= 440) {
+				} else if (gameTimer.gameTime >= 180) {
 
 					coinFlip = Random.Range (1, 101);
 					if (coinFlip <= 20) {
 
-						GameObject FirePillar = Instantiate (firePillar, transform.position + new Vector3 (0, 0.8f, 0), transform.rotation);
-						FirePillar.transform.parent = this.transform;
+							GameObject FirePillar = Instantiate (firePillar);
+							FirePillar.transform.parent = this.transform;
+							FirePillar.transform.rotation = this.transform.rotation;
+							FirePillar.transform.position = this.transform.position;
+							FirePillar.transform.localPosition += new Vector3 (0, 1, 0);
 					} 
 				} 
 
@@ -306,3 +296,38 @@ public class BlockMovementEffects : MonoBehaviour {
 		}
 	}
 }
+
+	/*
+			//second, if we were given the opportunity to summon a spike, we check to see if we summon one;
+	if (this.transform.parent.GetComponent<BlockArrayControl>().canSummonSpike) {
+
+		if (this.transform.parent.GetComponent<BlockArrayControl> ().firstTimeSpike) {
+
+			GameObject Spike = Instantiate (spike, transform.position + new Vector3 (0, 0.8f, 0), transform.rotation);
+			Spike.transform.parent = this.transform;
+			this.transform.parent.GetComponent<BlockArrayControl> ().firstTimeSpike = false;
+			buttonArray.newSpikeAllowed = false;
+
+		} else if (gameTimer.gameTime < 440 && buttonArray.newSpikeAllowed) { //we dont' summon another spike if one is already on the field
+
+			coinFlip = Random.Range (1, 101);
+			if (coinFlip <= 15) {
+
+				GameObject Spike = Instantiate (spike, transform.position + new Vector3 (0, 0.8f, 0), transform.rotation);
+				Spike.transform.parent = this.transform;
+				buttonArray.newSpikeAllowed = false;
+			} 
+		} else if (gameTimer.gameTime >= 440 && buttonArray.newSpikeAllowed) {
+
+			coinFlip = Random.Range (1, 101);
+			if (coinFlip <= 20) {
+
+				GameObject Spike = Instantiate (spike, transform.position + new Vector3 (0, 0.8f, 0), transform.rotation);
+				Spike.transform.parent = this.transform;
+				buttonArray.newSpikeAllowed = false;
+			} 
+		}
+
+		this.transform.parent.GetComponent<BlockArrayControl>().canSummonSpike = false;
+	}
+	*/

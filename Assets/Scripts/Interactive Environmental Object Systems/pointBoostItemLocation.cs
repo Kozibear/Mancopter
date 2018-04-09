@@ -15,7 +15,7 @@ public class pointBoostItemLocation : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		canSelectLocation = false;
-		timeToNextBoostAvailability = 30;
+		timeToNextBoostAvailability = 20; //sound be 20
 	}
 
 	void FixedUpdate () {
@@ -23,7 +23,7 @@ public class pointBoostItemLocation : MonoBehaviour {
 		//if the gameTime has passed the time required to wait until the next boost's availability
 		if (gameTimer.gameTime >= timeToNextBoostAvailability) {
 			canSelectLocation = true;
-			timeToNextBoostAvailability += 30; //we set the next boost's availability 30 seconds in the future;
+			timeToNextBoostAvailability += 20; //we set the next boost's availability 20 seconds in the future;
 		}
 
 		if (canSelectLocation) {

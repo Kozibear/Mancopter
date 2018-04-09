@@ -31,11 +31,13 @@ public class StraightTerrainCorrupter : MonoBehaviour {
     // Use this for initialization
     void Start () {
         //playerInRange = false;
-        health = 3;
+        health = 1;
 
         canThrowBomb = true;
 
 		recordTime = Time.time;
+
+		GameSave.gameSave.Load ();
     }
 	
 	// Update is called once per frame
@@ -96,7 +98,7 @@ public class StraightTerrainCorrupter : MonoBehaviour {
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
 		//if the player attacks the enemy, it gets hurt!
-		if ((collision.gameObject.tag == "throwingMan" || collision.gameObject.tag == "harmfulobject") && !invincibility)
+		if ((collision.gameObject.tag == "throwingMan" || (collision.gameObject.tag == "harmfulobject" && collision.gameObject.name != "CorrupterStraightBomb(Clone)")) && !invincibility)
 		{
 			health -= 1;
 
@@ -151,10 +153,18 @@ public class StraightTerrainCorrupter : MonoBehaviour {
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		//if the player crashes through us a second time, our box collider is set to trigger, so the player passes right through us
-
 		if (collision.gameObject.tag == "Player" && !invincibility && health == 1)
 		{
 			box2d.isTrigger = true;
+			health -= 1;
+		}
+
+		if (collision.gameObject.layer == LayerMask.NameToLayer("powerup9avoid") && GameSave.gameSave.powerup7 == 2)
+		{
+			Player.GetComponent<pointSystem> ().previouslyEarnedPoints += 250;
+		}
+
+		if (collision.gameObject.tag == "harmfulobject"  && collision.gameObject.name != "CorrupterStraightBomb(Clone)") {
 			health -= 1;
 		}
 

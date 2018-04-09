@@ -18,6 +18,8 @@ public class oneWayPufferfish : MonoBehaviour {
 
 	public float health = 1;
 
+	public GameObject Player;
+
 	// Use this for initialization
 	void Start () {
 
@@ -66,6 +68,13 @@ public class oneWayPufferfish : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D coll)
 	{
+		print (coll.gameObject.name);
+
+		if (coll.gameObject.layer == LayerMask.NameToLayer("powerup9avoid") && GameSave.gameSave.powerup7 == 2)
+		{
+			Player.GetComponent<pointSystem> ().previouslyEarnedPoints += 350;
+		}
+
 		if (coll.gameObject.tag == "harmfulobject" && coll.gameObject.name != "Area1" && coll.gameObject.name != "Area2" && coll.gameObject.name != "Area3" && coll.gameObject.name != "Area4")
 		{
 			health -= 1;
@@ -78,6 +87,11 @@ public class oneWayPufferfish : MonoBehaviour {
 		{
 			//Makes this object the parent of the colliding "player" object
 			collision.transform.parent = this.transform;
+		}
+
+		if (collision.gameObject.layer == LayerMask.NameToLayer("powerup9avoid"))
+		{
+			
 		}
 
 		if (collision.gameObject.tag == "harmfulobject"  && collision.gameObject.name != "Corner1" && collision.gameObject.name != "Corner2" && collision.gameObject.name != "Corner3" && collision.gameObject.name != "Corner4" && collision.gameObject.name != "Corner5" && collision.gameObject.name != "Corner6" && collision.gameObject.name != "Corner7" && collision.gameObject.name != "Corner8")

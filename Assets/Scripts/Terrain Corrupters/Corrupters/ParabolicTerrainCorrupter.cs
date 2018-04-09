@@ -11,12 +11,12 @@ public class ParabolicTerrainCorrupter : MonoBehaviour {
     public GameObject[] deadManArray;
 
     public GameObject LeftParaBomb;
+
     public GameObject RightParaBomb;
 
     public float bombDirection;
 
     public bool canThrowBomb;
-
 
 	public float recordTime;
 
@@ -32,11 +32,13 @@ public class ParabolicTerrainCorrupter : MonoBehaviour {
     // Use this for initialization
     void Start () {
         //playerInRange = false;
-        health = 3;
+        health = 1;
 
         canThrowBomb = true;
 
 		recordTime = Time.time;
+
+		GameSave.gameSave.Load ();
     }
 	
 	// Update is called once per frame
@@ -98,29 +100,11 @@ public class ParabolicTerrainCorrupter : MonoBehaviour {
 			Destroy(gameObject);
 		}
     }
-
-	/*
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            playerInRange = true;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            playerInRange = false;
-        }
-    }
-	*/
-
+		
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
 		//if the player attacks the enemy, it gets hurt!
-		if ((collision.gameObject.tag == "throwingMan" || collision.gameObject.tag == "harmfulobject") && !invincibility)
+		if ((collision.gameObject.tag == "throwingMan" || (collision.gameObject.tag == "harmfulobject" && collision.gameObject.name != "LeftCorrupterParaBomb(Clone)" && collision.gameObject.name != "RightCorrupterParaBomb(Clone)")) && !invincibility)
 		{
 			health -= 1;
 
@@ -175,13 +159,20 @@ public class ParabolicTerrainCorrupter : MonoBehaviour {
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		//if the player crashes through us a second time, our box collider is set to trigger, so the player passes right through us
-
 		if (collision.gameObject.tag == "Player" && !invincibility && health == 1)
 		{
 			box2d.isTrigger = true;
 			health -= 1;
 		}
 
+		if (collision.gameObject.layer == LayerMask.NameToLayer("powerup9avoid") && GameSave.gameSave.powerup7 == 2)
+		{
+			Player.GetComponent<pointSystem> ().previouslyEarnedPoints += 250;
+		}
+
+		if (collision.gameObject.tag == "harmfulobject" && collision.gameObject.name != "LeftCorrupterParaBomb(Clone)" && collision.gameObject.name != "RightCorrupterParaBomb(Clone)") {
+			health -= 1;
+		}
 	}
 
 }

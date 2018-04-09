@@ -171,38 +171,15 @@ public class BlockArrayControl : MonoBehaviour {
 
 			//We select what kind of object is going to emerge from our platform:
 
-			//if we're between 90 and 110 seconds, we choose the bomb chucker
-			if (selectedBlockNumber != 0 && gameTimer.gameTime >= 90 && gameTimer.gameTime < 180) {
+			//if we're between 30 and 90 seconds, we choose the bomb chucker
+			if (selectedBlockNumber != 0 && gameTimer.gameTime >= 30 && gameTimer.gameTime < 90) {
 				
 				//GameObject.Find ("Block"+selectedBlockNumber.ToString()).GetComponent<BlockMovementEffects> ().canSummonBombChucker = true;
 				canSummonBombChucker = true;
 			}
 
-			/*
-			//if we're between 110 and 180 seconds, we choose between the bomb chucker and the spike
-			else if (selectedBlockNumber != 0 && gameTimer.gameTime >= 110 && gameTimer.gameTime < 180) {
-
-				if (firstTimeSpike) {
-					//GameObject.Find ("Block" + selectedBlockNumber.ToString ()).GetComponent<BlockMovementEffects> ().canSummonSpike = true;
-					canSummonSpike = true;
-				} 
-				else {
-					coinFlip = Random.Range (1, 3);
-
-					if (coinFlip == 1) {
-						//GameObject.Find ("Block" + selectedBlockNumber.ToString ()).GetComponent<BlockMovementEffects> ().canSummonBombChucker = true;
-						canSummonBombChucker = true;
-					}
-					if (coinFlip == 2) {
-						//GameObject.Find ("Block" + selectedBlockNumber.ToString ()).GetComponent<BlockMovementEffects> ().canSummonSpike = true;
-						canSummonSpike = true;
-					}
-				}
-			}
-			*/
-
-			//if we're over 180 seconds, we choose between the bomb chucker, spike and pillar
-			if (selectedBlockNumber != 0 && gameTimer.gameTime >= 5) {
+			//if we're over 90 seconds, we choose between the bomb chucker and the pillar
+			if (selectedBlockNumber != 0 && gameTimer.gameTime >= 90) {
 
 				if (firstTimePillar) {
 					//GameObject.Find ("Block" + selectedBlockNumber.ToString ()).GetComponent<BlockMovementEffects> ().canSummonPillar = true;
@@ -220,12 +197,6 @@ public class BlockArrayControl : MonoBehaviour {
 						//GameObject.Find ("Block" + selectedBlockNumber.ToString ()).GetComponent<BlockMovementEffects> ().canSummonPillar = true;
 						canSummonPillar = true;
 					}
-					/*
-					if (coinFlip == 2) {
-						//GameObject.Find ("Block" + selectedBlockNumber.ToString ()).GetComponent<BlockMovementEffects> ().canSummonSpike = true;
-						canSummonSpike = true;
-					}
-					*/
 				}
 
 			}
@@ -234,3 +205,34 @@ public class BlockArrayControl : MonoBehaviour {
 		}
 	}
 }
+
+
+/*
+			//if we're between 110 and 180 seconds, we choose between the bomb chucker and the spike
+else if (selectedBlockNumber != 0 && gameTimer.gameTime >= 110 && gameTimer.gameTime < 180) {
+
+	if (firstTimeSpike) {
+		//GameObject.Find ("Block" + selectedBlockNumber.ToString ()).GetComponent<BlockMovementEffects> ().canSummonSpike = true;
+		canSummonSpike = true;
+	} 
+	else {
+		coinFlip = Random.Range (1, 3);
+
+		if (coinFlip == 1) {
+			//GameObject.Find ("Block" + selectedBlockNumber.ToString ()).GetComponent<BlockMovementEffects> ().canSummonBombChucker = true;
+			canSummonBombChucker = true;
+		}
+		if (coinFlip == 2) {
+			//GameObject.Find ("Block" + selectedBlockNumber.ToString ()).GetComponent<BlockMovementEffects> ().canSummonSpike = true;
+			canSummonSpike = true;
+		}
+	}
+}
+*/
+
+/*
+if (coinFlip == 2) {
+	//GameObject.Find ("Block" + selectedBlockNumber.ToString ()).GetComponent<BlockMovementEffects> ().canSummonSpike = true;
+	canSummonSpike = true;
+}
+*/

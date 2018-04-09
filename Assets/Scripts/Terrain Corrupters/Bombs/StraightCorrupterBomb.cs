@@ -33,7 +33,7 @@ public class StraightCorrupterBomb : MonoBehaviour {
         //we make the bomb move towards the destination point object by making it follow the parent's first child, the destination point object
         if(!stopMoving)
         {
-            transform.position = Vector3.MoveTowards(this.transform.position, this.transform.parent.transform.GetChild(0).transform.position, 0.15f);
+			transform.position = Vector3.MoveTowards(this.transform.position, this.transform.parent.transform.GetChild(0).transform.position, 1.65f*Time.deltaTime);
         }
         
 
@@ -52,7 +52,6 @@ public class StraightCorrupterBomb : MonoBehaviour {
 
         if (collision.gameObject.tag == "corruptorTriggerArea")
         {
-            
             stopMoving = true;
             GameObject terrain = Instantiate(corruptedTerrain, transform.position + new Vector3(0, -0.65f, 0), transform.rotation);
             //we make the corrupted terrain a child of the greater parent object, so that it too can easily communicate with its parent

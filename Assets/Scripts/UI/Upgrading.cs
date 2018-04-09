@@ -539,7 +539,7 @@ public class Upgrading : MonoBehaviour {
 
 	public void hoverItem7()
 	{
-		itemDescription.text = "Lazer Time (COST: 7000 points) \n\nEvery time a lazer destroys an enemy, you gain 150 points.";
+		itemDescription.text = "Lazer Time (COST: 7000 points) \n\nEvery time a lazer or a vertical stream of lava destroys an enemy, you gain 350 points.";
 	}
 
 	public void hoverItem8()
@@ -569,12 +569,12 @@ public class Upgrading : MonoBehaviour {
 
 	public void hoverItem13()
 	{
-		itemDescription.text = "Adrenaline (COST: 13000 points) \n\nYou jump higher, but bomb chuckers and terrain corrupters shooter their projectiles twice as frequently.";
+		itemDescription.text = "Adrenaline (COST: 13000 points) \n\nYou jump higher, but bomb chuckers and terrain corrupters shooter their projectiles much more frequently.";
 	}
 
 	public void hoverItem14()
 	{
-		itemDescription.text = "Pufferfish Summoner (COST: 14000 points) \n\nWhen there are no Pufferfish in the play space, press P to summon a pufferfish for 100 points.";
+		itemDescription.text = "Pufferfish Summoner (COST: 14000 points) \n\nWhen there are no Pufferfish in the play space, press P to summon a pufferfish for 100 points (You must have at least 100 points to do so!).";
 	}
 
 	public void hoverItem15()
@@ -589,7 +589,7 @@ public class Upgrading : MonoBehaviour {
 
 	public void hoverItem17()
 	{
-		itemDescription.text = "Masochist (COST: 17000 points) \n\nLazers and bombs earn you points when touching them, but you instantly die if you touch the edges of the play space.";
+		itemDescription.text = "Throw Guard (COST: 17000 points) \n\nYour thrown mans are immune to all damage. Throw away!";
 	}
 
 	public void hoverItem18()

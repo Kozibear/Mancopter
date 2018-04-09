@@ -39,8 +39,8 @@ public class flameSpire : MonoBehaviour {
 
 		//and after about a second, we instantiate the fire pillar (enough above the controller object so that it goes from the bottom to the top of the screen
 		if (Time.time >= recordTime2 + 1 && onlyOnce2) {
-			GameObject Pillar = Instantiate (pillar, transform.position + new Vector3 (0, 5f, 0), transform.rotation);
-			Pillar.transform.parent = grandparent.transform; //we make the fire pillar a child of the block
+			GameObject Pillar = Instantiate (pillar, transform.position + new Vector3 (0, 16f, 0), transform.rotation);
+			//Pillar.transform.parent = grandparent.transform; //we make the fire pillar a child of the block
 			onlyOnce2 = false;
 		}
 

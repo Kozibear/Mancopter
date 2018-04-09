@@ -14,6 +14,8 @@ public class startGameButton : MonoBehaviour {
 
 	public Button startGame;
 
+	public GameObject musicManager;
+
 	// Use this for initialization
 	void Start () {
 		blackBackground.gameObject.SetActive (true);
@@ -60,6 +62,8 @@ public class startGameButton : MonoBehaviour {
 
 	void startTheGame() {
 		GameSave.gameSave.Load ();
+
+		musicManager.GetComponent<SplashScreenMusic> ().sceneEnding = true;
 
 		darkenScreen = true;
 	}

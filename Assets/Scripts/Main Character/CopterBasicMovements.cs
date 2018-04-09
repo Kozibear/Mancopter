@@ -60,6 +60,10 @@ public class CopterBasicMovements : MonoBehaviour {
 
 	public bool playSpaceRotating;
 
+	public GameObject pufferfishArray;
+
+	public bool collectedGroundPoundTerrainMultiplier;
+
     // Use this for initialization
     void Start() {
 
@@ -87,12 +91,17 @@ public class CopterBasicMovements : MonoBehaviour {
 
 		//powerup 9
 		if (GameSave.gameSave.powerup9 == 2) {
-			//slowdownDescent = -40;
+			slowdownDescent = -40;
 		}
 
 		//powerup 11
 		if (GameSave.gameSave.powerup11 == 2) {
 			storedDoubleJumpTimes += 1;
+		}
+
+		//powerup 13
+		if (GameSave.gameSave.powerup13 == 2) {
+			jumpForce = 1260;
 		}
 
 		//powerup 16
@@ -126,7 +135,8 @@ public class CopterBasicMovements : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        //I have to put all the keystrokes in the update, OTHERWISE I need to be pressing the key at the exact moment when the program updates
+
+		//I have to put all the keystrokes in the update, OTHERWISE I need to be pressing the key at the exact moment when the program updates
         if (Input.GetKey("q") && Input.GetKey("z"))
         {
             PlayerPrefs.DeleteAll();
@@ -191,6 +201,14 @@ public class CopterBasicMovements : MonoBehaviour {
             rb2d.velocity = Vector3.zero;
             beginDownwardsPush = false;
         }
+
+		//for summoning pufferfish
+		if (GameSave.gameSave.powerup14 == 2 && Input.GetKeyDown (KeyCode.P) && this.gameObject.GetComponent<pointSystem> ().totalPoints >= 100) {
+
+			this.gameObject.GetComponent<pointSystem> ().previouslyEarnedPoints -= 100;
+
+			pufferfishArray.GetComponent<pufferfishArraySystem> ().canSelectLocation = true;
+		}
     }
 
     void FixedUpdate() { 
@@ -209,6 +227,7 @@ public class CopterBasicMovements : MonoBehaviour {
             jumping = false;
             emergencyDescent = true;
             //canRapidSpinAttack = true;
+			collectedGroundPoundTerrainMultiplier = false;
 
             rb2d.gravityScale = 1f;
 
@@ -417,6 +436,13 @@ public class CopterBasicMovements : MonoBehaviour {
             shakeWorld = true;
             //Important make sure that springs are not included!
         }
+
+		if (collision.gameObject.name == "leftParabolicTerrainCorrupter(Clone)" || collision.gameObject.name == "middletraightTerrainCorrupter(Clone)"  || collision.gameObject.name == "rightParabolicTerrainCorrupter(Clone)") {
+		
+			if (GameSave.gameSave.powerup8 == 2 && (Input.GetKey ("down") || Input.GetKey ("s"))) {
+				this.gameObject.GetComponent<pointSystem> ().pointMultiplier *= 1.05f;
+			}
+		}
     }
 
 	private void OnCollisionStay2D(Collision2D collision)
@@ -441,12 +467,21 @@ public class CopterBasicMovements : MonoBehaviour {
 			rb2d.velocity = Vector3.zero;
 			transform.parent.transform.position = spawnPoint.transform.position;
 		}
+
+		if (collision.gameObject.name == "leftParabolicTerrainCorrupter(Clone)" || collision.gameObject.name == "middletraightTerrainCorrupter(Clone)"  || collision.gameObject.name == "rightParabolicTerrainCorrupter(Clone)") {
+
+			if (GameSave.gameSave.powerup8 == 2 && (Input.GetKey ("down") || Input.GetKey ("s")) && !collectedGroundPoundTerrainMultiplier) {
+				this.gameObject.GetComponent<pointSystem> ().pointMultiplier *= 1.05f;
+				collectedGroundPoundTerrainMultiplier = true;
+			}
+		}
 	}
 
 	private void OnTriggerStay2D (Collider2D collision)
 	{
 
-		if (collision.gameObject.tag == "harmfulobject") {
+		if (collision.gameObject.tag == "harmfulobject" && collision.gameObject.name != "flamePillar(Clone)"){
+
 			insideObject = true;
 
 			//for if the player is the child of a pufferfish

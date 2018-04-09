@@ -13,19 +13,31 @@ public class CorruptedTerrain : MonoBehaviour {
 		moveOnce = true;
 
 		transform.position = new Vector3 (transform.position.x, transform.position.y - 0.29f, transform.position.z);
+
+		GameSave.gameSave.Load ();
+
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		if(Time.time >= recordTime+6f)
-        {
-            this.transform.parent.GetComponent<ParabolicTerrainCorrupter>().canThrowBomb = true;
-            Destroy(gameObject);
-        }
+
+		if (GameSave.gameSave.powerup13 != 2) {
+			if (Time.time >= recordTime + 6f) {
+				this.transform.parent.GetComponent<ParabolicTerrainCorrupter> ().canThrowBomb = true;
+				Destroy (gameObject);
+			}
+		} 
+		else {
+			if (Time.time >= recordTime + 0.5f) {
+				this.transform.parent.GetComponent<ParabolicTerrainCorrupter> ().canThrowBomb = true;
+				Destroy (gameObject);
+			}
+		}
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
+		/*
 		//upon collision with a ground object
 		if (collision.gameObject.tag == "ground") {
 			//if the y value of this object is not equal to the ground's y location + half of the ground's height, we make it this value
@@ -36,5 +48,6 @@ public class CorruptedTerrain : MonoBehaviour {
 
 			moveOnce = false;
 		}
+		*/
 	}
 }

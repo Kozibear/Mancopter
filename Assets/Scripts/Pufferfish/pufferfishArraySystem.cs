@@ -30,7 +30,7 @@ public class pufferfishArraySystem : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		canSelectLocation = false;
-		timeToNextPufferfish = 45;
+		timeToNextPufferfish = 45; //45
 		firstTime = true;
 	}
 	
@@ -43,7 +43,7 @@ public class pufferfishArraySystem : MonoBehaviour {
 				canSelectLocation = true;
 				firstTime = false;
 			} 
-			else if (gameTimer.gameTime < 200) { //before 100 seconds, we have a 15% chance of summoning one
+			else if (gameTimer.gameTime < 150) { //before X seconds, we have a 15% chance of summoning one
 
 				coinFlip  = Random.Range (1, 101);
 				if (coinFlip <= 15) {
@@ -51,7 +51,7 @@ public class pufferfishArraySystem : MonoBehaviour {
 					canSelectLocation = true;
 				} 
 			}
-			else if (gameTimer.gameTime >= 200) { //after 100 seconds, we have a 20% chance
+			else if (gameTimer.gameTime >= 150) { //after X seconds, we have a 20% chance
 
 				coinFlip  = Random.Range (1, 101);
 				print (coinFlip);
@@ -71,34 +71,55 @@ public class pufferfishArraySystem : MonoBehaviour {
 
 			//then, we instantiate our gameObject in the location of the corresponding chosen child object
 			if (selectedLocation == 1) {
-				Instantiate(left1, transform.GetChild(0).transform.position, transform.GetChild(0).transform.rotation);
+
+				GameObject pufferfish = Instantiate(left1, transform.GetChild(0).transform.position, transform.GetChild(0).transform.rotation);
+				pufferfish.transform.GetChild(0).GetComponent<oneWayPufferfish> ().Player = player;
+
 			}
 			if (selectedLocation == 2) {
-				Instantiate(left2, transform.GetChild(1).transform.position, transform.GetChild(1).transform.rotation);		
+				GameObject pufferfish = Instantiate(left1, transform.GetChild(1).transform.position, transform.GetChild(1).transform.rotation);
+				pufferfish.transform.GetChild(0).GetComponent<oneWayPufferfish> ().Player = player;
+
 			}
 			if (selectedLocation == 3) {
-				Instantiate(left3, transform.GetChild(2).transform.position, transform.GetChild(2).transform.rotation);
+				GameObject pufferfish = Instantiate(left1, transform.GetChild(2).transform.position, transform.GetChild(2).transform.rotation);
+				pufferfish.transform.GetChild(0).GetComponent<oneWayPufferfish> ().Player = player;
+
 			}
 			if (selectedLocation == 4) {
-				Instantiate(left4, transform.GetChild(3).transform.position, transform.GetChild(3).transform.rotation);
+				GameObject pufferfish = Instantiate(left1, transform.GetChild(3).transform.position, transform.GetChild(3).transform.rotation);
+				pufferfish.transform.GetChild(0).GetComponent<oneWayPufferfish> ().Player = player;
+
 			}
 			if (selectedLocation == 5) {
-				Instantiate(left5, transform.GetChild(4).transform.position, transform.GetChild(4).transform.rotation);
+				GameObject pufferfish = Instantiate(left1, transform.GetChild(4).transform.position, transform.GetChild(4).transform.rotation);
+				pufferfish.transform.GetChild(0).GetComponent<oneWayPufferfish> ().Player = player;
+
 			}
 			if (selectedLocation == 6) {
-				Instantiate(right1, transform.GetChild(5).transform.position, transform.GetChild(5).transform.rotation);
+				GameObject pufferfish = Instantiate(left1, transform.GetChild(5).transform.position, transform.GetChild(5).transform.rotation);
+				pufferfish.transform.GetChild(0).GetComponent<oneWayPufferfish> ().Player = player;
+
 			}
 			if (selectedLocation == 7) {
-				Instantiate(right2, transform.GetChild(6).transform.position, transform.GetChild(6).transform.rotation);
+				GameObject pufferfish = Instantiate(left1, transform.GetChild(6).transform.position, transform.GetChild(6).transform.rotation);
+				pufferfish.transform.GetChild(0).GetComponent<oneWayPufferfish> ().Player = player;
+
 			}
 			if (selectedLocation == 8) {
-				Instantiate(right3, transform.GetChild(7).transform.position, transform.GetChild(7).transform.rotation);
+				GameObject pufferfish = Instantiate(left1, transform.GetChild(7).transform.position, transform.GetChild(7).transform.rotation);
+				pufferfish.transform.GetChild(0).GetComponent<oneWayPufferfish> ().Player = player;
+
 			}
 			if (selectedLocation == 9) {
-				Instantiate(right4, transform.GetChild(8).transform.position, transform.GetChild(8).transform.rotation);
+				GameObject pufferfish = Instantiate(left1, transform.GetChild(8).transform.position, transform.GetChild(8).transform.rotation);
+				pufferfish.transform.GetChild(0).GetComponent<oneWayPufferfish> ().Player = player;
+
 			}
 			if (selectedLocation == 10) {
-				Instantiate(right5, transform.GetChild(9).transform.position, transform.GetChild(9).transform.rotation);
+				GameObject pufferfish = Instantiate(left1, transform.GetChild(9).transform.position, transform.GetChild(9).transform.rotation);
+				pufferfish.transform.GetChild(0).GetComponent<oneWayPufferfish> ().Player = player;
+
 			}
 				
 			canSelectLocation = false;

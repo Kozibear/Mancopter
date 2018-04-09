@@ -37,6 +37,8 @@ public class stationaryBombChucker : MonoBehaviour
 
 	public GameObject Player;
 
+	public float waitTime;
+
     // Use this for initialization
     void Start()
     {
@@ -44,11 +46,22 @@ public class stationaryBombChucker : MonoBehaviour
 
         lastBombThrow = 0f;
 
-        health = 2;
+        health = 1;
 
 		recordTime = Time.time;
 
 		invincibility = false;
+
+		GameSave.gameSave.Load ();
+
+		if (GameSave.gameSave.powerup13 == 2) {
+			waitTime = 0.9f;
+		} 
+		else {
+			waitTime = 2;
+		}
+
+		GameSave.gameSave.Load ();
     }
 
     // Update is called once per frame
@@ -69,67 +82,41 @@ public class stationaryBombChucker : MonoBehaviour
 
             //if the difference between the player's position to the left of the enemy and the enemy's position is greater than or equal to 1, we make the enemy face left
 		if ((this.transform.position.x - Player.transform.position.x) >= 1)
+		{
+            if (!facingLeft)
             {
-                if (!facingLeft)
-                {
-                    Vector3 flipScale = transform.localScale;
-                    flipScale.x *= -1;
-                    transform.localScale = flipScale;
+                Vector3 flipScale = transform.localScale;
+                flipScale.x *= -1;
+                transform.localScale = flipScale;
 
-                    facingLeft = true;
-                }
-
-			/*
-                //if a few seconds have passed since the last bomb throw, we instantiate a bomb object to damage the player
-			if (Time.time >= lastBombThrow + 2.0f && Time.time >= recordTime + 0.5f && Time.time <= recordTime+ 6.5f)
-                {
-                    //if the player is within 5 units of the bomb chucker, we throw the bombs a little shorter
-				if ((this.transform.position.x - Player.transform.position.x) <= 5)
-                    {
-                        Instantiate(shortLeftParaBomb, transform.position + new Vector3(-1, 1, 0), transform.rotation);
-                    }
-                    else //if they're further than that (but still within range, throw the bombs a little longer
-                    {
-                        Instantiate(longLeftParaBomb, transform.position + new Vector3(-1, 1, 0), transform.rotation);
-                    }
-
-                    lastBombThrow = Time.time;
-                }
-			*/
-
+                facingLeft = true;
             }
+		}
 
             //if the different between the player's position to the right of the enemy and the enemy's position is greater than or equal to 1, we make the enemy face right
 		if ((Player.transform.position.x - this.transform.position.x) >= 1)
+		{
+            if (facingLeft)
             {
-                if (facingLeft)
-                {
-                    Vector3 flipScale = transform.localScale;
-                    flipScale.x *= -1;
-                    transform.localScale = flipScale;
+				Vector3 flipScale = transform.localScale;
+				flipScale.x *= -1;
+				transform.localScale = flipScale;
 
-                    facingLeft = false;
-                }
-
-			/*
-                //if three seconds have passed since the last bomb throw, we instantiate a bomb object to damage the player
-			if (Time.time >= lastBombThrow + 2.0f && Time.time >= recordTime + 0.5f && Time.time <= recordTime+ 6.5f)
-                {
-                    //if the player is within 5 units of the bomb chucker, we throw the bombs a little shorter
-				if ((Player.transform.position.x - this.transform.position.x) <= 5)
-                    {
-                        Instantiate(shortRightParaBomb, transform.position + new Vector3(1, 1, 0), transform.rotation);
-                    }
-                    else //if they're further than that (but still within range, throw the bombs a little longer
-                    {
-                        Instantiate(longRightParaBomb, transform.position + new Vector3(1, 1, 0), transform.rotation);
-                    }
-
-                    lastBombThrow = Time.time;
-                }
-			*/
-
+				facingLeft = false;
             }
+		}
+
+
+		//if X seconds have passed since the last bomb throw, we instantiate a bomb object to damage the player
+		if (Time.time >= lastBombThrow + waitTime && Time.time >= recordTime + 0.5f && Time.time <= recordTime+ 6.5f)
+		{
+			GameObject followingBomb = Instantiate (simpleBomb, this.transform.position, this.transform.rotation);
+
+			followingBomb.GetComponent<TrackingBomb> ().player = Player;
+
+			lastBombThrow = Time.time;
+		}
+
 
 		/*
             //a third if statement for if the player is more or less directly above the chucker
@@ -181,7 +168,7 @@ public class stationaryBombChucker : MonoBehaviour
     {
         //if the player attacks the enemy, it gets hurt!
 		if ((collision.gameObject.tag == "throwingMan" || collision.gameObject.tag == "harmfulobject") && !invincibility)
-        {
+		{print ("hurt");
             health -= 1;
 
 			invincibility = true;
@@ -242,6 +229,11 @@ public class stationaryBombChucker : MonoBehaviour
 			health -= 1;
 		}
 
+		if (collision.gameObject.layer == LayerMask.NameToLayer("powerup9avoid") && GameSave.gameSave.powerup7 == 2)
+		{
+			Player.GetComponent<pointSystem> ().previouslyEarnedPoints += 250;
+		}
+
 		if (collision.gameObject.tag == "harmfulobject" && !invincibility) {
 			health -= 1;
 
@@ -253,7 +245,7 @@ public class stationaryBombChucker : MonoBehaviour
 	private void OnTriggerStay2D(Collider2D collision)
 	{
 		if (collision.gameObject.tag == "harmfulobject" && !invincibility) {
-			health -= 1;
+			health -= 1;print ("hurt");
 
 			invincibility = true;
 			invincibilityTimer = Time.time;
