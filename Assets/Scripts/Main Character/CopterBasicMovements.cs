@@ -64,6 +64,12 @@ public class CopterBasicMovements : MonoBehaviour {
 
 	public bool collectedGroundPoundTerrainMultiplier;
 
+	public AudioSource jumpSound;
+	public AudioSource rotorPop;
+	public AudioSource rapidlyDescending;
+	public AudioSource connectWithGroundPound;
+	public AudioSource enemyHurt;
+
     // Use this for initialization
     void Start() {
 
@@ -130,6 +136,7 @@ public class CopterBasicMovements : MonoBehaviour {
         collidingWithARightWall = false;
 
 		playSpaceRotating = false;
+
     }
 
     // Update is called once per frame
@@ -146,12 +153,14 @@ public class CopterBasicMovements : MonoBehaviour {
 		if (!playSpaceRotating && (Input.GetKeyDown("up") || Input.GetKeyDown("space") || Input.GetKeyDown("w")) && grounded && !(Input.GetKeyDown("a") || Input.GetKeyDown("d") || Input.GetKeyDown("left") || Input.GetKeyDown("right")))
         {
             startJump = true;
+			jumpSound.Play ();
         }
 
         //conditions for double jump
 		if (!playSpaceRotating && (Input.GetKeyDown("up") || Input.GetKeyDown("space") || Input.GetKeyDown("w")) && (beginDescent || jumping) && !grounded && ((doubleJumpTimes > 0) || (nonRechargingDoubleJumpTimes > 0)))
         {
             startDoubleJump = true;
+			jumpSound.Play ();
         }
 
         //conditions for moving left
@@ -185,6 +194,11 @@ public class CopterBasicMovements : MonoBehaviour {
             cancelMomentum = true;
         }
 
+		if (Input.GetKeyDown ("s") || Input.GetKeyDown ("down")) {
+			rapidlyDescending.Play ();
+
+		}
+
         //force downwards
         if ((Input.GetKey("s") || Input.GetKey("down")) && !grounded && !downwardsCancel)
         {
@@ -195,12 +209,18 @@ public class CopterBasicMovements : MonoBehaviour {
             beginDownwardsPush = false;
         }
 
+		if (Input.GetKeyUp ("s") || Input.GetKeyUp ("down") || grounded) {
+			rapidlyDescending.Stop ();
+		}
+
         //we need to reset momentum upon releasing the force down key so that the copter doesn't go barrelling downwards, even with reduced gravity
         if (Input.GetKeyUp("s") || Input.GetKeyUp("down") && !grounded)
         {
+			rotorPop.Play ();
             rb2d.velocity = Vector3.zero;
             beginDownwardsPush = false;
         }
+
 
 		//for summoning pufferfish
 		if (GameSave.gameSave.powerup14 == 2 && Input.GetKeyDown (KeyCode.P) && this.gameObject.GetComponent<pointSystem> ().totalPoints >= 100) {
@@ -240,6 +260,8 @@ public class CopterBasicMovements : MonoBehaviour {
             {
                 doubleJumpTimes = storedDoubleJumpTimes;
             }
+
+			rotorPop.Stop ();
         }
         
         //jumping
@@ -314,11 +336,18 @@ public class CopterBasicMovements : MonoBehaviour {
         //once the player begins descending, we cancel their momentum, and then decrease the gravity (unless we push downwards)
         if (beginDescent && !grounded)
         {
+			//print (rb2d.velocity.magnitude);
 			if (cancelMomentum && rb2d.velocity.magnitude > 1f)
             {
 				Vector3 slowDown = new Vector3(0, slowdownAscent, 0);
 				rb2d.AddForce (slowDown);
             }
+
+			if (cancelMomentum && rb2d.velocity.magnitude > 8 && rb2d.velocity.magnitude < 9) {
+				rotorPop.Play ();
+
+			}
+
 			if (cancelMomentum && rb2d.velocity.magnitude <= 1f) {
 				cancelMomentum = false;
 				gravityChanging = 0.6f;
@@ -433,7 +462,9 @@ public class CopterBasicMovements : MonoBehaviour {
         //if the player is rapidly descending downward when they touch the ground, we make this true so that the camera knows to shake
         if (collision.gameObject.layer == LayerMask.NameToLayer("ground") && collision.gameObject.tag != "spring" && (Input.GetKey("down") || Input.GetKey("s")))
         {
+			
             shakeWorld = true;
+			connectWithGroundPound.Play ();
             //Important make sure that springs are not included!
         }
 
@@ -465,7 +496,7 @@ public class CopterBasicMovements : MonoBehaviour {
 		if (collision.gameObject.tag == "teleporter") {
 
 			rb2d.velocity = Vector3.zero;
-			transform.parent.transform.position = spawnPoint.transform.position;
+			transform.position = spawnPoint.transform.position;
 		}
 
 		if (collision.gameObject.name == "leftParabolicTerrainCorrupter(Clone)" || collision.gameObject.name == "middletraightTerrainCorrupter(Clone)"  || collision.gameObject.name == "rightParabolicTerrainCorrupter(Clone)") {
@@ -497,7 +528,7 @@ public class CopterBasicMovements : MonoBehaviour {
 		if (collision.gameObject.tag == "teleporter") {
 
 			rb2d.velocity = Vector3.zero;
-			transform.parent.transform.position = spawnPoint.transform.position;
+			transform.position = spawnPoint.transform.position;
 		}
 	}
 
@@ -506,6 +537,11 @@ public class CopterBasicMovements : MonoBehaviour {
 		if (collision.gameObject.tag == "harmfulobject") {
 			insideObject = false;
 		}
+	}
+
+	public void enemyIsDestroyed ()
+	{
+		enemyHurt.Play ();
 	}
 
 }

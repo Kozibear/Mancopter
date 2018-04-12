@@ -27,6 +27,11 @@ public class StraightTerrainCorrupter : MonoBehaviour {
 
 	public GameObject Player;
 
+	public AudioSource shootBomb;
+	public AudioSource hurt;
+
+	bool once;
+	bool pointsEarn;
 
     // Use this for initialization
     void Start () {
@@ -58,6 +63,7 @@ public class StraightTerrainCorrupter : MonoBehaviour {
 
             GameObject Bomb = Instantiate(StraightBomb, transform.position + new Vector3(0, -0.5f, 0), transform.rotation);
 
+			shootBomb.Play ();
             //we make the bomb the parent, so that we link their action together, can later on easily reset the ability to throw something
             Bomb.transform.parent = this.transform;
 
@@ -86,12 +92,15 @@ public class StraightTerrainCorrupter : MonoBehaviour {
 
 		if (health <= 0)
 		{
-			Player.GetComponent<pointSystem> ().previouslyEarnedPoints += 100;
-			Destroy(gameObject);
+			if (!pointsEarn) {
+				Player.GetComponent<pointSystem> ().previouslyEarnedPoints += 100;
+				pointsEarn = true;
+			}
+			StartCoroutine ("Destroy");
 		}
 
 		if (Time.time >= recordTime + 25f) {
-			Destroy(gameObject);
+			StartCoroutine ("Destroy");
 		}
     }
 		
@@ -170,4 +179,14 @@ public class StraightTerrainCorrupter : MonoBehaviour {
 
 	}
 
+	public IEnumerator Destroy ()
+	{
+		canThrowBomb = false;
+		if (!once) {
+			hurt.Play ();
+			once = true;
+		}
+		yield return new WaitForSeconds (1);
+		Destroy (gameObject);
+	}
 }

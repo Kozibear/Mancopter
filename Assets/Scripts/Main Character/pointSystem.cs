@@ -31,7 +31,6 @@ public class pointSystem : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		GameSave.gameSave.Load ();
-		//GameSave.gameSave.powerup19 = 2;
 		pointMultiplier = 1f;
 
 		//powerup 2
@@ -42,6 +41,11 @@ public class pointSystem : MonoBehaviour {
 		//powerup 10
 		if (GameSave.gameSave.powerup10 == 2) {
 			pointMultiplier *= 1.25f; 
+		}
+
+		//powerup15
+		if (GameSave.gameSave.powerup15 == 2) {
+			pointMultiplier *= 0.5f; 
 		}
 
 		accumulateGroundPoints = false;

@@ -14,6 +14,8 @@ public class ControlScreenButton : MonoBehaviour {
 
 	public Button startGame;
 
+	public AudioSource click;
+
 	// Use this for initialization
 	void Start () {
 
@@ -52,5 +54,6 @@ public class ControlScreenButton : MonoBehaviour {
 
 	void startTheGame() {
 		darkenScreen = true;
+		click.Play ();
 	}
 }

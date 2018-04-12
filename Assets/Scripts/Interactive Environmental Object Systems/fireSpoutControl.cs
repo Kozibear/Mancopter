@@ -19,7 +19,7 @@ public class fireSpoutControl : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		nextTimeToFireSpouts = 30;
+		nextTimeToFireSpouts = 20; //20
 		firstTime = true;
 		selectSpout = false;
 	}
@@ -41,7 +41,7 @@ public class fireSpoutControl : MonoBehaviour {
 				} 
 			}
 
-			nextTimeToFireSpouts += 30;
+			nextTimeToFireSpouts += 20;
 		}
 
 		if (selectSpout) {
@@ -49,12 +49,21 @@ public class fireSpoutControl : MonoBehaviour {
 			fireSpoutChoice = Random.Range (1, 4);
 
 			if (fireSpoutChoice == 1) {
+				fireSpout1.SetActive (true);
+				fireSpout2.SetActive (false);
+				fireSpout3.SetActive (false);
 				fireSpout1.GetComponent<fireSpoutMovements> ().beginAscent = true;
 			}
 			else if (fireSpoutChoice == 2) {
+				fireSpout1.SetActive (false);
+				fireSpout2.SetActive (true);
+				fireSpout3.SetActive (false);
 				fireSpout2.GetComponent<fireSpoutMovements> ().beginAscent = true;
 			}
 			else if (fireSpoutChoice == 3) {
+				fireSpout1.SetActive (false);
+				fireSpout2.SetActive (false);
+				fireSpout3.SetActive (true);
 				fireSpout3.GetComponent<fireSpoutMovements> ().beginAscent = true;
 			}
 

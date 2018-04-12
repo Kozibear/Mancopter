@@ -153,8 +153,8 @@ public class looseBlade : MonoBehaviour {
         {
             if (!currentlyPushingBack)
             {
-                transform.position = Vector3.Lerp(transform.position, referenceBlade.transform.position, ((Time.time - startingTime) / 1.5f)); //vectors are for positions,
-                transform.rotation = Quaternion.Lerp(transform.rotation, referenceBlade.transform.rotation, ((Time.time - startingTime) / 1.5f)); //quaternions are for rotations
+                transform.position = Vector3.Lerp(transform.position, referenceBlade.transform.position, ((Time.time - startingTime) / 1f)); //vectors are for positions,
+                transform.rotation = Quaternion.Lerp(transform.rotation, referenceBlade.transform.rotation, ((Time.time - startingTime) / 1f)); //quaternions are for rotations
             }
             if (currentlyPushingBack) //if we just got the blade back from being thrown, it instantly assumes the referenceBlade's position
             {
@@ -162,35 +162,6 @@ public class looseBlade : MonoBehaviour {
                 transform.rotation = referenceBlade.transform.rotation;
             }
         }
-
-
-		//Code for when rapidlySpinning, no longer in use
-		/*
-        //code for moving the copter's blades into place quickly when rapidlySpinning
-        if (baseObject.GetComponent<CopterBasicMovements>().rapidlySpinning && recordRapidSpinTime)
-        {
-            startingTime = Time.time;
-
-            recordRapidSpinTime = false;
-        }
-
-
-        if (baseObject.GetComponent<CopterBasicMovements>().rapidlySpinning)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, referenceBlade.transform.position, 0.4f + (Time.time - startingTime)*13f); 
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, referenceBlade.transform.rotation, 0.4f + (Time.time - startingTime)*13f); 
-        }
-
-
-        //after rapid spin, we make sure that the loose blades are fully in the referenceblades' places before descending
-        if (baseObject.GetComponent<CopterBasicMovements>().immovableDescent && returnToOriginalPlace)
-        {
-            transform.position = referenceBlade.transform.position;
-            transform.rotation = referenceBlade.transform.rotation;
-
-            returnToOriginalPlace = false;
-        }
-		*/
 
         //If a man just returned from being thrown, we briefly activate the hingeJoint2D's motor to slightly shake the looseBlade, to make it seem like "it" was what was thrown
         if (returnFromThrowPushback && Time.time < offsetStartingTime+0.04f && leftReturn)

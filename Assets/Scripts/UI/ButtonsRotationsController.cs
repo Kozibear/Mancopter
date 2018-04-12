@@ -49,6 +49,8 @@ public class ButtonsRotationsController : MonoBehaviour {
 
 	public static bool playSpaceRotating;
 
+	public AudioSource cantRotate;
+
 	// Use this for initialization
 	void Start () {
 		XAxisUp.onClick.AddListener (rotateUp);
@@ -183,7 +185,7 @@ public class ButtonsRotationsController : MonoBehaviour {
 		if (canRotate && !rotateUpBool && !rotateDownBool && !rotateLeftBool && !rotateRightBool && !rotateClockwiseBool && !rotateCounterClockwiseBool) {
 
 			//We make this wall start to become invisible
-			makeInvisible(UpWallCheck);
+			makeInvisible (UpWallCheck);
 
 			PlayCube.transform.parent = CubeParent.transform;
 
@@ -192,6 +194,8 @@ public class ButtonsRotationsController : MonoBehaviour {
 			playerStoredVelocity = player.GetComponent<CopterBasicMovements> ().rb2d.velocity;
 
 			rotateUpBool = true;
+		} else {
+			cantRotate.Play ();
 		}
 	}
 
@@ -207,6 +211,8 @@ public class ButtonsRotationsController : MonoBehaviour {
 			playerStoredVelocity = player.GetComponent<CopterBasicMovements> ().rb2d.velocity;
 
 			rotateDownBool = true;
+		} else {
+			cantRotate.Play ();
 		}
 	}
 
@@ -222,6 +228,8 @@ public class ButtonsRotationsController : MonoBehaviour {
 			playerStoredVelocity = player.GetComponent<CopterBasicMovements> ().rb2d.velocity;
 
 			rotateLeftBool = true;
+		} else {
+			cantRotate.Play ();
 		}
 	}
 
@@ -237,6 +245,8 @@ public class ButtonsRotationsController : MonoBehaviour {
 			playerStoredVelocity = player.GetComponent<CopterBasicMovements> ().rb2d.velocity;
 
 			rotateRightBool = true;
+		} else {
+			cantRotate.Play ();
 		}
 	}
 
@@ -250,6 +260,8 @@ public class ButtonsRotationsController : MonoBehaviour {
 			playerStoredVelocity = player.GetComponent<CopterBasicMovements> ().rb2d.velocity;
 
 			rotateClockwiseBool = true;
+		} else {
+			cantRotate.Play ();
 		}
 	}
 
@@ -263,6 +275,8 @@ public class ButtonsRotationsController : MonoBehaviour {
 			playerStoredVelocity = player.GetComponent<CopterBasicMovements> ().rb2d.velocity;
 
 			rotateCounterClockwiseBool = true;
+		} else {
+			cantRotate.Play ();
 		}
 	}
 

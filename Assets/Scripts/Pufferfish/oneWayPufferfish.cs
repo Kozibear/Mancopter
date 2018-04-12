@@ -16,9 +16,15 @@ public class oneWayPufferfish : MonoBehaviour {
 
 	private bool moveleft;
 
+	public bool moveForward;
+
 	public float health = 1;
 
 	public GameObject Player;
+
+	public AudioSource hurt;
+
+	bool once;
 
 	// Use this for initialization
 	void Start () {
@@ -35,6 +41,8 @@ public class oneWayPufferfish : MonoBehaviour {
 		}
 
 		movementSpeed = 0.22f;
+
+		moveForward = true;
 	}
 		
 	void FixedUpdate()
@@ -54,15 +62,17 @@ public class oneWayPufferfish : MonoBehaviour {
 			Physics2D.IgnoreCollision(enemy2.GetComponent<BoxCollider2D>(), this.GetComponent<BoxCollider2D>());
 		}
 
-
-		pufferFish.transform.position = Vector3.MoveTowards(pufferFish.transform.position, endingPoint.transform.position, movementSpeed);
+		if (moveForward) {
+			pufferFish.transform.position = Vector3.MoveTowards (pufferFish.transform.position, endingPoint.transform.position, movementSpeed);
+		}
 
 		if (pufferFish.transform.position == endingPoint.transform.position) {
 			Destroy (transform.parent.gameObject);
 		}
 
 		if (health <= 0) {
-			Destroy (transform.parent.gameObject);
+			//Destroy (transform.parent.gameObject);
+			StartCoroutine ("Destroy");
 		}
 	}
 
@@ -123,5 +133,16 @@ public class oneWayPufferfish : MonoBehaviour {
 				collision.gameObject.GetComponent<pointSystem> ().accumulateGroundPoints = false;
 			}
 		}
+	}
+
+	public IEnumerator Destroy ()
+	{
+		moveForward = false;
+		if (!once) {
+			hurt.Play ();
+			once = true;
+		}
+		yield return new WaitForSeconds (1);
+		Destroy (gameObject);
 	}
 }

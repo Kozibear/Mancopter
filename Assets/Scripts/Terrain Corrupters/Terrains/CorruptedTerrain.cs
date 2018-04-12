@@ -7,6 +7,8 @@ public class CorruptedTerrain : MonoBehaviour {
     private float recordTime;
 	public bool moveOnce;
 
+	public AudioSource explodeBomb;
+
 	// Use this for initialization
 	void Start () {
         recordTime = Time.time;
@@ -16,6 +18,7 @@ public class CorruptedTerrain : MonoBehaviour {
 
 		GameSave.gameSave.Load ();
 
+		explodeBomb.Play ();
 	}
 	
 	// Update is called once per frame

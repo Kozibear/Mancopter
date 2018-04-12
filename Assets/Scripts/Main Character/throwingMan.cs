@@ -22,6 +22,8 @@ public class throwingMan : MonoBehaviour {
 	public GameObject looseblade3;
 	public GameObject looseblade4;
 
+	public AudioSource throwingSFX;
+
     // Use this for initialization
     void Start () {
         returnHome = false;
@@ -45,7 +47,13 @@ public class throwingMan : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        //if the alloted time hasn't elapsed, or we haven't hit another object, we still move forward, based on what direction the player is facing
+
+		if (!throwingSFX.isPlaying) {
+			throwingSFX.Play();
+			throwingSFX.volume -= 0.045f;
+		}
+
+		//if the alloted time hasn't elapsed, or we haven't hit another object, we still move forward, based on what direction the player is facing
         if (!returnHome)
         {
             if (!goLeft)
@@ -64,7 +72,7 @@ public class throwingMan : MonoBehaviour {
             }
         }
 
-        if (Time.time >= recordThrowTime+2f)
+        if (Time.time >= recordThrowTime+1f)
         {
             returnHome = true;
         }

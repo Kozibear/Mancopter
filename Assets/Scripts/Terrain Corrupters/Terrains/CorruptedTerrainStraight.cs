@@ -7,12 +7,15 @@ public class CorruptedTerrainStraight : MonoBehaviour {
     private float recordTime;
 	public bool moveOnce;
 
+	public AudioSource explodeBomb;
+
     // Use this for initialization
     void Start () {
         recordTime = Time.time;
 		moveOnce = true;
 		GameSave.gameSave.Load ();
 
+		explodeBomb.Play ();
     }
 	
 	// Update is called once per frame

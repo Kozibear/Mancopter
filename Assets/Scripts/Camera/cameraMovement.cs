@@ -11,7 +11,7 @@ public class cameraMovement : MonoBehaviour {
 
     private float YShakeOffset;
 
-    private float shakeTime;
+	public float shakeTime;
 
     private float shakingBeginTime;
 
@@ -22,7 +22,6 @@ public class cameraMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        shakeTime = 0.15f;
         startShaking = false;
 
         moveUp = true;
@@ -49,14 +48,14 @@ public class cameraMovement : MonoBehaviour {
             //this way, it alternates between two Y offsets every time this is called
             if(moveUp)
             {
-                YShakeOffset = 0.32f;
+                YShakeOffset = 0.8f;
 
                 moveUp = false;
                 moveDown = true;
             }
             else if (moveDown)
             {
-                YShakeOffset = -0.32f;
+                YShakeOffset = -0.8f;
 
                 moveUp = true;
                 moveDown = false;

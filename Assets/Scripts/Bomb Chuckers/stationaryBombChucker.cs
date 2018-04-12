@@ -39,9 +39,15 @@ public class stationaryBombChucker : MonoBehaviour
 
 	public float waitTime;
 
+	public AudioSource shootBomb;
+	public AudioSource hurt;
+
+	bool once;
+	bool pointsEarn;
+
     // Use this for initialization
     void Start()
-    {
+	{
         facingLeft = true;
 
         lastBombThrow = 0f;
@@ -110,7 +116,10 @@ public class stationaryBombChucker : MonoBehaviour
 		//if X seconds have passed since the last bomb throw, we instantiate a bomb object to damage the player
 		if (Time.time >= lastBombThrow + waitTime && Time.time >= recordTime + 0.5f && Time.time <= recordTime+ 6.5f)
 		{
+			
 			GameObject followingBomb = Instantiate (simpleBomb, this.transform.position, this.transform.rotation);
+
+			shootBomb.Play ();
 
 			followingBomb.GetComponent<TrackingBomb> ().player = Player;
 
@@ -153,13 +162,16 @@ public class stationaryBombChucker : MonoBehaviour
 
 		if (health <= 0)
 		{
-			Player.GetComponent<pointSystem> ().previouslyEarnedPoints += 100;
-			Destroy(gameObject);
+			if (!pointsEarn) {
+				Player.GetComponent<pointSystem> ().previouslyEarnedPoints += 100;
+				pointsEarn = true;
+			}
+			StartCoroutine ("Destroy");
 		}
 
-		if (Time.time >= recordTime + 10.0f) {
+		if (Time.time >= recordTime + 20.0f) {
 
-			Destroy(gameObject);
+			StartCoroutine ("Destroy");
 		}
 
     }
@@ -168,7 +180,7 @@ public class stationaryBombChucker : MonoBehaviour
     {
         //if the player attacks the enemy, it gets hurt!
 		if ((collision.gameObject.tag == "throwingMan" || collision.gameObject.tag == "harmfulobject") && !invincibility)
-		{print ("hurt");
+		{
             health -= 1;
 
 			invincibility = true;
@@ -245,10 +257,21 @@ public class stationaryBombChucker : MonoBehaviour
 	private void OnTriggerStay2D(Collider2D collision)
 	{
 		if (collision.gameObject.tag == "harmfulobject" && !invincibility) {
-			health -= 1;print ("hurt");
+			health -= 1;
 
 			invincibility = true;
 			invincibilityTimer = Time.time;
 		}
+	}
+
+	public IEnumerator Destroy ()
+	{
+		waitTime = 9999;
+		if (!once) {
+			hurt.Play ();
+			once = true;
+		}
+		yield return new WaitForSeconds (1);
+		Destroy (gameObject);
 	}
 }

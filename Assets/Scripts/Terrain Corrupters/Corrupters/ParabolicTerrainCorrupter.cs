@@ -29,6 +29,12 @@ public class ParabolicTerrainCorrupter : MonoBehaviour {
 
 	public GameObject Player;
 
+	public AudioSource shootBomb;
+	public AudioSource hurt;
+
+	bool once;
+	bool pointsEarn;
+
     // Use this for initialization
     void Start () {
         //playerInRange = false;
@@ -63,11 +69,13 @@ public class ParabolicTerrainCorrupter : MonoBehaviour {
                 GameObject Bomb = Instantiate(LeftParaBomb, transform.position + new Vector3(0, 1, 0), transform.rotation);
                 //we make the bomb the parent, so that we link their action together, can later on easily reset the ability to throw something
                 Bomb.transform.parent = this.transform;
+				shootBomb.Play ();
             }
             if (bombDirection == 0)
             {
                 GameObject Bomb = Instantiate(RightParaBomb, transform.position + new Vector3(0, 1, 0), transform.rotation);
                 Bomb.transform.parent = this.transform;
+				shootBomb.Play ();
             }
         }
 
@@ -92,12 +100,15 @@ public class ParabolicTerrainCorrupter : MonoBehaviour {
 
         if (health <= 0)
         {
-			Player.GetComponent<pointSystem> ().previouslyEarnedPoints += 100;
-            Destroy(gameObject);
+			if (!pointsEarn) {
+				Player.GetComponent<pointSystem> ().previouslyEarnedPoints += 100;
+				pointsEarn = true;
+			}
+			StartCoroutine ("Destroy");
         }
 
 		if (Time.time >= recordTime + 25f) {
-			Destroy(gameObject);
+			StartCoroutine ("Destroy");
 		}
     }
 		
@@ -175,4 +186,14 @@ public class ParabolicTerrainCorrupter : MonoBehaviour {
 		}
 	}
 
+	public IEnumerator Destroy ()
+	{
+		canThrowBomb = false;
+		if (!once) {
+			hurt.Play ();
+			once = true;
+		}
+		yield return new WaitForSeconds (1);
+		Destroy (gameObject);
+	}
 }

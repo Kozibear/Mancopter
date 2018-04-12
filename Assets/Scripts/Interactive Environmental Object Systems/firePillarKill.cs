@@ -6,9 +6,12 @@ public class firePillarKill : MonoBehaviour {
 
 	public float recordTime;
 
+	public AudioSource firePillarSound;
+
 	// Use this for initialization
 	void Start () {
 		recordTime = Time.time;
+		firePillarSound.Play ();
 	}
 	
 	void FixedUpdate () {

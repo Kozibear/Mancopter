@@ -6,9 +6,12 @@ public class damagingLasers : MonoBehaviour {
 
 	public float recordTime;
 
+	public AudioSource laserSound;
+
 	// Use this for initialization
 	void Start () {
 		recordTime = Time.time;
+		laserSound.Play ();
 	}
 	
 	// Update is called once per frame

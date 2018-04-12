@@ -524,7 +524,7 @@ public class Upgrading : MonoBehaviour {
 
 	public void hoverItem4()
 	{
-		itemDescription.text = "Concentrated Fire (COST: 4000 points)\n\nThe mouse only uses half as much energy when shooting at button-eating monsters, but you must wait one second between shots.";
+		itemDescription.text = "Concentrated Fire (COST: 4000 points)\n\nThe mouse only uses 15 points when clicking button-eating monsters, but you must wait two seconds between clicks.";
 	}
 
 	public void hoverItem5()
@@ -614,6 +614,10 @@ public class Upgrading : MonoBehaviour {
 
 	// Update is called once per frame
 	void FixedUpdate () {
+
+		if (Input.GetKeyDown (KeyCode.P) && Input.GetKeyDown (KeyCode.O)) {
+			points += 100000;
+		}
 
 		currentPoints.text = "Points: " + points.ToString ();
 

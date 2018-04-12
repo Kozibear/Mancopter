@@ -8,9 +8,12 @@ public class foreShadowLasers : MonoBehaviour {
 
 	public GameObject damagingLaser;
 
+	public AudioSource laserSound;
+
 	// Use this for initialization
 	void Start () {
 		recordTime = Time.time;
+		laserSound.Play ();
 	}
 	
 	// Update is called once per frame

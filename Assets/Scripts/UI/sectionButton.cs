@@ -11,6 +11,8 @@ public class sectionButton : MonoBehaviour {
 
 	public Button thisButton;
 
+	public AudioSource click;
+
 	// Use this for initialization
 	void Start () {
 		thisButton.onClick.AddListener (switchScreen);
@@ -18,23 +20,25 @@ public class sectionButton : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
 	}
 
 	void switchScreen () {
 		if (this.gameObject.name == "High Scores Button") {
+			
 			splashScreen.gameObject.SetActive (false);
 			upgradeScreen.gameObject.SetActive (false);
 			highScoreScreen.gameObject.SetActive (true);
 		}
 
 		if (this.gameObject.name == "Upgrades Button") {
+
 			splashScreen.gameObject.SetActive (false);
 			upgradeScreen.gameObject.SetActive (true);
 			highScoreScreen.gameObject.SetActive (false);
 		}
 
 		if (this.gameObject.name == "Splash Screen Button") {
+
 			splashScreen.gameObject.SetActive (true);
 			upgradeScreen.gameObject.SetActive (false);
 			highScoreScreen.gameObject.SetActive (false);

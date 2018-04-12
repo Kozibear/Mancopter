@@ -15,8 +15,11 @@ public class fireSpoutMovements : MonoBehaviour {
 
 	public float recordTime;
 
+	public AudioSource fireSound;
+
 	void awake () {
-		
+		this.gameObject.SetActive (false);
+
 	}
 
 	// Use this for initialization
@@ -26,6 +29,14 @@ public class fireSpoutMovements : MonoBehaviour {
 		slightDescent = false;
 		slightAscent = false;
 		finalDescent = false;
+		this.gameObject.SetActive (false);
+
+	}
+
+	void OnEnable () {
+		fireSound.volume = 0.4f;
+		fireSound.Play ();
+
 	}
 	
 	// Update is called once per frame
@@ -33,7 +44,6 @@ public class fireSpoutMovements : MonoBehaviour {
 
 		//we move the fire from its original position to its top position
 		if (beginAscent) {
-
 			transform.position = Vector3.MoveTowards (transform.position, new Vector3 (originalPosition.x, originalPosition.y+7.05f, originalPosition.z), 0.04f);
 
 			if (transform.position == new Vector3 (originalPosition.x, originalPosition.y+7.05f, originalPosition.z) ) {
@@ -78,10 +88,12 @@ public class fireSpoutMovements : MonoBehaviour {
 
 		//top position back down to its original position
 		if (finalDescent) {
+			fireSound.volume -= 0.002f;
 
 			transform.position = Vector3.MoveTowards (transform.position, originalPosition, 0.06f);
 
 			if (transform.position == originalPosition) {
+				fireSound.Stop ();
 				finalDescent = false;
 			}
 		}

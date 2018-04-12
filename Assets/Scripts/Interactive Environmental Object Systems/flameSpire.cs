@@ -15,6 +15,8 @@ public class flameSpire : MonoBehaviour {
 	public float recordTime;
 	public float recordTime2;
 
+	public AudioSource firePillarSound;
+
 	// Use this for initialization
 	void Start () {
 		bringTheFire = false;
@@ -24,6 +26,7 @@ public class flameSpire : MonoBehaviour {
 		recordTime2 = Time.time + 20f;
 
 		grandparent = this.transform.parent.gameObject;
+	
 	}
 	
 	// Update is called once per frame
@@ -31,6 +34,8 @@ public class flameSpire : MonoBehaviour {
 
 		//if we step on the block, then we begin recording the time...
 		if (bringTheFire == true && onlyOnce1 == true) {
+			firePillarSound.Play ();
+
 			recordTime2 = Time.time;
 
 			bringTheFire = false;
