@@ -5,14 +5,34 @@ using UnityEngine;
 public class PointMultiplierObject : MonoBehaviour {
 
 	public float recordTime;
+	public bool increaseSize;
 
 	// Use this for initialization
 	void Start () {
 		recordTime = Time.time;
+		increaseSize = true;
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+		if (transform.localScale.x < 3 && increaseSize)
+		{
+			transform.localScale *= 1.05f;
+		}
+		if (transform.localScale.x >= 3 && increaseSize)
+		{
+			increaseSize = false;
+		}
+
+		if (transform.localScale.x > 1.5f && !increaseSize)
+		{
+			transform.localScale /= 1.05f;
+		}
+		if (transform.localScale.x < 1.5f && !increaseSize)
+		{
+			increaseSize = true;
+		}
+
 
 		if((Time.time - recordTime) >= 6)
 		{

@@ -42,6 +42,10 @@ public class buttonEaters : MonoBehaviour {
 
 	public float powerupDieTime;
 
+	public bool onlyOnce;
+
+	public float animationsTrick;
+
 	// Use this for initialization
 	void Start () {
 		buttonEater.onClick.AddListener (reduceHealth);
@@ -51,6 +55,9 @@ public class buttonEaters : MonoBehaviour {
 		startEating = true;
 
 		powerupDieTime = Time.time + 7.5f;
+
+		onlyOnce = true;
+		animationsTrick = 0;
 
 		GameSave.gameSave.Load ();
 	}
@@ -147,6 +154,39 @@ public class buttonEaters : MonoBehaviour {
 			canSummonCrumb = false;
 		}
 
+		if (!startEating && notDying) {
+
+			if (animationsTrick == 0) {
+
+				gameObject.transform.GetChild (0).gameObject.SetActive (true);
+				gameObject.transform.GetChild (1).gameObject.SetActive (false);
+				gameObject.transform.GetChild (2).gameObject.SetActive (false);
+				animationsTrick = 1;
+			}
+			else if (animationsTrick == 1) {
+
+				gameObject.transform.GetChild (0).gameObject.SetActive (false);
+				gameObject.transform.GetChild (1).gameObject.SetActive (true);
+				gameObject.transform.GetChild (2).gameObject.SetActive (false);
+				animationsTrick = 2;
+			}
+			else if (animationsTrick == 2) {
+
+				gameObject.transform.GetChild (0).gameObject.SetActive (false);
+				gameObject.transform.GetChild (1).gameObject.SetActive (false);
+				gameObject.transform.GetChild (2).gameObject.SetActive (true);
+				animationsTrick = 0;
+			}
+		} 
+
+		if (startEating && notDying) {
+			gameObject.transform.GetChild (0).gameObject.SetActive (true);
+			gameObject.transform.GetChild (1).gameObject.SetActive (false);
+			gameObject.transform.GetChild (2).gameObject.SetActive (false);
+			gameObject.transform.GetChild (3).gameObject.SetActive (false);
+			gameObject.transform.GetChild (4).gameObject.SetActive (false);
+		}
+
 		if (health == 4) {
 			transform.localScale = new Vector3 (1.8f, 1.8f, 1.8f);
 		}
@@ -237,6 +277,22 @@ public class buttonEaters : MonoBehaviour {
 		if (button6 && rotationButton6 != null) {
 			rotationButton6.GetComponent<shrinkingRotationButton> ().takeFromReduction ();
 		}
+	
+		gameObject.transform.GetChild (0).gameObject.SetActive (false);
+		gameObject.transform.GetChild (1).gameObject.SetActive (false);
+		gameObject.transform.GetChild (2).gameObject.SetActive (false);
+
+		if (onlyOnce) {
+			gameObject.transform.GetChild (3).gameObject.SetActive (true);
+			gameObject.transform.GetChild (4).gameObject.SetActive (false);
+			onlyOnce = false;
+		}
+		else {
+			gameObject.transform.GetChild (3).gameObject.SetActive (false);
+			gameObject.transform.GetChild (4).gameObject.SetActive (true);
+			onlyOnce = true;
+		}
+
 		yield return new WaitForSeconds (1);
 		Destroy (gameObject);
 	}

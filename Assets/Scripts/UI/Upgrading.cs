@@ -29,6 +29,7 @@ public class Upgrading : MonoBehaviour {
 	public Sprite greenLock;
 	public Sprite redLock;
 	public Sprite equippedItem;
+	public Sprite nothing;
 
 	public Text itemDescription;
 	public Text currentPoints;
@@ -509,102 +510,102 @@ public class Upgrading : MonoBehaviour {
 
 	public void hoverItem1()
 	{
-		itemDescription.text = "Double Jumper 1 (COST: 1000 points)\n\nGain one additional double-jump when in the air.";
+		itemDescription.text = "Double Jumper 1 (COST: 100 points)\n\nGain one additional double-jump when in the air.";
 	}
 
 	public void hoverItem2()
 	{
-		itemDescription.text = "Ground Master (COST: 2000 points)\n\nYour score multiplier is increased by a factor of 1.2, but have one less jump when in the air.";
+		itemDescription.text = "Ground Master (COST: 200 points)\n\nYour score multiplier is increased by a factor of 1.2, but have one less jump when in the air.";
 	}
 
 	public void hoverItem3()
 	{
-		itemDescription.text = "Pufferfish Power (COST: 3000 points)\n\nEarn points when you stand on the safe side of a pufferfish";
+		itemDescription.text = "Pufferfish Power (COST: 300 points)\n\nEarn points when you stand on the safe side of a pufferfish";
 	}
 
 	public void hoverItem4()
 	{
-		itemDescription.text = "Concentrated Fire (COST: 4000 points)\n\nThe mouse only uses 15 points when clicking button-eating monsters, but you must wait two seconds between clicks.";
+		itemDescription.text = "Concentrated Fire (COST: 400 points)\n\nThe mouse only uses 15 points when clicking Eaters, but you must wait two seconds between clicks.";
 	}
 
 	public void hoverItem5()
 	{
-		itemDescription.text = "Anvil Drop (COST: 5000 points) \n\nDrop super-duper-fast when ground-pounding!";
+		itemDescription.text = "Anvil Drop (COST: 500 points) \n\nDrop super-duper-fast when ground-pounding!";
 	}
 
 	public void hoverItem6()
 	{
-		itemDescription.text = "Double Jumper 2 (COST: 6000 points)\n\nGain one additional double-jump when in the air.";
+		itemDescription.text = "Double Jumper 2 (COST: 600 points)\n\nGain one additional double-jump when in the air.";
 	}
 
 	public void hoverItem7()
 	{
-		itemDescription.text = "Lazer Time (COST: 7000 points) \n\nEvery time a lazer or a vertical stream of lava destroys an enemy, you gain 350 points.";
+		itemDescription.text = "Lazer Time (COST: 700 points) \n\nEvery time a lazer or a vertical stream of lava destroys an enemy, you gain 350 points.";
 	}
 
 	public void hoverItem8()
 	{
-		itemDescription.text = "High Road (COST: 8000 points) \n\nEvery time you destroy a terrain corrupter with a ground pound, Your score multiplier is increased by a factor of 1.05.";
+		itemDescription.text = "High Road (COST: 800 points) \n\nWhen you destroy a terrain corrupter with a ground pound, your score multiplier increases by a factor of 1.05.";
 	}
 
 	public void hoverItem9()
 	{
-		itemDescription.text = "Iron Shoes (COST: 9000 points) \n\nYou are immune to lasers and vertical streams of lava, but you fall much faster.";
+		itemDescription.text = "Iron Shoes (COST: 900 points) \n\nYou are immune to lasers and vertical streams of lava, but you fall much faster.";
 	}
 
 	public void hoverItem10()
 	{
-		itemDescription.text = "Strong Start (COST: 10,000 points) \n\nYour score multiplier is increased by a factor of 1.25 when all four of your mans are alive.";
+		itemDescription.text = "Strong Start (COST: 1000 points) \n\nYour score multiplier is increased by a factor of 1.25 when all four of your mans are alive.";
 	}
 
 	public void hoverItem11()
 	{
-		itemDescription.text = "Double Jumper 3 (COST: 11000 points)\n\nGain one additional double-jump when in the air.";
+		itemDescription.text = "Double Jumper 3 (COST: 1100 points)\n\nGain one additional double-jump when in the air.";
 	}
 
 	public void hoverItem12()
 	{
-		itemDescription.text = "Marathon Runner (COST 12000 points) \n\nAfter 15 minutes of play, your score multiplier is increased by a factor of 1.5.";
+		itemDescription.text = "Marathon Runner (COST 1200 points) \n\nAfter 15 minutes of play, your score multiplier is increased by a factor of 1.5.";
 	}
 
 	public void hoverItem13()
 	{
-		itemDescription.text = "Adrenaline (COST: 13000 points) \n\nYou jump higher, but bomb chuckers and terrain corrupters shooter their projectiles much more frequently.";
+		itemDescription.text = "Adrenaline (COST: 1300 points) \n\nYou jump higher, but bomb chuckers and terrain corrupters shooter their projectiles much more frequently.";
 	}
 
 	public void hoverItem14()
 	{
-		itemDescription.text = "Pufferfish Summoner (COST: 14000 points) \n\nWhen there are no Pufferfish in the play space, press P to summon a pufferfish for 100 points (You must have at least 100 points to do so!).";
+		itemDescription.text = "Pufferfish Summoner (COST: 1400 points) \n\nWhen there are no Pufferfish in the play space, press P to summon a pufferfish for 100 points.";
 	}
 
 	public void hoverItem15()
 	{
-		itemDescription.text = "Look Ma, no Clicks (COST: 15000 points) \n\nButton eating monsters die quickly on their own, but your score multiplier is decreased by a factor of 2.";
+		itemDescription.text = "Look Ma, no Clicks (COST: 1500 points) \n\nEaters die quickly on their own, but your score multiplier is decreased by a factor of 2.";
 	}
 
 	public void hoverItem16()
 	{
-		itemDescription.text = "Double Jumper 4 (COST: 16000 points)\n\nGain one additional double-jump when in the air.";
+		itemDescription.text = "Double Jumper 4 (COST: 1600 points)\n\nGain one additional double-jump when in the air.";
 	}
 
 	public void hoverItem17()
 	{
-		itemDescription.text = "Throw Guard (COST: 17000 points) \n\nYour thrown mans are immune to all damage. Throw away!";
+		itemDescription.text = "Throw Guard (COST: 1700 points) \n\nYour thrown mans are immune to all damage. Throw away!";
 	}
 
 	public void hoverItem18()
 	{
-		itemDescription.text = "Ninja (COST: 18000 points) \n\nYou now wield super-fast shurikens instead of mans!";
+		itemDescription.text = "Ninja (COST: 1800 points) \n\nYou can now throw mans super fast!";
 	}
 
 	public void hoverItem19()
 	{
-		itemDescription.text = "Last Stand (COST: 19000 points) \n\nYour score multiplier is increased by a factor of 1.35 when on your last man.";
+		itemDescription.text = "Last Stand (COST: 1900 points) \n\nYour score multiplier is increased by a factor of 1.35 when on your last man.";
 	}
 
 	public void hoverItem20()
 	{
-		itemDescription.text = "Double Jumper 5 (COST: 20000 points)\n\nGain one additional double-jump when in the air.";
+		itemDescription.text = "Double Jumper 5 (COST: 2000 points)\n\nGain one additional double-jump when in the air.";
 	}
 
 	public void exitHover () 
@@ -632,7 +633,7 @@ public class Upgrading : MonoBehaviour {
 			}
 		}
 		else if (GameSave.gameSave.powerup1 == 1) {
-			item1.transform.GetChild (1).GetComponent<Image> ().sprite = null;
+			item1.transform.GetChild (1).GetComponent<Image> ().sprite = nothing;
 		}
 		else if (GameSave.gameSave.powerup1 == 2) {
 			item1.transform.GetChild (1).GetComponent<Image> ().sprite = equippedItem;
@@ -649,7 +650,7 @@ public class Upgrading : MonoBehaviour {
 			}
 		}
 		else if (GameSave.gameSave.powerup2 == 1) {
-			item2.transform.GetChild (1).GetComponent<Image> ().sprite = null;
+			item2.transform.GetChild (1).GetComponent<Image> ().sprite = nothing;
 		}
 		else if (GameSave.gameSave.powerup2 == 2) {
 			item2.transform.GetChild (1).GetComponent<Image> ().sprite = equippedItem;
@@ -666,7 +667,7 @@ public class Upgrading : MonoBehaviour {
 			}
 		}
 		else if (GameSave.gameSave.powerup3 == 1) {
-			item3.transform.GetChild (1).GetComponent<Image> ().sprite = null;
+			item3.transform.GetChild (1).GetComponent<Image> ().sprite = nothing;
 		}
 		else if (GameSave.gameSave.powerup3 == 2) {
 			item3.transform.GetChild (1).GetComponent<Image> ().sprite = equippedItem;
@@ -683,7 +684,7 @@ public class Upgrading : MonoBehaviour {
 			}
 		}
 		else if (GameSave.gameSave.powerup4 == 1) {
-			item4.transform.GetChild (1).GetComponent<Image> ().sprite = null;
+			item4.transform.GetChild (1).GetComponent<Image> ().sprite = nothing;
 		}
 		else if (GameSave.gameSave.powerup4 == 2) {
 			item4.transform.GetChild (1).GetComponent<Image> ().sprite = equippedItem;
@@ -700,7 +701,7 @@ public class Upgrading : MonoBehaviour {
 			}
 		}
 		else if (GameSave.gameSave.powerup5 == 1) {
-			item5.transform.GetChild (1).GetComponent<Image> ().sprite = null;
+			item5.transform.GetChild (1).GetComponent<Image> ().sprite = nothing;
 		}
 		else if (GameSave.gameSave.powerup5 == 2) {
 			item5.transform.GetChild (1).GetComponent<Image> ().sprite = equippedItem;
@@ -717,7 +718,7 @@ public class Upgrading : MonoBehaviour {
 			}
 		}
 		else if (GameSave.gameSave.powerup6 == 1) {
-			item6.transform.GetChild (1).GetComponent<Image> ().sprite = null;
+			item6.transform.GetChild (1).GetComponent<Image> ().sprite = nothing;
 		}
 		else if (GameSave.gameSave.powerup6 == 2) {
 			item6.transform.GetChild (1).GetComponent<Image> ().sprite = equippedItem;
@@ -734,7 +735,7 @@ public class Upgrading : MonoBehaviour {
 			}
 		}
 		else if (GameSave.gameSave.powerup7 == 1) {
-			item7.transform.GetChild (1).GetComponent<Image> ().sprite = null;
+			item7.transform.GetChild (1).GetComponent<Image> ().sprite = nothing;
 		}
 		else if (GameSave.gameSave.powerup7 == 2) {
 			item7.transform.GetChild (1).GetComponent<Image> ().sprite = equippedItem;
@@ -751,7 +752,7 @@ public class Upgrading : MonoBehaviour {
 			}
 		}
 		else if (GameSave.gameSave.powerup8 == 1) {
-			item8.transform.GetChild (1).GetComponent<Image> ().sprite = null;
+			item8.transform.GetChild (1).GetComponent<Image> ().sprite = nothing;
 		}
 		else if (GameSave.gameSave.powerup8 == 2) {
 			item8.transform.GetChild (1).GetComponent<Image> ().sprite = equippedItem;
@@ -768,7 +769,7 @@ public class Upgrading : MonoBehaviour {
 			}
 		}
 		else if (GameSave.gameSave.powerup9 == 1) {
-			item9.transform.GetChild (1).GetComponent<Image> ().sprite = null;
+			item9.transform.GetChild (1).GetComponent<Image> ().sprite = nothing;
 		}
 		else if (GameSave.gameSave.powerup9 == 2) {
 			item9.transform.GetChild (1).GetComponent<Image> ().sprite = equippedItem;
@@ -785,7 +786,7 @@ public class Upgrading : MonoBehaviour {
 			}
 		}
 		else if (GameSave.gameSave.powerup10 == 1) {
-			item10.transform.GetChild (1).GetComponent<Image> ().sprite = null;
+			item10.transform.GetChild (1).GetComponent<Image> ().sprite = nothing;
 		}
 		else if (GameSave.gameSave.powerup10 == 2) {
 			item10.transform.GetChild (1).GetComponent<Image> ().sprite = equippedItem;
@@ -802,7 +803,7 @@ public class Upgrading : MonoBehaviour {
 			}
 		}
 		else if (GameSave.gameSave.powerup11 == 1) {
-			item11.transform.GetChild (1).GetComponent<Image> ().sprite = null;
+			item11.transform.GetChild (1).GetComponent<Image> ().sprite = nothing;
 		}
 		else if (GameSave.gameSave.powerup11 == 2) {
 			item11.transform.GetChild (1).GetComponent<Image> ().sprite = equippedItem;
@@ -819,7 +820,7 @@ public class Upgrading : MonoBehaviour {
 			}
 		}
 		else if (GameSave.gameSave.powerup12 == 1) {
-			item12.transform.GetChild (1).GetComponent<Image> ().sprite = null;
+			item12.transform.GetChild (1).GetComponent<Image> ().sprite = nothing;
 		}
 		else if (GameSave.gameSave.powerup12 == 2) {
 			item12.transform.GetChild (1).GetComponent<Image> ().sprite = equippedItem;
@@ -836,7 +837,7 @@ public class Upgrading : MonoBehaviour {
 			}
 		}
 		else if (GameSave.gameSave.powerup13 == 1) {
-			item13.transform.GetChild (1).GetComponent<Image> ().sprite = null;
+			item13.transform.GetChild (1).GetComponent<Image> ().sprite = nothing;
 		}
 		else if (GameSave.gameSave.powerup13 == 2) {
 			item13.transform.GetChild (1).GetComponent<Image> ().sprite = equippedItem;
@@ -853,7 +854,7 @@ public class Upgrading : MonoBehaviour {
 			}
 		}
 		else if (GameSave.gameSave.powerup14 == 1) {
-			item14.transform.GetChild (1).GetComponent<Image> ().sprite = null;
+			item14.transform.GetChild (1).GetComponent<Image> ().sprite = nothing;
 		}
 		else if (GameSave.gameSave.powerup14 == 2) {
 			item14.transform.GetChild (1).GetComponent<Image> ().sprite = equippedItem;
@@ -870,7 +871,7 @@ public class Upgrading : MonoBehaviour {
 			}
 		}
 		else if (GameSave.gameSave.powerup15 == 1) {
-			item15.transform.GetChild (1).GetComponent<Image> ().sprite = null;
+			item15.transform.GetChild (1).GetComponent<Image> ().sprite = nothing;
 		}
 		else if (GameSave.gameSave.powerup15 == 2) {
 			item15.transform.GetChild (1).GetComponent<Image> ().sprite = equippedItem;
@@ -887,7 +888,7 @@ public class Upgrading : MonoBehaviour {
 			}
 		}
 		else if (GameSave.gameSave.powerup16 == 1) {
-			item16.transform.GetChild (1).GetComponent<Image> ().sprite = null;
+			item16.transform.GetChild (1).GetComponent<Image> ().sprite = nothing;
 		}
 		else if (GameSave.gameSave.powerup16 == 2) {
 			item16.transform.GetChild (1).GetComponent<Image> ().sprite = equippedItem;
@@ -904,7 +905,7 @@ public class Upgrading : MonoBehaviour {
 			}
 		}
 		else if (GameSave.gameSave.powerup17 == 1) {
-			item17.transform.GetChild (1).GetComponent<Image> ().sprite = null;
+			item17.transform.GetChild (1).GetComponent<Image> ().sprite = nothing;
 		}
 		else if (GameSave.gameSave.powerup17 == 2) {
 			item17.transform.GetChild (1).GetComponent<Image> ().sprite = equippedItem;
@@ -921,7 +922,7 @@ public class Upgrading : MonoBehaviour {
 			}
 		}
 		else if (GameSave.gameSave.powerup18 == 1) {
-			item18.transform.GetChild (1).GetComponent<Image> ().sprite = null;
+			item18.transform.GetChild (1).GetComponent<Image> ().sprite = nothing;
 		}
 		else if (GameSave.gameSave.powerup18 == 2) {
 			item18.transform.GetChild (1).GetComponent<Image> ().sprite = equippedItem;
@@ -938,7 +939,7 @@ public class Upgrading : MonoBehaviour {
 			}
 		}
 		else if (GameSave.gameSave.powerup19 == 1) {
-			item19.transform.GetChild (1).GetComponent<Image> ().sprite = null;
+			item19.transform.GetChild (1).GetComponent<Image> ().sprite = nothing;
 		}
 		else if (GameSave.gameSave.powerup19 == 2) {
 			item19.transform.GetChild (1).GetComponent<Image> ().sprite = equippedItem;
@@ -955,7 +956,7 @@ public class Upgrading : MonoBehaviour {
 			}
 		}
 		else if (GameSave.gameSave.powerup20 == 1) {
-			item20.transform.GetChild (1).GetComponent<Image> ().sprite = null;
+			item20.transform.GetChild (1).GetComponent<Image> ().sprite = nothing;
 		}
 		else if (GameSave.gameSave.powerup20 == 2) {
 			item20.transform.GetChild (1).GetComponent<Image> ().sprite = equippedItem;

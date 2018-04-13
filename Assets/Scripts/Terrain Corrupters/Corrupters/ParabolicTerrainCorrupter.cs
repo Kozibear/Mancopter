@@ -188,6 +188,9 @@ public class ParabolicTerrainCorrupter : MonoBehaviour {
 
 	public IEnumerator Destroy ()
 	{
+		gameObject.transform.GetChild (1).gameObject.SetActive (false);
+		gameObject.transform.GetChild (2).gameObject.SetActive (true);
+
 		canThrowBomb = false;
 		if (!once) {
 			hurt.Play ();

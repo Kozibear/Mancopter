@@ -10,9 +10,9 @@ public class BlockArrayControl : MonoBehaviour {
 
 	public bool gameStarting;
 
-	public bool firstTimeBombChucker;
-	public bool firstTimeSpike;
-	public bool firstTimePillar;
+	public static bool firstTimeBombChucker;
+	public static bool firstTimeSpike;
+	public static bool firstTimePillar;
 
 	public float coinFlip;
 
@@ -86,6 +86,10 @@ public class BlockArrayControl : MonoBehaviour {
 		Block20FollowUpPropabilities = new float[] {1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 14, 15, 16, 17};
 		Block21FollowUpPropabilities = new float[] {1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13, 14, 15, 16, 17, 18};
 		Block22FollowUpPropabilities = new float[] {1, 1, 1, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8, 8, 9, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13, 14, 14, 15, 16, 17, 18, 19};
+	
+		firstTimeBombChucker = true;
+		firstTimeSpike = true;
+		firstTimePillar = true;
 	}
 	
 	void FixedUpdate() {

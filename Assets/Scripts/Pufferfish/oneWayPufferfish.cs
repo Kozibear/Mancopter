@@ -78,7 +78,6 @@ public class oneWayPufferfish : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D coll)
 	{
-		print (coll.gameObject.name);
 
 		if (coll.gameObject.layer == LayerMask.NameToLayer("powerup9avoid") && GameSave.gameSave.powerup7 == 2)
 		{
@@ -142,7 +141,13 @@ public class oneWayPufferfish : MonoBehaviour {
 			hurt.Play ();
 			once = true;
 		}
+
+		gameObject.GetComponent<MeshRenderer> ().enabled = false;
+		gameObject.transform.GetChild (0).gameObject.SetActive (false);
+		gameObject.transform.GetChild (1).gameObject.SetActive (false);
+		gameObject.transform.GetChild (2).gameObject.SetActive (true);
+
 		yield return new WaitForSeconds (1);
-		Destroy (gameObject);
+		Destroy (gameObject.transform.parent.gameObject);
 	}
 }

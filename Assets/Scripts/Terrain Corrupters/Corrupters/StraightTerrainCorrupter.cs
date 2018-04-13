@@ -181,6 +181,9 @@ public class StraightTerrainCorrupter : MonoBehaviour {
 
 	public IEnumerator Destroy ()
 	{
+		gameObject.transform.GetChild (2).gameObject.SetActive (false);
+		gameObject.transform.GetChild (3).gameObject.SetActive (true);
+
 		canThrowBomb = false;
 		if (!once) {
 			hurt.Play ();

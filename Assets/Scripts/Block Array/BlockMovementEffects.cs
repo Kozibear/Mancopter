@@ -133,7 +133,7 @@ public class BlockMovementEffects : MonoBehaviour {
 
 			//If we were given the opportunity to summon a bomb, we check to see if we summon one;
 			if (this.transform.parent.GetComponent<BlockArrayControl>().canSummonBombChucker) {
-				if (this.transform.parent.GetComponent<BlockArrayControl> ().firstTimeBombChucker) {
+				if (BlockArrayControl.firstTimeBombChucker) {
 
 					/*
 					GameObject BombChucker = Instantiate (bombChucker, transform.position + new Vector3 (0, 0.8f, 0), transform.rotation);
@@ -147,7 +147,7 @@ public class BlockMovementEffects : MonoBehaviour {
 					BombChucker.transform.localPosition += new Vector3 (0, 1.2f, 0);
 					BombChucker.GetComponent<stationaryBombChucker> ().Player = Player;
 
-					this.transform.parent.GetComponent<BlockArrayControl> ().firstTimeBombChucker = false;
+						BlockArrayControl.firstTimeBombChucker = false;
 
 				} else if (gameTimer.gameTime < 360) {
 					coinFlip = Random.Range (1, 101);
@@ -180,7 +180,7 @@ public class BlockMovementEffects : MonoBehaviour {
 			//If we were given the opportunity to summon a pillar of fire, we check to see if we summon one;
 			if (this.transform.parent.GetComponent<BlockArrayControl>().canSummonPillar) {
 				
-				if (this.transform.parent.GetComponent<BlockArrayControl> ().firstTimePillar) {
+				if (BlockArrayControl.firstTimePillar) {
 
 						GameObject FirePillar = Instantiate (firePillar);
 						FirePillar.transform.parent = this.transform;
@@ -188,7 +188,7 @@ public class BlockMovementEffects : MonoBehaviour {
 						FirePillar.transform.position = this.transform.position;
 						FirePillar.transform.localPosition += new Vector3 (0, 1, 0);
 
-						this.transform.parent.GetComponent<BlockArrayControl> ().firstTimePillar = false;
+						BlockArrayControl.firstTimePillar = false;
 
 				} else if (gameTimer.gameTime < 180) {
 

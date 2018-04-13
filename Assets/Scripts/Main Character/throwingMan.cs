@@ -24,6 +24,8 @@ public class throwingMan : MonoBehaviour {
 
 	public AudioSource throwingSFX;
 
+	public float throwTime;
+
     // Use this for initialization
     void Start () {
         returnHome = false;
@@ -43,6 +45,12 @@ public class throwingMan : MonoBehaviour {
         isDead = false;
 
 		GameSave.gameSave.Load ();
+
+		if (GameSave.gameSave.powerup18 == 2) {
+			throwTime = 0.25f;
+		} else {
+			throwTime = 1;
+		}
     }
 	
 	// Update is called once per frame
@@ -57,22 +65,36 @@ public class throwingMan : MonoBehaviour {
         if (!returnHome)
         {
             if (!goLeft)
-            {
-                Vector3 newPosition = transform.position;
-                newPosition.x = newPosition.x + 0.32f;
-                transform.position = newPosition;
-                transform.Rotate(0, 0, -15f);
+            { 
+				if (GameSave.gameSave.powerup18 == 2) {
+					Vector3 newPosition = transform.position;
+					newPosition.x = newPosition.x + 1.28f;
+					transform.position = newPosition;
+					transform.Rotate (0, 0, -15f);
+				} else {
+					Vector3 newPosition = transform.position;
+					newPosition.x = newPosition.x + 0.32f;
+					transform.position = newPosition;
+					transform.Rotate (0, 0, -15f);
+				}
             }
             if (goLeft)
             {
-                Vector3 newPosition = transform.position;
-                newPosition.x = newPosition.x - 0.32f;
-                transform.position = newPosition;
-                transform.Rotate(0, 0, 15f);
+				if (GameSave.gameSave.powerup18 == 2) {
+					Vector3 newPosition = transform.position;
+					newPosition.x = newPosition.x - 1.28f;
+					transform.position = newPosition;
+					transform.Rotate (0, 0, 15f);
+				} else {
+					Vector3 newPosition = transform.position;
+					newPosition.x = newPosition.x - 0.32f;
+					transform.position = newPosition;
+					transform.Rotate (0, 0, 15f);
+				}
             }
         }
 
-        if (Time.time >= recordThrowTime+1f)
+		if (Time.time >= recordThrowTime+throwTime)
         {
             returnHome = true;
         }
@@ -85,16 +107,16 @@ public class throwingMan : MonoBehaviour {
             //if we are rendered and a certain amount of time has passed, we don't render, and vice-versa
             if (rend.enabled && (Time.time >= flashTimeRecorder+0.005f))
             {
-                rend.enabled = false;
+				transform.GetChild (0).gameObject.SetActive (true);
                 flashTimeRecorder = Time.time;
             }
             else if (!rend.enabled && (Time.time >= flashTimeRecorder + 0.005f))
             {
-                rend.enabled = true;
+				transform.GetChild (0).gameObject.SetActive (true);
                 flashTimeRecorder = Time.time;
             }
            
-            if (Time.time < recordThrowTime + 2f)
+			if (Time.time < recordThrowTime + 2)
             {
                 if (identityValue == 1)
                 {
@@ -115,7 +137,7 @@ public class throwingMan : MonoBehaviour {
             }
             
             //if it's taking too long, we increase the speed at which we move towards the copter mast
-            if (Time.time >= recordThrowTime + 2f)
+			if (Time.time >= recordThrowTime + 2)
             {
                 if (identityValue == 1)
                 {
@@ -147,7 +169,7 @@ public class throwingMan : MonoBehaviour {
 
 			looseblade1.GetComponent<looseBlade>().returnFromThrowPushback = true;
 			looseblade1.GetComponent<looseBlade>().offsetStartingTime = Time.time;
-			looseblade1.GetComponent<Renderer>().enabled = true;
+			looseblade1.GetComponent<looseBlade> ().canRenderSprites = true;
 
             if (goLeft)
             {
@@ -166,7 +188,7 @@ public class throwingMan : MonoBehaviour {
 
 			looseblade2.GetComponent<looseBlade>().returnFromThrowPushback = true;
 			looseblade2.GetComponent<looseBlade>().offsetStartingTime = Time.time;
-			looseblade2.GetComponent<Renderer>().enabled = true;
+			looseblade2.GetComponent<looseBlade> ().canRenderSprites = true;
 
             if (goLeft)
             {
@@ -185,7 +207,7 @@ public class throwingMan : MonoBehaviour {
 
 			looseblade3.GetComponent<looseBlade>().returnFromThrowPushback = true;
 			looseblade3.GetComponent<looseBlade>().offsetStartingTime = Time.time;
-			looseblade3.GetComponent<Renderer>().enabled = true;
+			looseblade3.GetComponent<looseBlade> ().canRenderSprites = true;
 
             if (goLeft)
             {
@@ -204,7 +226,7 @@ public class throwingMan : MonoBehaviour {
 
 			looseblade4.GetComponent<looseBlade>().returnFromThrowPushback = true;
 			looseblade4.GetComponent<looseBlade>().offsetStartingTime = Time.time;
-			looseblade4.GetComponent<Renderer>().enabled = true;
+			looseblade4.GetComponent<looseBlade> ().canRenderSprites = true;
 
             if (goLeft)
             {

@@ -51,6 +51,10 @@ public class ButtonsRotationsController : MonoBehaviour {
 
 	public AudioSource cantRotate;
 
+	public Color redColor;
+	public Color normalColor;
+	public Color buttonColor;
+
 	// Use this for initialization
 	void Start () {
 		XAxisUp.onClick.AddListener (rotateUp);
@@ -70,6 +74,11 @@ public class ButtonsRotationsController : MonoBehaviour {
 		Make6Invisible = false;
 
 		playSpaceRotating = false;
+
+		redColor = new Color (1, 0, 0, 1);
+		normalColor = new Color (1, 1, 1, 1);
+
+		buttonColor = normalColor;
 	}
 	
 	// Update is called once per frame
@@ -179,6 +188,20 @@ public class ButtonsRotationsController : MonoBehaviour {
 			playSpaceRotating = false;
 		}
 
+		XAxisUp.GetComponent<Image> ().color = buttonColor;
+		XAxisDown.GetComponent<Image> ().color = buttonColor;
+		YAxisLeft.GetComponent<Image> ().color = buttonColor;
+		YAxisRight.GetComponent<Image> ().color = buttonColor;
+		ZAxisClockwise.GetComponent<Image> ().color = buttonColor;
+		ZAxisCounterClockwise.GetComponent<Image> ().color = buttonColor;
+
+		if (canRotate && !rotateUpBool && !rotateDownBool && !rotateLeftBool && !rotateRightBool && !rotateClockwiseBool && !rotateCounterClockwiseBool) {
+			buttonColor = normalColor;
+
+		} 
+		else {
+			buttonColor = redColor;
+		}
 	}
 
 	void rotateUp () {
@@ -194,8 +217,11 @@ public class ButtonsRotationsController : MonoBehaviour {
 			playerStoredVelocity = player.GetComponent<CopterBasicMovements> ().rb2d.velocity;
 
 			rotateUpBool = true;
+
+			buttonColor = normalColor;
 		} else {
 			cantRotate.Play ();
+			buttonColor = redColor;
 		}
 	}
 
@@ -211,8 +237,11 @@ public class ButtonsRotationsController : MonoBehaviour {
 			playerStoredVelocity = player.GetComponent<CopterBasicMovements> ().rb2d.velocity;
 
 			rotateDownBool = true;
+
+			buttonColor = normalColor;
 		} else {
 			cantRotate.Play ();
+			buttonColor = redColor;
 		}
 	}
 
@@ -228,8 +257,11 @@ public class ButtonsRotationsController : MonoBehaviour {
 			playerStoredVelocity = player.GetComponent<CopterBasicMovements> ().rb2d.velocity;
 
 			rotateLeftBool = true;
+
+			buttonColor = normalColor;
 		} else {
 			cantRotate.Play ();
+			buttonColor = redColor;
 		}
 	}
 
@@ -245,8 +277,11 @@ public class ButtonsRotationsController : MonoBehaviour {
 			playerStoredVelocity = player.GetComponent<CopterBasicMovements> ().rb2d.velocity;
 
 			rotateRightBool = true;
+
+			buttonColor = normalColor;
 		} else {
 			cantRotate.Play ();
+			buttonColor = redColor;
 		}
 	}
 
@@ -260,8 +295,11 @@ public class ButtonsRotationsController : MonoBehaviour {
 			playerStoredVelocity = player.GetComponent<CopterBasicMovements> ().rb2d.velocity;
 
 			rotateClockwiseBool = true;
+
+			buttonColor = normalColor;
 		} else {
 			cantRotate.Play ();
+			buttonColor = redColor;
 		}
 	}
 
@@ -275,8 +313,11 @@ public class ButtonsRotationsController : MonoBehaviour {
 			playerStoredVelocity = player.GetComponent<CopterBasicMovements> ().rb2d.velocity;
 
 			rotateCounterClockwiseBool = true;
+
+			buttonColor = normalColor;
 		} else {
 			cantRotate.Play ();
+			buttonColor = redColor;
 		}
 	}
 

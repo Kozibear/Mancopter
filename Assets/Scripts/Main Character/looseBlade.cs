@@ -34,6 +34,11 @@ public class looseBlade : MonoBehaviour {
 
 	public GameObject playerBase;
 
+	public GameObject fetalPosition;
+	public GameObject floatingPosition;
+
+	public bool canRenderSprites;
+
     private void Awake()
     {
     }
@@ -44,7 +49,7 @@ public class looseBlade : MonoBehaviour {
         currentlyPushingBack = false;
         isDead = false;
         //returnToOriginalPlace = true;
-
+		/*
         //we create an array of all our objects with the Blade tag (less intensive on unity, and less time-consuming, than individually listing the names of all objects)
         bladeArray = GameObject.FindGameObjectsWithTag("Blade");
 
@@ -60,9 +65,11 @@ public class looseBlade : MonoBehaviour {
         {
             Physics2D.IgnoreCollision(playerObject.GetComponent<BoxCollider2D>(), this.GetComponent<BoxCollider2D>());
         }
-
-        groundArray = GameObject.FindGameObjectsWithTag("ground");
+		*/
+        //groundArray = GameObject.FindGameObjectsWithTag("ground");
         //NOT ENEMIES OR DAMAGING OBJECTS
+
+		canRenderSprites = true;
     }
 	
 	// Update is called once per frame
@@ -149,19 +156,33 @@ public class looseBlade : MonoBehaviour {
 
 		//possibly
         //we make the copter's loose blades gradually move towards the position of the reference blades, with the closeness increasing every second, if we're not pushing downwards or just got a man back from throwing it
-        if (baseObject.GetComponent<CopterBasicMovements>().beginDescent && !baseObject.GetComponent<CopterBasicMovements>().downwardsPush)
-        {
-            if (!currentlyPushingBack)
-            {
-                transform.position = Vector3.Lerp(transform.position, referenceBlade.transform.position, ((Time.time - startingTime) / 1f)); //vectors are for positions,
-                transform.rotation = Quaternion.Lerp(transform.rotation, referenceBlade.transform.rotation, ((Time.time - startingTime) / 1f)); //quaternions are for rotations
-            }
-            if (currentlyPushingBack) //if we just got the blade back from being thrown, it instantly assumes the referenceBlade's position
-            {
-                transform.position = referenceBlade.transform.position;
-                transform.rotation = referenceBlade.transform.rotation;
-            }
-        }
+		if (baseObject.GetComponent<CopterBasicMovements> ().beginDescent && !baseObject.GetComponent<CopterBasicMovements> ().downwardsPush) {
+			if (!currentlyPushingBack) {
+				transform.position = Vector3.Lerp (transform.position, referenceBlade.transform.position, ((Time.time - startingTime) / 1f)); //vectors are for positions,
+				transform.rotation = Quaternion.Lerp (transform.rotation, referenceBlade.transform.rotation, ((Time.time - startingTime) / 1f)); //quaternions are for rotations
+			}
+			if (currentlyPushingBack) { //if we just got the blade back from being thrown, it instantly assumes the referenceBlade's position
+				transform.position = referenceBlade.transform.position;
+				transform.rotation = referenceBlade.transform.rotation;
+			}
+
+			if (canRenderSprites) {
+				floatingPosition.SetActive (true);
+				fetalPosition.SetActive (false);
+			} else {
+				floatingPosition.SetActive (false);
+				fetalPosition.SetActive (false);
+			}
+		} 
+		else {
+			if (canRenderSprites) {
+				floatingPosition.SetActive (false);
+				fetalPosition.SetActive (true);
+			} else {
+				floatingPosition.SetActive (false);
+				fetalPosition.SetActive (false);
+			}
+		}
 
         //If a man just returned from being thrown, we briefly activate the hingeJoint2D's motor to slightly shake the looseBlade, to make it seem like "it" was what was thrown
         if (returnFromThrowPushback && Time.time < offsetStartingTime+0.04f && leftReturn)
@@ -241,7 +262,8 @@ public class looseBlade : MonoBehaviour {
 
 			} 
 			else {
-				GetComponent<Renderer> ().enabled = false;
+				//GetComponent<Renderer> ().enabled = false;
+				canRenderSprites = false;
 
 				baseObject.GetComponent<Health> ().healthAmount -= 1;
 				baseObject.GetComponent<Health> ().canGetHurt = false;
@@ -262,7 +284,8 @@ public class looseBlade : MonoBehaviour {
 
 			} 
 			else {
-				GetComponent<Renderer> ().enabled = false;
+				//GetComponent<Renderer> ().enabled = false;
+				canRenderSprites = false;
 
 				baseObject.GetComponent<Health> ().healthAmount -= 1;
 				baseObject.GetComponent<Health> ().canGetHurt = false;

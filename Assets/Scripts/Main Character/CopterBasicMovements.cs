@@ -70,6 +70,9 @@ public class CopterBasicMovements : MonoBehaviour {
 	public AudioSource connectWithGroundPound;
 	public AudioSource enemyHurt;
 
+	public GameObject sittingAnimation;
+	public GameObject jumpingAnimation;
+
     // Use this for initialization
     void Start() {
 
@@ -150,14 +153,14 @@ public class CopterBasicMovements : MonoBehaviour {
         }
 
         //conditions for jump
-		if (!playSpaceRotating && (Input.GetKeyDown("up") || Input.GetKeyDown("space") || Input.GetKeyDown("w")) && grounded && !(Input.GetKeyDown("a") || Input.GetKeyDown("d") || Input.GetKeyDown("left") || Input.GetKeyDown("right")))
+		if (!playSpaceRotating && (Input.GetKeyDown("up") || Input.GetKeyDown("space") || Input.GetKeyDown("w")) && grounded && !(Input.GetKeyDown("a") || Input.GetKeyDown("d") || Input.GetKeyDown("left") || Input.GetKeyDown("right")) && gameObject.GetComponent<Health>().healthAmount != 0)
         {
             startJump = true;
 			jumpSound.Play ();
         }
 
         //conditions for double jump
-		if (!playSpaceRotating && (Input.GetKeyDown("up") || Input.GetKeyDown("space") || Input.GetKeyDown("w")) && (beginDescent || jumping) && !grounded && ((doubleJumpTimes > 0) || (nonRechargingDoubleJumpTimes > 0)))
+		if (!playSpaceRotating && (Input.GetKeyDown("up") || Input.GetKeyDown("space") || Input.GetKeyDown("w")) && (beginDescent || jumping) && !grounded && ((doubleJumpTimes > 0) || (nonRechargingDoubleJumpTimes > 0)) && gameObject.GetComponent<Health>().healthAmount != 0)
         {
             startDoubleJump = true;
 			jumpSound.Play ();
@@ -262,7 +265,15 @@ public class CopterBasicMovements : MonoBehaviour {
             }
 
 			rotorPop.Stop ();
+
+			sittingAnimation.SetActive (true);
+			jumpingAnimation.SetActive (false);
         }
+
+		if (!grounded) {
+			sittingAnimation.SetActive (false);
+			jumpingAnimation.SetActive (true);
+		}
         
         //jumping
         if (startJump)
@@ -443,6 +454,11 @@ public class CopterBasicMovements : MonoBehaviour {
             newPosition.x = newPosition.x - speed;
             transform.position = newPosition;
 
+			if (!facingLeft) {
+				Vector3 theScale = transform.localScale;
+				theScale.x *= -1;
+				transform.localScale = theScale;
+			}
             facingLeft = true;
         }
 
@@ -453,6 +469,11 @@ public class CopterBasicMovements : MonoBehaviour {
             newPosition.x = newPosition.x + speed;
             transform.position = newPosition;
 
+			if (facingLeft) {
+				Vector3 theScale = transform.localScale;
+				theScale.x *= -1;
+				transform.localScale = theScale;
+			}
             facingLeft = false;
         }
     }

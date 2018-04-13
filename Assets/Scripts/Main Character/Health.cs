@@ -9,6 +9,7 @@ public class Health : MonoBehaviour {
     public float healthAmount;
 
     public bool canGetHurt;
+	public static bool spritesDamageFlash;
     public bool beginHarmedSequence;
     public bool canLoseMan;
 
@@ -52,25 +53,25 @@ public class Health : MonoBehaviour {
             {
                 //first, we check to see which blade, in order of 1-4, is still rendered, and disable the first one that still is
                 //(so that, for example, if the second blade is killed in a throw, we know to kill off the first blade, not the second
-				if (looseBlade1.GetComponent<Renderer>().enabled)
+				if (looseBlade1.transform.GetChild(0).gameObject.activeInHierarchy || looseBlade1.transform.GetChild(1).gameObject.activeInHierarchy)
                 {
                     //we disable its mesh renderer, and let the blade know that it is dead so that it can instantiate a dead copy in its place
-					looseBlade1.GetComponent<Renderer>().enabled = false;
+					looseBlade1.GetComponent<looseBlade>().canRenderSprites = false; 
 					looseBlade1.GetComponent<looseBlade>().isDead = true;
                 }
-				else if (looseBlade2.GetComponent<Renderer>().enabled)
+				else if (looseBlade2.transform.GetChild(0).gameObject.activeInHierarchy || looseBlade2.transform.GetChild(1).gameObject.activeInHierarchy)
                 {
-					looseBlade2.GetComponent<Renderer>().enabled = false;
+					looseBlade2.GetComponent<looseBlade>().canRenderSprites = false;
 					looseBlade2.GetComponent<looseBlade>().isDead = true;
                 }
-				else if (looseBlade3.GetComponent<Renderer>().enabled)
+				else if (looseBlade3.transform.GetChild(0).gameObject.activeInHierarchy || looseBlade3.transform.GetChild(1).gameObject.activeInHierarchy)
                 {
-					looseBlade3.GetComponent<Renderer>().enabled = false;
+					looseBlade3.GetComponent<looseBlade>().canRenderSprites = false;
 					looseBlade3.GetComponent<looseBlade>().isDead = true;
                 }
-				else if (looseBlade4.GetComponent<Renderer>().enabled)
+				else if (looseBlade4.transform.GetChild(0).gameObject.activeInHierarchy || looseBlade4.transform.GetChild(1).gameObject.activeInHierarchy)
                 {
-					looseBlade4.GetComponent<Renderer>().enabled = false;
+					looseBlade4.GetComponent<looseBlade>().canRenderSprites = false;
 					looseBlade4.GetComponent<looseBlade>().isDead = true;
                 }
 
@@ -80,78 +81,81 @@ public class Health : MonoBehaviour {
 
             if (healthAmount == 2 && canLoseMan)
             {
-				if (looseBlade1.GetComponent<Renderer>().enabled)
-                {
-					looseBlade1.GetComponent<Renderer>().enabled = false;
+				if (looseBlade1.transform.GetChild(0).gameObject.activeInHierarchy || looseBlade1.transform.GetChild(1).gameObject.activeInHierarchy)
+				{
+					//we disable its mesh renderer, and let the blade know that it is dead so that it can instantiate a dead copy in its place
+					looseBlade1.GetComponent<looseBlade>().canRenderSprites = false; 
 					looseBlade1.GetComponent<looseBlade>().isDead = true;
-                }
-				else if (looseBlade2.GetComponent<Renderer>().enabled)
-                {
-					looseBlade2.GetComponent<Renderer>().enabled = false;
+				}
+				else if (looseBlade2.transform.GetChild(0).gameObject.activeInHierarchy || looseBlade2.transform.GetChild(1).gameObject.activeInHierarchy)
+				{
+					looseBlade2.GetComponent<looseBlade>().canRenderSprites = false;
 					looseBlade2.GetComponent<looseBlade>().isDead = true;
-                }
-				else if (looseBlade3.GetComponent<Renderer>().enabled)
-                {
-					looseBlade3.GetComponent<Renderer>().enabled = false;
+				}
+				else if (looseBlade3.transform.GetChild(0).gameObject.activeInHierarchy || looseBlade3.transform.GetChild(1).gameObject.activeInHierarchy)
+				{
+					looseBlade3.GetComponent<looseBlade>().canRenderSprites = false;
 					looseBlade3.GetComponent<looseBlade>().isDead = true;
-                }
-				else if (looseBlade4.GetComponent<Renderer>().enabled)
-                {
-					looseBlade4.GetComponent<Renderer>().enabled = false;
+				}
+				else if (looseBlade4.transform.GetChild(0).gameObject.activeInHierarchy || looseBlade4.transform.GetChild(1).gameObject.activeInHierarchy)
+				{
+					looseBlade4.GetComponent<looseBlade>().canRenderSprites = false;
 					looseBlade4.GetComponent<looseBlade>().isDead = true;
-                }
+				}
 
                 canLoseMan = false;
             }
 
             if (healthAmount == 1 && canLoseMan)
             {
-				if (looseBlade1.GetComponent<Renderer>().enabled)
-                {
-					looseBlade1.GetComponent<Renderer>().enabled = false;
+				if (looseBlade1.transform.GetChild(0).gameObject.activeInHierarchy || looseBlade1.transform.GetChild(1).gameObject.activeInHierarchy)
+				{
+					//we disable its mesh renderer, and let the blade know that it is dead so that it can instantiate a dead copy in its place
+					looseBlade1.GetComponent<looseBlade>().canRenderSprites = false; 
 					looseBlade1.GetComponent<looseBlade>().isDead = true;
-                }
-				else if (looseBlade2.GetComponent<Renderer>().enabled)
-                {
-					looseBlade2.GetComponent<Renderer>().enabled = false;
+				}
+				else if (looseBlade2.transform.GetChild(0).gameObject.activeInHierarchy || looseBlade2.transform.GetChild(1).gameObject.activeInHierarchy)
+				{
+					looseBlade2.GetComponent<looseBlade>().canRenderSprites = false;
 					looseBlade2.GetComponent<looseBlade>().isDead = true;
-                }
-				else if (looseBlade3.GetComponent<Renderer>().enabled)
-                {
-					looseBlade3.GetComponent<Renderer>().enabled = false;
+				}
+				else if (looseBlade3.transform.GetChild(0).gameObject.activeInHierarchy || looseBlade3.transform.GetChild(1).gameObject.activeInHierarchy)
+				{
+					looseBlade3.GetComponent<looseBlade>().canRenderSprites = false;
 					looseBlade3.GetComponent<looseBlade>().isDead = true;
-                }
-				else if (looseBlade4.GetComponent<Renderer>().enabled)
-                {
-					looseBlade4.GetComponent<Renderer>().enabled = false;
+				}
+				else if (looseBlade4.transform.GetChild(0).gameObject.activeInHierarchy || looseBlade4.transform.GetChild(1).gameObject.activeInHierarchy)
+				{
+					looseBlade4.GetComponent<looseBlade>().canRenderSprites = false;
 					looseBlade4.GetComponent<looseBlade>().isDead = true;
-                }
+				}
 
                 canLoseMan = false;
             }
 
             if (healthAmount == 0 && canLoseMan)
             {
-				if (looseBlade1.GetComponent<Renderer>().enabled)
-                {
-					looseBlade1.GetComponent<Renderer>().enabled = false;
+				if (looseBlade1.transform.GetChild(0).gameObject.activeInHierarchy || looseBlade1.transform.GetChild(1).gameObject.activeInHierarchy)
+				{
+					//we disable its mesh renderer, and let the blade know that it is dead so that it can instantiate a dead copy in its place
+					looseBlade1.GetComponent<looseBlade>().canRenderSprites = false; 
 					looseBlade1.GetComponent<looseBlade>().isDead = true;
-                }
-				else if (looseBlade2.GetComponent<Renderer>().enabled)
-                {
-					looseBlade2.GetComponent<Renderer>().enabled = false;
+				}
+				else if (looseBlade2.transform.GetChild(0).gameObject.activeInHierarchy || looseBlade2.transform.GetChild(1).gameObject.activeInHierarchy)
+				{
+					looseBlade2.GetComponent<looseBlade>().canRenderSprites = false;
 					looseBlade2.GetComponent<looseBlade>().isDead = true;
-                }
-				else if (looseBlade3.GetComponent<Renderer>().enabled)
-                {
-					looseBlade3.GetComponent<Renderer>().enabled = false;
+				}
+				else if (looseBlade3.transform.GetChild(0).gameObject.activeInHierarchy || looseBlade3.transform.GetChild(1).gameObject.activeInHierarchy)
+				{
+					looseBlade3.GetComponent<looseBlade>().canRenderSprites = false;
 					looseBlade3.GetComponent<looseBlade>().isDead = true;
-                }
-				else if (looseBlade4.GetComponent<Renderer>().enabled)
-                {
-					looseBlade4.GetComponent<Renderer>().enabled = false;
+				}
+				else if (looseBlade4.transform.GetChild(0).gameObject.activeInHierarchy || looseBlade4.transform.GetChild(1).gameObject.activeInHierarchy)
+				{
+					looseBlade4.GetComponent<looseBlade>().canRenderSprites = false;
 					looseBlade4.GetComponent<looseBlade>().isDead = true;
-                }
+				}
 
                 canLoseMan = false;
             }
@@ -165,7 +169,13 @@ public class Health : MonoBehaviour {
 
     private void FixedUpdate()
     {
-		
+
+		if (canGetHurt) {
+			spritesDamageFlash = false;
+		} else {
+			spritesDamageFlash = true;
+		}
+
 		//this is for making the screen flash red
 		damageFlash.color = damageFlashColor;
 

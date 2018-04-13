@@ -15,6 +15,7 @@ public class TrackingBomb : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		playerPosition = player.transform.position;
+		this.transform.rotation = new Quaternion (0, 0, 0, 0);
 
 	}
 	
@@ -29,9 +30,17 @@ public class TrackingBomb : MonoBehaviour {
 			}
 			StartCoroutine ("killExplosion");
 		}
+
+		if (transform.position != playerPosition) {
+			this.transform.Rotate (new Vector3 (0, 0, 20));
+		}
 	}
 
 	public IEnumerator killExplosion() {
+
+		gameObject.transform.GetChild (0).gameObject.SetActive (false);
+		gameObject.transform.GetChild (1).gameObject.SetActive (true);
+
 		yield return new WaitForSeconds (1);
 		Destroy (gameObject);
 	}

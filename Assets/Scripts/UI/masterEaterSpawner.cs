@@ -65,37 +65,37 @@ public class masterEaterSpawner : MonoBehaviour {
 		{
 			canSelectNextSpawner = true;
 			if (gameTimer.gameTime < 30) {
-				timeUntilNextSelection += 15;
+				timeUntilNextSelection += 25;
 			}
 			if (gameTimer.gameTime >= 30 && gameTimer.gameTime < 60) {
-				timeUntilNextSelection += 14.5f;
+				timeUntilNextSelection += 24.5f;
 			}
 			if (gameTimer.gameTime >= 60 && gameTimer.gameTime < 90) {
-				timeUntilNextSelection += 14f;
+				timeUntilNextSelection += 24f;
 			}
 			if (gameTimer.gameTime >= 90 && gameTimer.gameTime < 120) {
-				timeUntilNextSelection += 13.5f;
+				timeUntilNextSelection += 23.5f;
 			}
 			if (gameTimer.gameTime >= 150 && gameTimer.gameTime < 180) {
-				timeUntilNextSelection += 13f;
+				timeUntilNextSelection += 23f;
 			}
 			if (gameTimer.gameTime >= 180 && gameTimer.gameTime < 210) {
-				timeUntilNextSelection += 12.5f;
+				timeUntilNextSelection += 22.5f;
 			}
 			if (gameTimer.gameTime >= 210 && gameTimer.gameTime < 240) {
-				timeUntilNextSelection += 12f;
+				timeUntilNextSelection += 22f;
 			}
 			if (gameTimer.gameTime >= 240 && gameTimer.gameTime < 270) {
-				timeUntilNextSelection += 11f;
+				timeUntilNextSelection += 21f;
 			}
 			if (gameTimer.gameTime >= 270 && gameTimer.gameTime < 300) {
-				timeUntilNextSelection += 10f;
+				timeUntilNextSelection += 20f;
 			}
 			if (gameTimer.gameTime >= 300 && gameTimer.gameTime < 330) {
-				timeUntilNextSelection += 9f;
+				timeUntilNextSelection += 19f;
 			}
 			if (gameTimer.gameTime >= 330 && gameTimer.gameTime < 360) {
-				timeUntilNextSelection += 8;
+				timeUntilNextSelection += 18;
 			}
 		}
 			
